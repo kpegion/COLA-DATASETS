@@ -4,7 +4,7 @@ import intake
 path='/shared/scratch/nbehboud/gridded/temp/CPC-GLOBAL/'
 f_max_names=path+'tmax.*.nc'
 f_min_names=path+'tmin.*.nc'
-
+print(f_max_names)
 # Read with xarray
 ds_max=xr.open_mfdataset(f_max_names,combine='nested',concat_dim='time')
 
