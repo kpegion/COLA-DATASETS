@@ -2,7 +2,8 @@ import sys
 import xarray as xr
 import intake
 import click
-
+from framework import src_header
+from framework import src_footer
 @click.command()
 @click.argument('path')
 @click.argument('is_combine')
@@ -25,20 +26,39 @@ def generate_catalog(path, is_combine, file_name, dataset_name):
         f_combine_names= path+ dataset_name + "/"+ file_name
         # Read with xarray
         source = xr.open_mfdataset(f_combine_names,combine='nested',concat_dim='time')
-
+        src = source
         # Use intake with xarray kwargs
         source = intake.open_netcdf(f_combine_names,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
     else:
         fileName = path+dataset_name+"/"+file_name
         source = intake.open_netcdf(fileName)
-    source.discover()
+        src = xr.open_dataset(fileName)
+        source.discover()
+
     dataset_name = open(dataset_name+'.yaml', 'w')
     dataset_name.write(source.yaml())
     dataset_name.close()
-    print(str(dataset_name.name) + " was cataloged")
+    print(str(dataset_name.name) + " was cataloged\n")
+    
+    #############################################
+    subtitle = input("What do you want to put as its title?\n")
+    _sub_title = input("\nWhat is dataset file name?\n")
+    parent_page = input("\nWhat is the name of parent in hierarchical order?\n")
+    page_name = input("\nWhat is page name in hierarchical order?\n")
+    catalog_dir = input("\nEnter catalog directory:\n")
+    open_catalog = catalog_dir + "/"+ parent_page +".yaml"
+    title = src.attrs['title'] 
+    url = input("\nEnter the url:\n") 
+
+    html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
+    _header = src_header(subtitle, _sub_title, parent_page, page_name,  open_catalog, title, url, catalog_dir)
+
+    _footer = src_footer()
+    html_src = _header + html_repr + _footer
     
 
-
+    with open(page_name+".html", "w") as file:
+        file.write(html_src)
 if __name__ == "__main__":
     generate_catalog()
 
