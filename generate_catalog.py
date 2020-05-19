@@ -1,4 +1,5 @@
 import sys
+import glob
 import xarray as xr
 import intake
 import click
@@ -6,31 +7,38 @@ from framework import src_header
 from framework import src_footer
 @click.command()
 @click.argument('path')
-@click.argument('is_combine')
 @click.argument('file_name')
 @click.argument('dataset_name')
+@click.argument('parent_page')
 
-def generate_catalog(path, is_combine, file_name, dataset_name):
+def generate_catalog(path, file_name, dataset_name, parent_page):
     """
     PATH:  The directory in COLAx server such as: '/shared/scratch/nbehboud/gridded/temp/' 
-
-    IS_COMBINE: If there are more than one NetCDF datafiles which should be comined (1 or 0)
 
     FILE_NAME: If IS_COBINE is 1, FILE_NAME is the pattern for the NetCDF files, otherwise, Name of the NetCDF file. e.g.: 'air.mon.mean.nc' 
 
     DATASET_NAME: Name of the directory containing the NetCDf data files, e.g.: 'GHCN_CAMS'
 
+    PARENT_PAGE: Name of the parent directory in the dataset type hierarchy, e.g.: Temperature
     """
     
-    if int(is_combine) == 1:
-        f_combine_names= path+ dataset_name + "/"+ file_name
+    fileName = path+ dataset_name + "/"+ file_name
+    nfiles = len(glob.glob(fileName))
+    
+    # Set is_combine based on number of files
+    if (nfiles > 1):
+        is_combine= True
+    else:
+        is_combine= False
+
+
+    if int(is_combine) == True:
         # Read with xarray
-        source = xr.open_mfdataset(f_combine_names,combine='nested',concat_dim='time')
+        source = xr.open_mfdataset(fileName,combine='nested',concat_dim='time')
         src = source
         # Use intake with xarray kwargs
-        source = intake.open_netcdf(f_combine_names,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
+        source = intake.open_netcdf(fileName,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
     else:
-        fileName = path+dataset_name+"/"+file_name
         source = intake.open_netcdf(fileName)
         src = xr.open_dataset(fileName)
         source.discover()
@@ -41,24 +49,26 @@ def generate_catalog(path, is_combine, file_name, dataset_name):
     print(str(dataset_name.name) + " was cataloged\n")
     
     #############################################
-    subtitle = input("What do you want to put as its title?\n")
-    _sub_title = input("\nWhat is dataset file name?\n")
-    parent_page = input("\nWhat is the name of parent in hierarchical order?\n")
-    page_name = input("\nWhat is page name in hierarchical order?\n")
-    catalog_dir = input("\nEnter catalog directory:\n")
+
+    # CATALOG_DIR: Github repository containing the master catalog
+    # NOTE: It will be more accurate later
+    catalog_dir = "https://github.com/kpegion/COLA-DATASETS-CATALOG"
     open_catalog = catalog_dir + "/"+ parent_page +".yaml"
     title = src.attrs['title'] 
-    url = input("\nEnter the url:\n") 
+    url = src.attrs['References'] 
 
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
-    _header = src_header(subtitle, _sub_title, parent_page, page_name,  open_catalog, title, url, catalog_dir)
+    _header = src_header(title, parent_page,  open_catalog, url, catalog_dir)
 
     _footer = src_footer()
     html_src = _header + html_repr + _footer
-    
+    page_name = file_name.replace('*','').replace('..','.')
 
-    with open(page_name+".html", "w") as file:
+    html_page = page_name +".html" 
+    with open(html_page , "w") as file:
         file.write(html_src)
+
+    print( html_page + " was created\n")
 if __name__ == "__main__":
     generate_catalog()
 
