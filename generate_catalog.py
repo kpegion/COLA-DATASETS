@@ -15,7 +15,7 @@ def generate_catalog(path, file_name, dataset_name, parent_page):
     """
     PATH:  The directory in COLAx server such as: '/shared/scratch/nbehboud/gridded/temp/' 
 
-    FILE_NAME: If IS_COBINE is 1, FILE_NAME is the pattern for the NetCDF files, otherwise, Name of the NetCDF file. e.g.: 'air.mon.mean.nc' 
+    FILE_NAME: If there are more than one file, FILE_NAME is the pattern for the NetCDF files, otherwise, Name of the NetCDF file. e.g.: 'air.mon.mean.nc' 
 
     DATASET_NAME: Name of the directory containing the NetCDf data files, e.g.: 'GHCN_CAMS'
 
@@ -28,7 +28,9 @@ def generate_catalog(path, file_name, dataset_name, parent_page):
     # Set is_combine based on number of files
     if (nfiles > 1):
         is_combine= True
+        print("More than one file###")
     else:
+        print("one file###")
         is_combine= False
 
 
