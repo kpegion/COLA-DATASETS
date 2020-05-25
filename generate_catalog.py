@@ -5,26 +5,24 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
+import os
 @click.command()
-@click.argument('path')
-@click.argument('file_name')
-@click.argument('dataset_name')
+@click.argument('file_path_name')
+@click.argument('dataset_sub_name')
 @click.argument('parent_page')
 
-def generate_catalog(path, file_name, dataset_name, parent_page):
+def generate_catalog(file_path_name, dataset_sub_name, parent_page):
     """
-    PATH:  The directory in COLAx server such as: '/shared/scratch/nbehboud/gridded/temp/' 
-
     FILE_NAME: If there are more than one file, FILE_NAME is the pattern for the NetCDF files, otherwise, Name of the NetCDF file. e.g.: 'air.mon.mean.nc' 
 
-    DATASET_NAME: Name of the directory containing the NetCDf data files, e.g.: 'GHCN_CAMS'
+    DATASET_SUB_NAME: Name of the directory containing the NetCDf data files, e.g.: 'GHCN_CAMS'. If there is subdirectory like monthly, daily, etc., it should also be included and separated by "_".
 
     PARENT_PAGE: Name of the parent directory in the dataset type hierarchy, e.g.: Temperature
     """
     
-    fileName = path+ dataset_name + "/"+ file_name
-    nfiles = len(glob.glob(fileName))
+    path, fileName = os.path.split(file_path_name)
     
+    nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
         is_combine= True
@@ -36,19 +34,19 @@ def generate_catalog(path, file_name, dataset_name, parent_page):
 
     if int(is_combine) == True:
         # Read with xarray
-        source = xr.open_mfdataset(fileName,combine='nested',concat_dim='time')
+        source = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time')
         src = source
         # Use intake with xarray kwargs
-        source = intake.open_netcdf(fileName,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
+        source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
     else:
-        source = intake.open_netcdf(fileName)
-        src = xr.open_dataset(fileName)
+        source = intake.open_netcdf(file_path_name)
+        src = xr.open_dataset(file_path_name)
         source.discover()
 
-    dataset_name = open(dataset_name+'.yaml', 'w')
-    dataset_name.write(source.yaml())
-    dataset_name.close()
-    print(str(dataset_name.name) + " was cataloged\n")
+    dataset_sub_name = open(dataset_sub_name+'.yaml', 'w')
+    dataset_sub_name.write(source.yaml())
+    dataset_sub_name.close()
+    print(str(dataset_sub_name.name) + " was cataloged\n")
     
     #############################################
 
@@ -64,7 +62,7 @@ def generate_catalog(path, file_name, dataset_name, parent_page):
 
     _footer = src_footer()
     html_src = _header + html_repr + _footer
-    page_name = file_name.replace('*','').replace('..','.')
+    page_name = fileName.replace('*','').replace('..','.')
 
     html_page = page_name +".html" 
     with open(html_page , "w") as file:
