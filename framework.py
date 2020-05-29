@@ -1,4 +1,4 @@
-def src_header(title, parent_page, open_catalog, url, catalog_dir):
+def src_header(title, parent_page, open_catalog, url, tags, catalog_dir):
     ret =  src_header = """<!DOCTYPE html>
 <html>
 <head>
@@ -71,8 +71,13 @@ ds=cat.netcdf.read()</code></pre>
             </tr>
 
             <tr>
-                <td>catalog_dir</td>
+                <td>tags</td>
                 <td>{8}</td>
+            </tr>
+
+            <tr>
+                <td>catalog_dir</td>
+                <td>{9}</td>
             </tr>
 
             </tbody>
@@ -87,7 +92,7 @@ ds=cat.netcdf.read()</code></pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt"></div>""".format(title, title, parent_page, parent_page, title, open_catalog, title, url, catalog_dir)
+    <div class="prompt output_prompt"></div>""".format(title, title, parent_page, parent_page, title, open_catalog, title, url, tags, catalog_dir)
     return ret
 
 
