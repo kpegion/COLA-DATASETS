@@ -1,5 +1,5 @@
 #!/bin/bash
-DIR=/scratch/nbehboud/gridded/temp/CPC-GLOBAL
+DIR=/shared/obs/gridded/GPCP
 
 
 
