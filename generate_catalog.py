@@ -58,7 +58,7 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     open_catalog = catalog_dir + "/"+ parent_page +".yaml"
     title = src.attrs['title'] 
     url = src.attrs['References'] 
-    tags = tags
+    tags =tags.split(',')
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
     _header = src_header(title, parent_page,  open_catalog, url, tags, catalog_dir)
 

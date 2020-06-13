@@ -24,9 +24,10 @@ theTags=${line[3]}
 
 
 temp_dir=${line[2]}
-mkdir temporary_$temp_dir
-cd temporary_$temp_dir
+mkdir ${temp_dir}_temporary
+cd ${temp_dir}_temporary
 
 foo $theFile $theDataset $theParent $theTags
+echo "---------------------------------------------------------------------------------------"
 done < $filename
 
