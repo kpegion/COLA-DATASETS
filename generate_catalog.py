@@ -23,14 +23,13 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     TAG: A dataset may need to be catalogued into multiple child catalogs, e.g.: "Atmosphere", "Temperature". Please keep the format consistent
     """
     path, fileName = os.path.split(file_path_name)
-    
     nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
         is_combine= True
-        print("More than one file###")
+        #print("More than one file###")
     else:
-        print("one file###")
+        #print("one file###")
         is_combine= False
 
 
@@ -45,10 +44,11 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
         src = xr.open_dataset(file_path_name)
         source.discover()
 
+
     dataset_sub_name = open(dataset_sub_name+'.yaml', 'w')
     dataset_sub_name.write(source.yaml())
     dataset_sub_name.close()
-    print(str(dataset_sub_name.name) + " was cataloged\n")
+    print(str(dataset_sub_name.name) + " was cataloged")
     
     #############################################
 
@@ -65,7 +65,6 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.')
-
     html_page = page_name +".html" 
     with open(html_page , "w") as file:
         file.write(html_src)
