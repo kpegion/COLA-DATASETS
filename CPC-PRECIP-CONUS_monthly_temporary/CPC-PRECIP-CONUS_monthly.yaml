@@ -1,0 +1,33 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/obs/gridded/CPC-PRECIP-CONUS/monthly/precip.V1.0.mon.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Comments: Preciptation is accumulated from 12z of previous day to 12z of day
+        stored
+      Conventions: COARDS
+      References: http://www.psl.noaa.gov/data/gridded/data.unified.daily.conus.html
+      coords: !!python/tuple
+      - lat
+      - lon
+      - time
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: CPC Unified Gauge-Based Analysis of Daily Precipitation over
+        CONUS
+      description: 'CPC Unified Gauge-Based Analysis of Daily Precipitation over CONUS
+        at PSD: Gridded Monthly Values. Monthly Values after 2006 are from the real
+        time files (RT)'
+      dims:
+        lat: 120
+        lon: 300
+        time: 846
+      history: created 05/2012 by CAS from data obtained at NOAA NCEP/CPC
+      platform: Observations
+      title: 'CPC Unified Gauge-Based Analysis of Daily Precipitation over CONUS at
+        PSD: Monthly Values'

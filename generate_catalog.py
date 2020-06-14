@@ -22,16 +22,23 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
 
     TAG: A dataset may need to be catalogued into multiple child catalogs, e.g.: "Atmosphere", "Temperature". Please keep the format consistent
     """
+    file_path_name = file_path_name.strip('""')
     path, fileName = os.path.split(file_path_name)
     nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
         is_combine= True
-        #print("More than one file###")
+        print("More than one file###")
     else:
-        #print("one file###")
+        print("one file###")
         is_combine= False
 
+    
+    #print("file path name is "+ file_path_name)
+
+    #print("dataset_sub_name is "+ dataset_sub_name)
+
+    #print("parent page is " + parent_page)
 
     if int(is_combine) == True:
         # Read with xarray
@@ -43,9 +50,8 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
         source = intake.open_netcdf(file_path_name)
         src = xr.open_dataset(file_path_name)
         source.discover()
-
-
-    dataset_sub_name = open(dataset_sub_name+'.yaml', 'w')
+    #print('subname' + dataset_sub_name)
+    dataset_sub_name = open(dataset_sub_name.strip('""')+ '.yaml', 'w')
     dataset_sub_name.write(source.yaml())
     dataset_sub_name.close()
     print(str(dataset_sub_name.name) + " was cataloged")
@@ -56,8 +62,14 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     # NOTE: It will be more accurate later
     catalog_dir = "https://github.com/kpegion/COLA-DATASETS-CATALOG"
     open_catalog = catalog_dir + "/"+ parent_page +".yaml"
-    title = src.attrs['title'] 
-    url = src.attrs['References'] 
+    try:
+        title = src.attrs['title'] 
+    except:
+        title = dataset_sub_name
+    try:
+        url = src.attrs['References']
+    except:
+        url =""
     tags =tags.split(',')
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
     _header = src_header(title, parent_page,  open_catalog, url, tags, catalog_dir)

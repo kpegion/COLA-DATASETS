@@ -23,11 +23,12 @@ theParent=${line[2]}
 theTags=${line[3]}
 
 
-temp_dir=${line[2]}
+temp_dir=${line[1]}
 mkdir ${temp_dir}_temporary
-cd ${temp_dir}_temporary
+pushd ${temp_dir}_temporary
 
 foo $theFile $theDataset $theParent $theTags
 echo "---------------------------------------------------------------------------------------"
+popd
 done < $filename
 
