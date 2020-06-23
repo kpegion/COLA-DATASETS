@@ -70,10 +70,10 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
         url = src.attrs['References']
     except:
         url =""
-    tags =tags.split(',')
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
     _header = src_header(title, parent_page,  open_catalog, url, tags, catalog_dir)
 
+    tags =tags.split(',')
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.')
