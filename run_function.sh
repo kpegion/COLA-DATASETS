@@ -27,6 +27,8 @@ temp_dir=${line[1]}
 mkdir ${temp_dir}_temporary
 pushd ${temp_dir}_temporary
 
+
+
 foo $theFile $theDataset $theParent $theTags
 echo "---------------------------------------------------------------------------------------"
 popd

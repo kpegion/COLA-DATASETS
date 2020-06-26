@@ -24,6 +24,10 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     """
     file_path_name = file_path_name.strip('""')
     path, fileName = os.path.split(file_path_name)
+    print("1 :"+ file_path_name)
+    print("2 :"+ dataset_sub_name)
+    print("3 :"+ parent_page)
+    print("4: "+ tags)
     nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
