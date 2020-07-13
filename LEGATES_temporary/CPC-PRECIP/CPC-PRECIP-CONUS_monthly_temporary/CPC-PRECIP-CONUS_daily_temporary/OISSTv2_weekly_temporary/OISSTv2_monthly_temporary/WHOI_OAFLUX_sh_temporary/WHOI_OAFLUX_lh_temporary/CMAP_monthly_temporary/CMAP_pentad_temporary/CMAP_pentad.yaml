@@ -1,0 +1,32 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/obs/gridded/CMAP/pentad/precip.pentad.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: COARDS
+      References: https://www.psl.noaa.gov/data/gridded/data.cmap.html
+      Version: V1701
+      coords: !!python/tuple
+      - lat
+      - lon
+      - time
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: CPC Merged Analysis of Precipitation
+      dims:
+        lat: 72
+        lon: 144
+        time: 2774
+      documentation: https://www.esrl.noaa.gov/psd/data/gridded/data.cmap.html
+      hisotry: Converted to chunked, deflated non-packed NetCDF4 Jul 2014
+      history: update 03/2017 V1701
+      platform: Analyses
+      source: ftp ftp.cpc.ncep.noaa.gov precip/cmap/pentad
+      title: CPC Merged Analysis of Precipitation Pentad data (excludes NCEP Reanalysis
+        I)
+      version: V1701
