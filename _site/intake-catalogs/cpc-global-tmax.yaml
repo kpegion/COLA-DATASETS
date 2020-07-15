@@ -1,0 +1,32 @@
+sources:
+  netcdf:
+    args:
+      concat_dim: time
+      urlpath: /shared/scratch/nbehboud/gridded/temp/CPC-GLOBAL/tmax.*.nc
+      xarray_kwargs:
+        combine: nested
+        concat_dim: time
+        decode_times: true
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF-1.0
+      References: https://www.psl.noaa.gov/data/gridded/data.cpc.globaltemp.html
+      Source: ftp://ftp.cpc.ncep.noaa.gov/precip/wd52ws/global_temp/
+      coords: !!python/tuple
+      - lon
+      - lat
+      - time
+      data_vars:
+        tmax:
+        - lon
+        - lat
+        - time
+      dataset_title: CPC GLOBAL TEMP
+      dims:
+        lat: 360
+        lon: 720
+        time: 15086
+      history: created 9/2016 by CAS NOAA/ESRL PSD
+      title: CPC GLOBAL TEMP V1.0
+      version: V1.0
