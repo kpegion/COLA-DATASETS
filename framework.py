@@ -20,8 +20,8 @@ def src_header(title, parent_page, open_catalog, url, tags, catalog_dir):
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <span><img src="img/aoes.jpg"></span>
-                AOES Catalog</a>
+                <span><img src="img/cola.jpg"></span>
+                COLA Catalog</a>
             <span class="navbar-text navbar-version pull-left"><b></b></span>
         </div>
         <div class="collapse navbar-collapse nav-collapse">
