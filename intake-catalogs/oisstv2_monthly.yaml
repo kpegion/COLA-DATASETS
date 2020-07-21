@@ -1,0 +1,39 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/obs/gridded/OISSTv2/monthly/sst.mnmean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF-1.0
+      References: https://www.psl.noaa.gov/data/gridded/data.noaa.oisst.v2.html
+      comments: 'Data described in  Reynolds, R.W., N.A. Rayner, T.M.
+
+        Smith, D.C. Stokes, and W. Wang, 2002: An Improved In Situ and Satellite
+
+        SST Analysis for Climate, J. Climate'
+      coords: !!python/tuple
+      - lat
+      - lon
+      - time
+      data_vars:
+        sst:
+        - lat
+        - lon
+        - time
+        time_bnds:
+        - time
+      dataset_title: NOAA Optimum Interpolation (OI) SST V2
+      dims:
+        lat: 180
+        lon: 360
+        nbnds: 2
+        time: 461
+      history: 'Wed Apr  6 13:47:45 2005: ncks -d time,0,278 SAVEs/sst.mnmean.nc sst.mnmean.nc
+
+        Created 10/2002 by RHS'
+      institution: National Centers for Environmental Prediction
+      platform: Model
+      source: NCEP Climate Modeling Branch
+      source_url: http://www.emc.ncep.noaa.gov/research/cmb/sst_analysis/
+      title: NOAA Optimum Interpolation (OI) SST V2
