@@ -11,7 +11,7 @@ sources:
         comments: 'Data described in  Reynolds, R.W., N.A. Rayner, T.M.
           Smith, D.C. Stokes, and W. Wang, 2002: An Improved In Situ and Satellite
           SST Analysis for Climate, J. Climate'
-        coords: !!python/tuple
+        coords:
         - lat
         - lon
         - time
@@ -70,7 +70,7 @@ sources:
           \ and version 3 (ERSST.v3) and ERSST.v3b) are available from NCDC.\nERSST.v3b\
           \ is an improved extended reconstruction over version 2.\n but with no satellite\
           \ data "
-        coords: !!python/tuple
+        coords:
         - lat
         - lon
         - time
@@ -98,17 +98,196 @@ sources:
         title: NOAA Extended Reconstructed SST V3b
 
     ERSSTv4:
-    
-    
+
+      netcdf:
+        args:
+          urlpath: /shared/obs/gridded/ERSSTv4/sst.mnmean.v4.nc
+        description: ''
+        driver: intake_xarray.netcdf.NetCDFSource
+        metadata:
+          Conventions: CF-1.2
+          References: http://www.psl.noaa.gov/data/gridded/data.noaa.ersst.v4.html
+          Source: http://www.ncdc.noaa.gov/data-access/marineocean-data/extended-reconstructed-sea-surface-temperature-ersst-v4
+          cdm_data_type: Grid
+          citation: 'Huang et al, 2014: Extended Reconstructed Sea Surface Temperatures
+          Version 4 (ERSST.v4), Part I. Upgrades and Intercomparisons. Journal of Climate.'
+          climatology: 'Climatology is based on 1971-2000 SST, Xue, Y., T. M. Smith, and
+          R. W. Reynolds, 2003: Interdecadal changes of 30-yr SST normals during 1871.2000.
+          Journal of Climate, 16, 1601-1612.'
+          comment: SSTs were observed by conventional thermometers in Buckets (insulated or un-insulated canvas and wooded buckets) or   Engine Room Intaker
+          coords:
+          - lat
+          - lon
+          - time
+          data_modified: '2020-03-03'
+          data_vars:
+          sst:
+          - lat
+          - lon
+          - time
+          time_bnds:
+          - time
+          dataset_title: Extended Reconstructed Sea Surface Temperature (ERSST) v4
+          description: 'In situ data: ICOADS2.5 before 2007 and NCEP in situ data from
+          2008 to present. Ice data: HadISST ice before 2010 and NCEP ice after 2010.'
+          dims:
+          lat: 89
+          lon: 180
+          nbnds: 2
+          time: 1994
+          geospatial_lat_max: !!python/object/apply:numpy.core.multiarray.scalar
+          - &id001 !!python/object/apply:numpy.dtype
+          args:
+          - f4
+          - 0
+          - 1
+          geospatial_lon_units: degrees_east
+          history: created 10/2014 by CAS using NCDC's ERSST V4 ascii values
+          institution: 'This version written at NOAA/ESRL PSD: obtained from NOAA/NESDIS/National
+          Climatic Data Center'
+          instrument: Conventional thermometers
+          keywords: Earth Science > Oceans > Ocean Temperature > Sea Surface Temperature
+          >
+          keywords_vocabulary: NASA Global Change Master Directory (GCMD) Science Keywords
+          license: No constraints on data access or use
+          original_publisher_url: http://www.ncdc.noaa.gov
+          platform: Ship and Buoy SSTs from ICOADS R2.5 and NCEP GTS
+          project: NOAA Extended Reconstructed Sea Surface Temperature (ERSST)
+          source: ICOADS R2.5 SST, NCEP GTS SST, HadISST ice, NCEP ice
+          source_comment: SSTs were observed by conventional thermometers in Buckets (insulated
+          or un-insulated canvas and wooded buckets) or Engine Room Intaker
+          title: NOAA Extended Reconstructed Sea Surface Temperature (ERSST), Version
+          4 (in situ only)
+      
+      
+      
+      
     
     
     ERSSTv5:
-    
-    
-    
+
+      netcdf:
+        args:
+          urlpath: /shared/obs/gridded/ERSSTv5/sst.mnmean.nc
+        description: ''
+        driver: intake_xarray.netcdf.NetCDFSource
+        metadata:
+          Conventions: CF-1.6, ACDD-1.3
+          References: https://www.ncdc.noaa.gov/data-access/marineocean-data/extended-reconstructed-sea-surface-temperature-ersst-v5
+          at NCEI and http://www.esrl.noaa.gov/psd/data/gridded/data.noaa.ersst.v5.html
+          cdm_data_type: Grid
+          citation: 'Huang et al, 2017: Extended Reconstructed Sea Surface Temperatures
+          Version 5 (ERSSTv5): Upgrades, Validations, and Intercomparisons. Journal
+          of Climate, https://doi.org/10.1175/JCLI-D-16-0836.1'
+          climatology: 'Climatology is based on 1971-2000 SST, Xue, Y., T. M. Smith, and
+          R. W. Reynolds, 2003: Interdecadal changes of 30-yr SST normals during 1871.2000.
+          Journal of Climate, 16, 1601-1612.'
+          comment: SSTs were observed by conventional thermometers in Buckets (insulated
+          or un-insulated canvas and wooded buckets), Engine Room Intakers, or floats
+          and drifters
+          coords:
+          - lat
+          - lon
+          - time
+          creator_name: Boyin Huang (original)
+          creator_url_original: https://www.ncei.noaa.gov
+          data_modified: '2020-05-05'
+          data_vars:
+          sst:
+          - lat
+          - lon
+          - time
+          time_bnds:
+          - time
+          dataset_title: NOAA Extended Reconstructed SST V5
+          date_created: 2017-06-30T12:18:00Z (original)
+          description: 'In situ data: ICOADS2.5 before 2007 and NCEP in situ data from
+          2008 to present. Ice data: HadISST ice before 2010 and NCEP ice after 2010.'
+          dims:
+          lat: 89
+          lon: 180
+          nbnds: 2
+          time: 1996
+          geospatial_lat_max: !!python/object/apply:numpy.core.multiarray.scalar
+          - &id001 !!python/object/apply:numpy.dtype
+          args:
+          - f4
+          - 0
+          - 1
+          state: !!python/tuple
+          - 3
+          - <
+          - null
+          - null
+          - null
+          - -1
+          - -1
+          - 0
+          - !!binary |
+          AACyQg==
+          geospatial_lat_min: !!python/object/apply:numpy.core.multiarray.scalar
+          - *id001
+          - !!binary |
+          AACywg==
+          geospatial_lat_units: degrees_north
+          geospatial_laty_max: !!python/object/apply:numpy.core.multiarray.scalar
+          - *id001
+          - !!binary |
+          AACyQg==
+          geospatial_laty_min: !!python/object/apply:numpy.core.multiarray.scalar
+          - *id001
+          - !!binary |
+          AACywg==
+          geospatial_lon_max: !!python/object/apply:numpy.core.multiarray.scalar
+          - *id001
+          - !!binary |
+          AICzQw==
+          geospatial_lon_min: !!python/object/apply:numpy.core.multiarray.scalar
+          - *id001
+          - !!binary |
+          AACAvw==
+          geospatial_lon_units: degrees_east
+          history: created 07/2017 by PSD data using NCEI's ERSST V5 NetCDF values
+          institution: 'This version written at NOAA/ESRL PSD: obtained from NOAA/NESDIS/National
+          Centers for Environmental Information and time aggregated. Original Full Source:
+          NOAA/NESDIS/NCEI/CCOG'
+          instrument: Conventional thermometers
+          keywords: Earth Science > Oceans > Ocean Temperature > Sea Surface Temperature
+          >
+          keywords_vocabulary: NASA Global Change Master Directory (GCMD) Science Keywords
+          license: No constraints on data access or use
+          metadata_link: :metadata_link = https://doi.org/10.7289/V5T72FNM (original format)
+          original_publisher_url: http://www.ncdc.noaa.gov
+          platform: Ship and Buoy SSTs from ICOADS R3.0 and NCEP GTS
+          processing_level: NOAA Level 4
+          product_version: Version 5
+          project: NOAA Extended Reconstructed Sea Surface Temperature (ERSST)
+          source: 'In situ data: ICOADS R3.0 before 2015, NCEP in situ GTS from 2016 to
+          present, and Argo SST from 1999 to present. Ice data: HadISST2 ice before
+          2015, and NCEP ice after 2015'
+          source_comment: SSTs were observed by conventional thermometers in Buckets (insulated
+          or un-insulated canvas and wooded buckets) or Engine Room Intaker
+          standard_name_vocabulary: CF Standard Name Table (v40, 25 January 2017)
+          summary: ERSST.v5 is developed based on v4 after revisions of 8 parameters using
+          updated data sets and advanced knowledge of ERSST analysis
+          title: NOAA ERSSTv5 (in situ only)
+      
+      
+      
+      
     
     
     HADISST:
+      netcdf:
+        args:
+          concat_dim: time
+          urlpath: /project/atlantic_var/ogozdz/HadISST/downloaded/HadISST*.nc
+          xarray_kwargs:
+            combine: nested
+            decode_times: true
+        description: ''
+        driver: intake_xarray.netcdf.NetCDFSource
+        metadata: {}
     
     
     
@@ -123,7 +302,7 @@ sources:
         citation: 'Hirahara, S., Ishii, M., and Y. Fukuda,2014: Centennial-scale sea
           surface temperature analysis and its uncertainty. J of Climate, 27, 57-75.
           http://journals.ametsoc.org/doi/pdf/10.1175/JCLI-D-12-00837.1'
-        coords: !!python/tuple
+        coords:
         - lat
         - lon
         - time
