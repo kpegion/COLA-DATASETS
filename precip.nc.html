@@ -55,7 +55,9 @@
         <h3>Load in Python</h3>
         <pre><code class="language-python">from intake import open_catalog<br>
 cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/cpc-precip.yaml")
-ds=cat.netcdf.read()</code></pre>
+ds=cat['netcdf'].to_dask()
+ds
+</code></pre>
 
         <h3>Metadata</h3>
         <table class="table table-condensed table-hover">
