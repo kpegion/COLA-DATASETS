@@ -37,7 +37,8 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
         print("one file###")
         is_combine= False
 
-    
+    temp = dataset_sub_name
+
     #print("file path name is "+ file_path_name)
 
     #print("dataset_sub_name is "+ dataset_sub_name)
@@ -64,8 +65,15 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
 
     # CATALOG_DIR: Github repository containing the master catalog
     # NOTE: It will be more accurate later
-    catalog_dir = "https://github.com/kpegion/COLA-DATASETS-CATALOG"
-    open_catalog = catalog_dir + "/"+ parent_page +".yaml"
+    catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
+
+
+    print(type(temp))
+    print(temp)
+            
+    open_catalog = catalog_dir + temp +".yaml"
+
+    print("Here is: {0}".format(open_catalog))
     try:
         title = src.attrs['title'] 
     except:
@@ -75,7 +83,7 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     except:
         url =""
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
-    _header = src_header(title, parent_page,  open_catalog, url, tags, catalog_dir)
+    _header = src_header(title, parent_page,  open_catalog, url, tags, open_catalog)
 
     tags =tags.split(',')
     _footer = src_footer()
