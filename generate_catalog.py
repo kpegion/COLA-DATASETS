@@ -68,12 +68,12 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
 
 
-    print(type(temp))
-    print(temp)
+    print(type(path))
+    print(path)
             
     open_catalog = catalog_dir + temp +".yaml"
 
-    print("Here is: {0}".format(open_catalog))
+    #print("Here is: {0}".format(open_catalog))
     try:
         title = src.attrs['title'] 
     except:
@@ -82,6 +82,8 @@ def generate_catalog(file_path_name, dataset_sub_name, parent_page, tags):
         url = src.attrs['References']
     except:
         url =""
+    # Here url roles as the location
+    url = path
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
     _header = src_header(title, parent_page,  open_catalog, url, tags, open_catalog)
 
