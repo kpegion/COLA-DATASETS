@@ -66,7 +66,7 @@ ds=cat.netcdf.read()</code></pre>
             </tr>
 
             <tr>
-                <td>url</td>
+                <td>location</td>
                 <td>{7}</td>
             </tr>
 
