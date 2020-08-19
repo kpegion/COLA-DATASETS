@@ -64,7 +64,8 @@ list(cat)</code></pre><br>
         <br></br>
         <ul id="searchResults" class="list-group">
         </ul>
-        <ul class="list-group">
+        <div id="results"></div>
+        <!-- <ul class="list-group">
             <li class="list-group-item">
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -75,8 +76,6 @@ list(cat)</code></pre><br>
                       <li><a href="#">Action</a></li>
                       <li><a href="#">Another action</a></li>
                       <li><a href="#">Something else here</a></li>
-                      <li role="separator" class="divider"></li>
-                      <li><a href="#">Separated link</a></li>
                     </ul>
                   </div>
             </li>
@@ -84,7 +83,7 @@ list(cat)</code></pre><br>
             <li class="list-group-item">Morbi leo risus</li>
             <li class="list-group-item">Porta ac consectetur ac</li>
             <li class="list-group-item">Vestibulum at eros</li>
-        </ul>
+        </ul> -->
     </main>
 
 
@@ -116,65 +115,65 @@ list(cat)</code></pre><br>
 
         let data;
 
-        $("#btnSearch").on("click", () => {
-            if (!data) {
-                loadData()
-                    .then(it => {
-                        data = it;
-                        searchData();
-                    });
-            } else {
-                searchData();
-            }
-        });
+        // $("#btnSearch").on("click", () => {
+        //     if (!data) {
+        //         loadData()
+        //             .then(it => {
+        //                 data = it;
+        //                 searchData();
+        //             });
+        //     } else {
+        //         searchData();
+        //     }
+        // });
 
-        function searchData() {
-            let tag = $("#tagInput").val();
-            let tagValue = data[tag] || ["not found"];
+        // function searchData() {
+        //     let tag = $("#tagInput").val();
+        //     let tagValue = data[tag] || ["not found"];
 
-            let resultsElm = $("#searchResults")
-            resultsElm.empty();
+        //     let resultsElm = $("#searchResults")
+        //     resultsElm.empty();
 
-            tagValue.forEach(it => {
-                let elm = $('<li class="list-group-item">').text(it);
-                resultsElm.append(elm);
+        //     tagValue.forEach(it => {
+        //         let elm = $('<li class="list-group-item">').text(it);
+        //         resultsElm.append(elm);
 
-                // let elm = $('<li class="list-group-item">')
-                //     .append(`<a href="">${it}</a>`)
-                // resultsElm.append(elm);
-            });
-        }
+        //         // let elm = $('<li class="list-group-item">')
+        //         //     .append(`<a href="">${it}</a>`)
+        //         // resultsElm.append(elm);
+        //     });
+        // }
 
         function loadData() {
             return fetch("https://raw.githubusercontent.com/bnoushin7/COLA-DATASETS-CATALOG/gh-pages/tags-datasets.json")
                 .then(res => res.json())
         }
 
-        $('.multilevel .dropdown-menu > *').on('mouseenter click', function(e) {
-        
-            var elem = $(this);
-        
-            // Hide all other dropdowns
-        
-            elem.parent().find('.dropdown-menu').removeClass('show');
-        
-        // Show the corresponding menu
-        
-        let menu = elem.find('.dropdown-menu').first();
-        
-        if (menu.length) {
-            // This is a dropdown menu toggle. Show the menu
-            // and prevent it from closing on click.
-            menu.addClass('show');
-            e.stopPropagation();
+        function createDropdown(name, values) {
+            const menu = $(`<ul class="dropdown-menu" aria-labelledby="dropdownMenu_${name}"></ul>`);
+            const dropDown = $(`<div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu_${name}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                      ${name}
+                      <span class="caret"></span>
+                    </button>
+                  </div>`
+            );
+            values.forEach(it => {
+                const [name, url] = it;
+                let elm = $(`<li><a href="${url}"/>${name}</li>`);
+                menu.append(elm);
+            });
+            dropDown.append(menu);
+            return dropDown;
         }
-        
-    });
-    
-    $('body').click( function() {
-        // When the body is clicked, hide all multilevel dropdowns.
-        $('.multilevel .dropdown-menu').removeClass('show');
-    });
+
+        loadData().then(data => {
+            console.log(data);
+            for (const [key, value] of Object.entries(data)) {
+                const drp = createDropdown(key, value);
+                $("#results").append(drp);
+            }
+        });
     </script>
 </body>
 
