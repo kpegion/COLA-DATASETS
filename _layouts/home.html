@@ -59,31 +59,12 @@ list(cat)</code></pre><br>
         tag, enter the tag in the search bar below.
         <br><br>
 
-        <input id="tagInput" type="text" placeholder="Enter desired tag" />
+        <!-- <input id="tagInput" type="text" placeholder="Enter desired tag" />
         <button id="btnSearch">Search</button>
         <br></br>
         <ul id="searchResults" class="list-group">
-        </ul>
-        <div id="results"></div>
-        <!-- <ul class="list-group">
-            <li class="list-group-item">
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      Dropdown
-                      <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                      <li><a href="#">Action</a></li>
-                      <li><a href="#">Another action</a></li>
-                      <li><a href="#">Something else here</a></li>
-                    </ul>
-                  </div>
-            </li>
-            <li class="list-group-item">Dapibus ac facilisis in</li>
-            <li class="list-group-item">Morbi leo risus</li>
-            <li class="list-group-item">Porta ac consectetur ac</li>
-            <li class="list-group-item">Vestibulum at eros</li>
         </ul> -->
+        <ul id="results" class="list-group"></ul>
     </main>
 
 
@@ -113,7 +94,7 @@ list(cat)</code></pre><br>
         //     climo: ["LEGATES"]
         // };
 
-        let data;
+        // let data;
 
         // $("#btnSearch").on("click", () => {
         //     if (!data) {
@@ -144,36 +125,6 @@ list(cat)</code></pre><br>
         //     });
         // }
 
-        function loadData() {
-            return fetch("https://raw.githubusercontent.com/bnoushin7/COLA-DATASETS-CATALOG/gh-pages/tags-datasets.json")
-                .then(res => res.json())
-        }
-
-        function createDropdown(name, values) {
-            const menu = $(`<ul class="dropdown-menu" aria-labelledby="dropdownMenu_${name}"></ul>`);
-            const dropDown = $(`<div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu_${name}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                      ${name}
-                      <span class="caret"></span>
-                    </button>
-                  </div>`
-            );
-            values.forEach(it => {
-                const [name, url] = it;
-                let elm = $(`<li><a href="${url}"/>${name}</li>`);
-                menu.append(elm);
-            });
-            dropDown.append(menu);
-            return dropDown;
-        }
-
-        loadData().then(data => {
-            console.log(data);
-            for (const [key, value] of Object.entries(data)) {
-                const drp = createDropdown(key, value);
-                $("#results").append(drp);
-            }
-        });
     </script>
 </body>
 
