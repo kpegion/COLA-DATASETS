@@ -18,12 +18,17 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     DATASET_SUB_NAME: Name of the directory containing the NetCDf data files, e.g.: 'GHCN_CAMS'. If there is subdirectory like monthly, daily, etc., it should also be included and separated by "_".
 
     TAG: A dataset may need to be catalogued into multiple child catalogs, e.g.: "Atmosphere", "Temperature". Please keep the format consistent
+
+    You can run the script proving three arguments like:
+
+    python3.6 generate_catalog.py "/shared/obs/gridded/CPC-TEMP/tmax.*.nc" CPC-TEMP-tmax gridded,obs,atm,temperature
+
     """
     file_path_name = file_path_name.strip('""')
     path, fileName = os.path.split(file_path_name)
     print("1 :"+ file_path_name)
     print("2 :"+ dataset_sub_name)
-    print("4: "+ tags)
+    print("3: "+ tags)
     nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
@@ -35,9 +40,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     temp = dataset_sub_name
 
-    #print("file path name is "+ file_path_name)
 
-    #print("dataset_sub_name is "+ dataset_sub_name)
 
 
     if int(is_combine) == True:
@@ -50,16 +53,12 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = intake.open_netcdf(file_path_name)
         src = xr.open_dataset(file_path_name)
         source.discover()
-    #print('subname' + dataset_sub_name)
     dataset_sub_name = open(dataset_sub_name.strip('""')+ '.yaml', 'w')
     dataset_sub_name.write(source.yaml())
     dataset_sub_name.close()
     print(str(dataset_sub_name.name) + " was cataloged")
     
-    #############################################
 
-    # CATALOG_DIR: Github repository containing the master catalog
-    # NOTE: It will be more accurate later
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
 
 
