@@ -1,4 +1,4 @@
-def src_header(title, parent_page, open_catalog, url, tags, catalog_dir):
+def src_header(title, open_catalog, url, tags, catalog_dir):
     ret =  src_header = """<!DOCTYPE html>
 <html>
 <head>
@@ -41,9 +41,9 @@ def src_header(title, parent_page, open_catalog, url, tags, catalog_dir):
 
             <li><a href="master">master</a></li>
 
-            <li><a href="master/{2}">{3}</a></li>
+            <li><a href="TODO">TODO</a></li>
 
-            <li class="active">{4}</li>
+            <li class="active">{2}</li>
 
         </ol>
     </div>
@@ -53,7 +53,7 @@ def src_header(title, parent_page, open_catalog, url, tags, catalog_dir):
 
         <h3>Load in Python</h3>
         <pre><code class="language-python">from intake import open_catalog<br>
-cat = open_catalog("{5}")
+cat = open_catalog("{3}")
 ds=cat.netcdf.read()</code></pre>
 
         <h3>Metadata</h3>
@@ -62,22 +62,22 @@ ds=cat.netcdf.read()</code></pre>
 
             <tr>
                 <td>title</td>
-                <td>{6}</td>
+                <td>{4}</td>
             </tr>
 
             <tr>
                 <td>location</td>
-                <td>{7}</td>
+                <td>{5}</td>
             </tr>
 
             <tr>
                 <td>tags</td>
-                <td>{8}</td>
+                <td>{6}</td>
             </tr>
 
             <tr>
                 <td>catalog_dir</td>
-                <td>{9}</td>
+                <td>{7}</td>
             </tr>
 
             </tbody>
@@ -92,7 +92,7 @@ ds=cat.netcdf.read()</code></pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt"></div>""".format(title, title, parent_page, parent_page, title, open_catalog, title, url, tags, catalog_dir)
+    <div class="prompt output_prompt"></div>""".format(title, title, title, open_catalog, title, url, tags, catalog_dir)
     return ret
 
 
