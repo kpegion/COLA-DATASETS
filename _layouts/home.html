@@ -9,8 +9,6 @@
 
 </head>
 
-
-
 <body>
 
     <div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
@@ -40,10 +38,10 @@
 
     <main role="main" class="container">
         <h1>COLA Catalog</h1>
-        This website hosts on <a href="https://github.com/kpegion/COLA-DATASETS-CATALOG/tree/master">Github</a>:
+        This website hosts on <a href="https://github.com/kpegion/COLA-DATASETS-CATALOG/tree/main">Github</a>:
         <br><br>
         <pre><code class="language-python">from intake import open_catalog<br>
-cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/master.yaml")
+cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/main.yaml")
 list(cat)</code></pre><br>
         Most of the datasets available are meant to be opened with <a href="http://xarray.pydata.org/">xarray</a>.
         Though there is no standard catalog format, our catalogs currently rely upon <a
@@ -51,7 +49,7 @@ list(cat)</code></pre><br>
             href="https://github.com/intake/intake-xarray">Intake-xarray</a>.
         <br><br>
 
-        <a href="master">Browse the master catalog</a>
+        <a href="main">Browse the main catalog</a>
         <br><br>
         <!--     <a href="How_to_create_issue_in_GitHub.mp4">How to report issues</a> -->
         <a href="https://youtu.be/Z-Ocft71uW4">How to report issues</a>
@@ -61,12 +59,11 @@ list(cat)</code></pre><br>
         tag, enter the tag in the search bar below.
         <br><br>
 
-        <!-- <input id="tagInput" type="text" placeholder="Enter desired tag" />
+        <input id="tagInput" type="text" placeholder="Enter desired tag" />
         <button id="btnSearch">Search</button>
         <br></br>
         <ul id="searchResults" class="list-group">
-        </ul> -->
-        <ul id="results" class="list-group"></ul>
+        </ul>
     </main>
 
 
@@ -79,7 +76,7 @@ list(cat)</code></pre><br>
         //     gridded: ["GHCN_CAMS", "AVISO", "CPC-PRECIP", "CPC-PRECIP-CONUS", "OISSTv2", "CCI", "NOAA_INTERP_OLR", "GEWEX_IP", "WHOI_OAFLUX", "GPCC", "GPCP", "CMAP", "LEGATES", "ERSSTv3b", "ERSSTv4", "ERSSTv5", "HADISST", "EN4.2.1", "COBE-SST2", "CPC-TEMP", "SMAP_L3", "SMAP_L4"],
         //     obs: ["GHCN_CAMS", "AVISO", "CPC-PRECIP", "CPC-PRECIP-CONUS", "OISSTv2", "CCI", "NOAA_INTERP_OLR", "GEWEX_IP", "WHOI_OAFLUX", "GPCC", "GPCP", "CMAP", "LEGATES", "ERSSTv3b", "ERSSTv4", "ERSSTv5", "HADISST", "EN4.2.1", "COBE-SST2", "CPC-TEMP", "SMAP_L3", "SMAP_L4"],
         //     atm: ["CPC-TEMP", "GHCN_CAMS", "WHOI_OAFLUX", "CPC-PRECIP", "CPC-PRECIP-CONUS"],
-        //     airtemperature: ["GHCN_CAMS"],       
+        //     airtemperature: ["GHCN_CAMS"],
         //     "global": ["ERSSTv3b", "ERSSTv4", "ERSSTv5", "HADISST", "CCI", "GPCP", "CMAP", "LEGATES", "GHCN_CAMS", "NOAA_INTERP_OLR", "GPCC", "AVISO", "CPC-PRECIP", "WHOI_OAFLUX", "OISSTv2"],
         //     monthly: ["ERSSTv3b", "ERSSTv4", "ERSSTv5", "HADISST", "GPCP", "CMAP", "GHCN_CAMS", "GPCC", "WHOI_OAFLUX", "AVISO", "OISSTv2"],
         //     land: ["SMAP_L3", "SMAP_L4", "GEWEX_IP", "CCI"],
@@ -96,37 +93,41 @@ list(cat)</code></pre><br>
         //     climo: ["LEGATES"]
         // };
 
-        // let data;
+        let data;
 
-        // $("#btnSearch").on("click", () => {
-        //     if (!data) {
-        //         loadData()
-        //             .then(it => {
-        //                 data = it;
-        //                 searchData();
-        //             });
-        //     } else {
-        //         searchData();
-        //     }
-        // });
+        $("#btnSearch").on("click", () => {
+            if (!data) {
+                loadData()
+                    .then(it => {
+                        data = it;
+                        searchData();
+                    });
+            } else {
+                searchData();
+            }
+        });
 
-        // function searchData() {
-        //     let tag = $("#tagInput").val();
-        //     let tagValue = data[tag] || ["not found"];
+        function searchData() {
+            let tag = $("#tagInput").val();
+            let tagValue = data[tag] || ["not found"];
 
-        //     let resultsElm = $("#searchResults")
-        //     resultsElm.empty();
+            let resultsElm = $("#searchResults")
+            resultsElm.empty();
 
-        //     tagValue.forEach(it => {
-        //         let elm = $('<li class="list-group-item">').text(it);
-        //         resultsElm.append(elm);
+            tagValue.forEach(it => {
+                let elm = $('<li class="list-group-item">').text(it);
+                resultsElm.append(elm);
 
-        //         // let elm = $('<li class="list-group-item">')
-        //         //     .append(`<a href="">${it}</a>`)
-        //         // resultsElm.append(elm);
-        //     });
-        // }
+                // let elm = $('<li class="list-group-item">')
+                //     .append(`<a href="">${it}</a>`)
+                // resultsElm.append(elm);
+            });
+        }
 
+        function loadData() {
+            return fetch("https://raw.githubusercontent.com/bnoushin7/COLA-DATASETS-CATALOG/gh-pages/tags-datasets.json")
+                .then(res => res.json())
+        }
     </script>
 </body>
 
