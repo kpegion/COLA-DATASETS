@@ -5,7 +5,8 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-import os
+import os, re
+import subprocess as S
 @click.command()
 @click.argument('file_path_name')
 @click.argument('dataset_sub_name')
@@ -62,7 +63,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
 
 
-    print(type(path))
     print(path)
             
     open_catalog = catalog_dir + temp +".yaml"
@@ -79,7 +79,14 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     # Here url roles as the location
     url = path
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
-    _header = src_header(title,  open_catalog, url, tags, open_catalog)
+
+    cmd = "ls -lrt --time-style=+%Y-%m-%d " + str(path) + " | tail -n 1"
+    ps = S.Popen(cmd,shell=True,stdout=S.PIPE,stderr=S.STDOUT, universal_newlines=True)
+    output = ps.communicate()[0]
+    res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
+    time_stamp = ''.join(res)    
+
+    _header = src_header(title,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')
     _footer = src_footer()
@@ -88,7 +95,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     html_page = page_name +".html" 
     with open(html_page , "w") as file:
         file.write(html_src)
-
+    print("ls -ltr is")
     print( html_page + " was created\n")
 if __name__ == "__main__":
     generate_catalog()
