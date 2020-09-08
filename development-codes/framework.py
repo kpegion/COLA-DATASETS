@@ -82,7 +82,7 @@ ds=cat.netcdf.read()</code></pre>
     
 
             <tr>
-                <td>updated on: </td>
+                <td>last updated </td>
                 <td>{8}</td>
             </tr>
 
