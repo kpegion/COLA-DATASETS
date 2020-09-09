@@ -49,7 +49,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time')
         src = source
         # Use intake with xarray kwargs
-        source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':True})
+        source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
+        #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
         source = intake.open_netcdf(file_path_name)
         src = xr.open_dataset(file_path_name)
