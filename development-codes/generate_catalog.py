@@ -46,7 +46,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     if int(is_combine) == True:
         # Read with xarray
-        source = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time')
+        source = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time',decode_times=False)
         src = source
         # Use intake with xarray kwargs
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
