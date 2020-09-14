@@ -115,7 +115,9 @@ list(cat)</code></pre><br>
             resultsElm.empty();
 
             tagValue.forEach(it => {
-                let elm = $('<li class="list-group-item">').text(it);
+                ///let elm = $('<li class="list-group-item">').text(it);
+                
+                let elm = $('<li class="list-group-item">').text(it[0]+" "+it[1]);
                 console.log(it)
                 resultsElm.append(elm);
 
@@ -125,8 +127,11 @@ list(cat)</code></pre><br>
             });
         }
 
+
+
         function loadData() {
-            return fetch("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/tags-datasets.json")
+            //return fetch("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/tags-datasets.json")
+            return fetch("https://raw.githubusercontent.com/bnoushin7/COLA-DATASETS-CATALOG/gh-pages/tags_hrefs.json")
                 .then(res => res.json())
         }
     </script>
