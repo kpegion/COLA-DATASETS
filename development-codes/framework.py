@@ -39,7 +39,7 @@ def src_header(title, open_catalog, url, tags, catalog_dir, time_stamp):
     <div>
         <ol class="breadcrumb">
 
-            <li><a href="master">master</a></li>
+            <li><a href="main">main</a></li>
 
             <li><a href="TODO">TODO</a></li>
 
