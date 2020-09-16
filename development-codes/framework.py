@@ -20,7 +20,7 @@ def src_header(title, open_catalog, url, tags, catalog_dir, time_stamp):
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">
-                <span><img src="img/cola.jpg"></span>
+                <span><img src="img/cola.gif"></span>
                 COLA Catalog</a>
             <span class="navbar-text navbar-version pull-left"><b></b></span>
         </div>
