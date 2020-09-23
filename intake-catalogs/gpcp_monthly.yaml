@@ -1,18 +1,5 @@
-description: 'COLA GPCP Data Catalog'
 sources:
-
-  gpcp_daily:
-    args:
-      concat_dim: time
-      urlpath: /scratch/zmanthos/GPCP/gpcp_v01r03_daily.*.nc
-      xarray_kwargs:
-        combine: nested
-        decode_times: false
-    description: ''
-    driver: intake_xarray.netcdf.NetCDFSource
-    metadata: {}
-    
-  gpcp_monthly:
+  netcdf:
     args:
       urlpath: /shared/obs/gridded/GPCP/precip.mon.mean.nc
     description: ''
@@ -82,13 +69,3 @@ sources:
         \ (OPI) (Xie) used for period before 1988"
       title: GPCP Version 2.3 Combined Precipitation Dataset (Final)
       version: V2.3
-
-      
-      
-      
-
-  
-
-    
-
-
