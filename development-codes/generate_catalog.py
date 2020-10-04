@@ -5,6 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
+from update import update_json, update_parents
 import os, re
 import subprocess as S
 @click.command()
@@ -25,11 +26,12 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     python3.6 generate_catalog.py "/shared/obs/gridded/CPC-TEMP/tmax.*.nc" CPC-TEMP-tmax gridded,obs,atm,temperature
 
     """
+    #print("Hi There")
     file_path_name = file_path_name.strip('""')
     path, fileName = os.path.split(file_path_name)
-    print("1 :"+ file_path_name)
-    print("2 :"+ dataset_sub_name)
-    print("3: "+ tags)
+    #print("1 :"+ file_path_name)
+    #print("2 :"+ dataset_sub_name)
+    #print("3: "+ tags)
     nfiles = len(glob.glob(file_path_name))
     # Set is_combine based on number of files
     if (nfiles > 1):
@@ -60,19 +62,21 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     dataset_sub_name.close()
     print(str(dataset_sub_name.name) + " was cataloged")
     
+    dataset_sub_name = str(dataset_sub_name.name)[:-5]
 
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
 
 
-    print(path)
             
     open_catalog = catalog_dir + temp +".yaml"
 
-    #print("Here is: {0}".format(open_catalog))
     try:
-        title = src.attrs['title'] 
+        title = src.attrs['title']
+
     except:
         title = dataset_sub_name
+        print(type(title))
+
     try:
         url = src.attrs['References']
     except:
@@ -87,17 +91,22 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
 
-    _header = src_header(title,  open_catalog, url, tags, open_catalog, time_stamp)
+    ancestors = update_parents(path)
+    print("#####################################################################")
+    print(ancestors)
+    _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.')
     html_page = page_name +".html" 
-    with open(html_page , "w") as file:
+    with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
-    print("ls -ltr is")
     print( html_page + " was created\n")
+
+    update_json(tags, html_page, dataset_sub_name)
+
 if __name__ == "__main__":
     generate_catalog()
 
