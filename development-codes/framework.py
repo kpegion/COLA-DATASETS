@@ -1,4 +1,4 @@
-def src_header(title, open_catalog, url, tags, catalog_dir, time_stamp):
+def src_header(title, ancestors, open_catalog, url, tags, catalog_dir, time_stamp):
     ret =  src_header = """<!DOCTYPE html>
 <html>
 <head>
@@ -40,10 +40,10 @@ def src_header(title, open_catalog, url, tags, catalog_dir, time_stamp):
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
-
-            <li><a href="TODO">TODO</a></li>
-
-            <li class="active">{2}</li>
+            <li><a href="model">model</a></li>
+            
+            {2}
+            <li class="active">{3}</li>
 
         </ol>
     </div>
@@ -53,7 +53,7 @@ def src_header(title, open_catalog, url, tags, catalog_dir, time_stamp):
 
         <h3>Load in Python</h3>
         <pre><code class="language-python">from intake import open_catalog<br>
-cat = open_catalog("{3}")
+cat = open_catalog("{4}")
 ds=cat.netcdf.read()</code></pre>
 
         <h3>Metadata</h3>
@@ -62,28 +62,28 @@ ds=cat.netcdf.read()</code></pre>
 
             <tr>
                 <td>title</td>
-                <td>{4}</td>
-            </tr>
-
-            <tr>
-                <td>location</td>
                 <td>{5}</td>
             </tr>
 
             <tr>
-                <td>tags</td>
+                <td>location</td>
                 <td>{6}</td>
             </tr>
 
             <tr>
-                <td>catalog_dir</td>
+                <td>tags</td>
                 <td>{7}</td>
+            </tr>
+
+            <tr>
+                <td>catalog_dir</td>
+                <td>{8}</td>
             </tr>
     
 
             <tr>
                 <td>last updated </td>
-                <td>{8}</td>
+                <td>{9}</td>
             </tr>
 
 
@@ -99,14 +99,18 @@ ds=cat.netcdf.read()</code></pre>
 
 <div class="output_area">
 
-    <div class="prompt output_prompt"></div>""".format(title, title, title, open_catalog, title, url, tags, catalog_dir, time_stamp)
+    <div class="prompt output_prompt"></div>""".format(title, title, ancestors, title, open_catalog, title, url, tags, catalog_dir, time_stamp)
     return ret
 
 
 
 
 def src_footer():
-    ret =    """</div>
+    ret =    """
+    
+
+
+    </div>
   </div>
 
 </main>
