@@ -13,16 +13,25 @@ import pdb
 
 
 
-def correct_path(file_path):
-    pass
-    # return corrected file_path
-
-
 def fake_generate_catalog(file_path):
     
-    # TODO
-    #path_array = correct_path(file_path)
     path_array = file_path.split('/')
+    path_array.remove('')
+
+    try:
+        arr.remove('shared')
+    except:
+        pass
+
+    
+    try:
+        arr.remove('data')
+    except:
+        pass
+
+    
+    path_array = list(map(lambda x:x.lower(),path_array))
+
     current = ""
     parent = ""
     ancestors = ""
