@@ -12,13 +12,21 @@ import pdb
 @click.argument('file_path')
 
 
+
+def correct_path(file_path):
+    pass
+    # return corrected file_path
+
+
 def fake_generate_catalog(file_path):
     
+    # TODO
+    #path_array = correct_path(file_path)
     path_array = file_path.split('/')
     current = ""
     parent = ""
     ancestors = ""
-
+    
     for i in range(len(path_array)-1, 0 , -1):
         current = path_array[i]
         parent = path_array[i-1]
