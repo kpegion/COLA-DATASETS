@@ -1,10 +1,10 @@
-import sys
+iimport sys
 import glob
 import xarray as xr
 import intake
 import click
 from fake_framework import src_header
-from update import update_json, update_parents
+from update import update_json, update_parents, catalog_parent
 import os, re
 import subprocess as S
 import pdb
@@ -75,8 +75,9 @@ def update_links(child, dp_name):
                     <p class="description"> </p>
                 </a> """
     file_name = dp_name + ".html"
-    res = res + "\n\n" + searchee 
-    fp = open(file_name, "r+")
+    res = res + "\n\n" + searchee
+    print(os.getcwd())
+    fp = open(../file_name, "r+")
     fin = fp.read()
     data = fin.replace(searchee, res)
     fp.seek(0,0)

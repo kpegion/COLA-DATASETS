@@ -1,6 +1,6 @@
 import json
 import os
-
+import yaml
 
 def update_json(tags, html_page, dataset_sub_name):
     if tags is None:
@@ -48,7 +48,7 @@ def update_parents(ancestors):
         res += "<li><a href="+ ancestors[i]+">"+ ancestors[i]+"</a></li>"
         res += "\n\n"
 
-    print(res)
+    #print(res)
     return res
 
 
@@ -76,11 +76,36 @@ def insert_links(direct_parent):
 
 
 
-    
+def catalog_parent( _path, _dataset_name):
 
 
+    direct_parent = _path.split('/')[-2].lower()
+    dict_file = [
+    {'description': 'COLDA '+ direct_parent + ' Data Caalog'},
+    {'sources':{_dataset_name:[{'args':{'path':_path}},{'description':''},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
+    }}]
+    with open('direct_parent.yml', 'w') as fp:
+        #print(os.path.abspath(direct_parent))
+        yaml.dump(dict_file, fp)
+        #os.rename('direct_parent.yml','direct_parent.yaml')
 
+    cmd = 'mv direct_parent.yml direct_parent.yaml'
+    os.system(cmd)
+def update_links(child, dp_name):
 
+    searchee = "<!--qazwsxxswzaq-->"
+    res = """               <a href="""+ "\""+ child+"\""+""" class="list-group-item">
+                    <h4>""" +child+ """</h4>
+                    <p class="description"> </p>
+                </a> """
+    file_name = dp_name + ".html"
+    res = res + "\n\n" + searchee 
+    file_name = os.path.join( os.getcwd(), '..', file_name )
+    fp = open(file_name, "r+")
+    fin = fp.read()
+    data = fin.replace(searchee, res)
+    fp.seek(0,0)
+    fp.write(data)
 
 
 

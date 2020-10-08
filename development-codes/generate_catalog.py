@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import update_json, update_parents
+from update import update_json, update_parents, update_links, catalog_parent
 import os, re
 import subprocess as S
 @click.command()
@@ -62,6 +62,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     dataset_sub_name.close()
     print(str(dataset_sub_name.name) + " was cataloged")
     
+
+
     dataset_sub_name = str(dataset_sub_name.name)[:-5]
 
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
@@ -75,7 +77,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     except:
         title = dataset_sub_name
-        print(type(title))
+        #print(type(title))
 
     try:
         url = src.attrs['References']
@@ -92,8 +94,16 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     time_stamp = ''.join(res)    
 
     ancestors = update_parents(path)
+    
+    direct_parent = path.split('/')[-1].lower()
+    #print("parent is " + direct_parent)
+
+    update_links(dataset_sub_name, direct_parent)
+
+    catalog_parent(file_path_name, dataset_sub_name)
+
     print("#####################################################################")
-    print(ancestors)
+    print("ancestors are "+ ancestors)
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')
