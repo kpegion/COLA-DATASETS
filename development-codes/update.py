@@ -84,9 +84,9 @@ def catalog_parent( _path, _dataset_name):
     {'description': 'COLDA '+ direct_parent + ' Data Caalog'},
     {'sources':{_dataset_name:[{'args':{'path':_path}},{'description':''},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
     }}]
-    with open('direct_parent.yml', 'w') as fp:
-        #print(os.path.abspath(direct_parent))
-        yaml.dump(dict_file, fp)
+    with open('direct_parent_sure.yaml', 'w') as fp:
+        print(os.path.abspath(direct_parent))
+        #yaml.dump(dict_file, fp)
         #os.rename('direct_parent.yml','direct_parent.yaml')
 
     cmd = 'mv direct_parent.yml direct_parent.yaml'
