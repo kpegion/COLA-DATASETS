@@ -102,8 +102,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     catalog_parent(file_path_name, dataset_sub_name)
 
-    print("#####################################################################")
-    print("ancestors are "+ ancestors)
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')

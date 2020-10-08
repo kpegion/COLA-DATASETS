@@ -98,8 +98,6 @@ def insert_links(direct_parent):
 def catalog_parent( _path, _dataset_name):
 
     
-    print("here is path "+ _path)
-    print("\n here is dataset_name "+ _dataset_name)
     direct_parent = _path.split('/')[-2].lower()
     dict_file = [
     {'description': 'COLDA '+ direct_parent + ' Data Caalog'},
@@ -112,10 +110,6 @@ def catalog_parent( _path, _dataset_name):
 
 def update_links(child, dp_name):
 
-    print("\n child is "+ child)
-    print("\n dp_name is "+ dp_name)
-
-    
     searchee = "<!--qazwsxxswzaq-->"
     res = """               <a href="""+ "\""+ child+"\""+""" class="list-group-item">
                     <h4>""" +child+ """</h4>
