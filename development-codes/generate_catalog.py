@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import update_json, update_parents, update_links, catalog_parent
+from update import make_html, update_json, update_parents, update_links, catalog_parent
 import os, re
 import subprocess as S
 @click.command()
