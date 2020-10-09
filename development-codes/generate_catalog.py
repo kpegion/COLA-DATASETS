@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import update_json, update_parents, update_links, catalog_parent
+from update import make_html, update_json, update_parents, update_links, catalog_parent
 import os, re
 import subprocess as S
 @click.command()
@@ -54,6 +54,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
+        print(file_path_name)
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
         src = xr.open_dataset(file_path_name, decode_times=False)
         source.discover()
@@ -102,8 +103,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     catalog_parent(file_path_name, dataset_sub_name)
 
-    print("#####################################################################")
-    print("ancestors are "+ ancestors)
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')

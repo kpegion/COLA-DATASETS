@@ -1,10 +1,10 @@
-iimport sys
+import sys
 import glob
 import xarray as xr
 import intake
 import click
 from fake_framework import src_header
-from update import update_json, update_parents, catalog_parent
+from update import update_json, update_parents, catalog_parent, update_links
 import os, re
 import subprocess as S
 import pdb
@@ -64,24 +64,9 @@ def make_html(current, parent, ancestors):
         file.write(_header)
         print( html_page + " was created\n")
 
+    os.rename(html_page, "../"+html_page)
 
 
-
-def update_links(child, dp_name):
-
-    searchee = "<!--qazwsxxswzaq-->"
-    res = """               <a href="""+ "\""+ child+"\""+""" class="list-group-item">
-                    <h4>""" +child+ """</h4>
-                    <p class="description"> </p>
-                </a> """
-    file_name = dp_name + ".html"
-    res = res + "\n\n" + searchee
-    print(os.getcwd())
-    fp = open(../file_name, "r+")
-    fin = fp.read()
-    data = fin.replace(searchee, res)
-    fp.seek(0,0)
-    fp.write(data)
 
 if __name__ == "__main__":
     fake_generate_catalog()
