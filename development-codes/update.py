@@ -120,33 +120,9 @@ def update_links(child, dp_name):
     file_name = dp_name + ".html"
     res = res + "\n\n" + searchee
 
-    file_name = os.path.join( os.getcwd(), '..', file_name )
-    fp = open(file_name, "r+")
+    fp = open('../'+file_name, "r+")
     fin = fp.read()
     data = fin.replace(searchee, res)
     fp.seek(0,0)
     fp.write(data)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
