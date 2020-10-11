@@ -74,23 +74,6 @@ def update_parents(ancestors):
 
 
 
-def insert_links(direct_parent):
-    
-    dp_name = direct_parent+".html"
-    searchee = "<!--qazwsxxswzaq-->"
-    res = """               <a href="precip.pentad.mean.nc" class="list-group-item"> 
-                        <h4>cmap_pentad</h4> 
-                        <p class="description"> </p> 
-                    </a> """
-    res = res + "\n\n" + searchee
-    fp = open(dp_name, "rt")
-    fin = fp.read()
-    data = fin.replace(searchee, res)
-    fp.close()
-
-    fp = open(dp_name, "wt")
-    fp.write(data)
-    fp.close()      
     
 
 
