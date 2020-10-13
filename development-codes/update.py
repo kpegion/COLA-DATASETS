@@ -3,12 +3,17 @@ import os
 import yaml
 import pdb
 
-def mmake_html(current, parent, ancestors):
-    
+
+
+def make_html(current, parent, ancestors):
+
+    #pdb.set_trace()
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
     open_catalog = catalog_dir + current +".yaml"
     title = current
 
+
+    ancestors = make_ancestors(''.join(ancestors))
     _header = src_header(title, ancestors,  open_catalog)
 
     html_page = current +".html"
@@ -16,6 +21,8 @@ def mmake_html(current, parent, ancestors):
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(_header)
         print( html_page + " was created\n")
+
+    os.rename(html_page, "../"+html_page)
 
 
 
@@ -132,9 +139,9 @@ def link_to_children(child, dp_name):
     fp = open('../'+file_name, "r+")
     fin = fp.read()
 
-    #if (fin.find(res) == -1): 
-    res = res + "\n\n" + searchee
-    data = fin.replace(searchee, res)
-    fp.seek(0,0)
-    fp.write(data)
+    if (fin.find(res) == -1): 
+        res = res + "\n\n" + searchee
+        data = fin.replace(searchee, res)
+        fp.seek(0,0)
+        fp.write(data)
     fp.close()

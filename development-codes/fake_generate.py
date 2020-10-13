@@ -3,7 +3,7 @@ from os.path import abspath
 import glob
 import click
 from fake_framework import src_header
-from update import update_json, make_ancestors, catalog_parent, catalog_parent_2, link_to_children
+from update import update_json, make_ancestors, catalog_parent, catalog_parent_2, link_to_children, make_html
 import os, re
 import subprocess as S
 import pdb
