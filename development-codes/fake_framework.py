@@ -1,4 +1,3 @@
-
 def src_header(title, ancestors, open_catalog):
     ret =  src_header = """<!DOCTYPE html>
 <html>

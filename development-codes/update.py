@@ -1,9 +1,9 @@
 import json
 import os
 import yaml
+import pdb
 
-
-def make_html(current, parent, ancestors):
+def mmake_html(current, parent, ancestors):
     
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
     open_catalog = catalog_dir + current +".yaml"
@@ -119,19 +119,22 @@ def catalog_parent_2( _path, _dataset_name, direct_parent):
 
 def link_to_children(child, dp_name):
 
+    
     searchee = "<!--qazwsxxswzaq-->"
-    res = """               <a href="""+ "\""+ child+"\""+""" class="list-group-item">
+    res = """<a href="""+ "\""+ child+"\""+""" class="list-group-item">
                     <h4>""" +child+ """</h4>
                     <p class="description"> </p>
                 </a> """
-
     
+    #pdb.set_trace() 
     file_name = dp_name + ".html"
-    res = res + "\n\n" + searchee
 
     fp = open('../'+file_name, "r+")
     fin = fp.read()
+
+    #if (fin.find(res) == -1): 
+    res = res + "\n\n" + searchee
     data = fin.replace(searchee, res)
     fp.seek(0,0)
     fp.write(data)
-
+    fp.close()

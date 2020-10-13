@@ -1,10 +1,9 @@
 import sys
+from os.path import abspath
 import glob
-import xarray as xr
-import intake
 import click
 from fake_framework import src_header
-from update import update_json, make_ancestors, catalog_parent, link_to_children
+from update import update_json, make_ancestors, catalog_parent, catalog_parent_2, link_to_children
 import os, re
 import subprocess as S
 import pdb
@@ -19,13 +18,13 @@ def fake_generate_catalog(file_path):
     path_array.remove('')
 
     try:
-        arr.remove('shared')
+        path_array.remove('shared')
     except:
         pass
 
     
     try:
-        arr.remove('data')
+        path_array.remove('data')
     except:
         pass
 
@@ -40,25 +39,29 @@ def fake_generate_catalog(file_path):
         current = path_array[i]
         parent = path_array[i-1]
         ancestors = path_array[0:i-1]
-    
-        dp_name = parent+".html"
+        print(current)    
+        catalog_parent_2(file_path, current, parent)    
+        dp_name = "../"+ parent+".html"
         if not os.path.isfile(dp_name):
             make_html(path_array[i-1], path_array[i-2], path_array[0:i-2])
-            
+            print(abspath(dp_name)+ " was NOT there")
+        else:
+            print(dp_name + ".html was already there")    
         link_to_children(current, parent)
+
+
 
 
 
 
 def make_html(current, parent, ancestors):
     
-    pdb.set_trace()    
+    #pdb.set_trace()    
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
     open_catalog = catalog_dir + current +".yaml"
     title = current
-
-    #ancestors = list(reversed(ancestors))
-    print(type(ancestors))
+    
+    
     ancestors = make_ancestors(''.join(ancestors))
     _header = src_header(title, ancestors,  open_catalog)
 
