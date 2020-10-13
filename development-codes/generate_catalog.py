@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import make_html, update_json, update_parents, update_links, catalog_parent
+from update import make_html, update_json, make_ancestors, link_to_children, catalog_parent
 import os, re
 import subprocess as S
 @click.command()
@@ -94,12 +94,12 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
 
-    ancestors = update_parents(path)
+    ancestors = make_ancestors(path)
     
     direct_parent = path.split('/')[-1].lower()
     #print("parent is " + direct_parent)
 
-    update_links(dataset_sub_name, direct_parent)
+    link_to_children(dataset_sub_name, direct_parent)
 
     catalog_parent(file_path_name, dataset_sub_name)
 
