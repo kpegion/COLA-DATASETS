@@ -5,28 +5,6 @@ import pdb
 
 
 
-def make_html(current, parent, ancestors):
-
-    #pdb.set_trace()
-    catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
-    open_catalog = catalog_dir + current +".yaml"
-    title = current
-
-
-    ancestors = make_ancestors(''.join(ancestors))
-    _header = src_header(title, ancestors,  open_catalog)
-
-    html_page = current +".html"
-
-    with open(html_page , "w", encoding='utf-8') as file:
-        file.write(_header)
-        print( html_page + " was created\n")
-
-    os.rename(html_page, "../"+html_page)
-
-
-
-
 def update_json(tags, html_page, dataset_sub_name):
     if tags is None:
         return
@@ -49,7 +27,6 @@ def update_json(tags, html_page, dataset_sub_name):
 
 def make_ancestors(ancestors):
     #<!-- 1qaz2wsx -->
-    
     ancestors = ancestors.split('/')
 
     try:
@@ -57,11 +34,15 @@ def make_ancestors(ancestors):
     except:
         pass
 
+    
+
     try:
         ancestors.remove('shared')
     except:
         pass
 
+    print(ancestors)
+    print("------------------------------------------------------------------")
 
     try:
         ancestors.remove('data')
@@ -69,9 +50,13 @@ def make_ancestors(ancestors):
     except:
         pass
 
+    #pdb.set_trace()
 
+    #print(ancestors)
+    #print("------------------------------------------------------------------")
     ancestors = list(map(lambda x:x.lower(),ancestors))
-
+    #print(ancestors)
+    #print("------------------------------------------------------------------")
 
     res = ""
     for i in range(len(ancestors)):
