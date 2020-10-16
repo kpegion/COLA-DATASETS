@@ -59,7 +59,6 @@ def make_ancestors(ancestors):
 
 def catalog_parent( _path, _dataset_name, direct_parent):
 
-    direct_parent = direct_parent + '.yaml'
     if not os.path.isfile(direct_parent):
      
         
@@ -68,6 +67,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
         {'sources':{_dataset_name:[{'args':{'path':_path}},{'description':''},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
         }}]
 
+        direct_parent = direct_parent + '.yaml'
     
         with open(direct_parent, 'w') as fp:
             yaml.dump(dict_file, fp)
