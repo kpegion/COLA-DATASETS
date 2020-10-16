@@ -10,7 +10,7 @@ def update_json(tags, html_page, dataset_sub_name):
         return
     jp = open("../tags_hrefs.json","r")
     data = json.load(jp)
-    print(tags)
+    #print(tags)
     for tag in tags:
         addr = "https://kpegion.github.io/COLA-DATASETS-CATALOG/"+ html_page
         if tag in data:
@@ -41,8 +41,8 @@ def make_ancestors(ancestors):
     except:
         pass
 
-    print(ancestors)
-    print("------------------------------------------------------------------")
+    #print(ancestors)
+    #print("------------------------------------------------------------------")
 
     try:
         ancestors.remove('data')
@@ -80,7 +80,7 @@ def catalog_parent( _path, _dataset_name):
     direct_parent = direct_parent + '.yaml'
     with open(direct_parent, 'a') as fp:
         yaml.dump(dict_file, fp)
-        print(direct_parent + " created")
+        #todoprint(direct_parent + " created")
 
 
 
