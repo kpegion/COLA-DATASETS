@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import  update_json, make_ancestors, link_to_children, catalog_parent_2
+from update import  update_json, make_ancestors, link_to_children, catalog_parent
 import os, re
 import subprocess as S
 @click.command()
@@ -101,7 +101,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     link_to_children(dataset_sub_name, direct_parent)
 
-    catalog_parent_2(file_path_name, dataset_sub_name, direct_parent)
+    catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
