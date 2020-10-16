@@ -97,7 +97,7 @@ def catalog_parent_2( _path, _dataset_name, direct_parent):
             newdct = yaml.load(fp, Loader=yaml.FullLoader)
 
         with open(direct_parent, 'w') as fp:
-            newdct[1]['sources'][_dataset_name+"tesdgdghdghtak"] =[{'args':{'path':_path}},{'description':'JadidTar'},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
+            newdct[1]['sources'][_dataset_name] =[{'args':{'path':_path}},{'description':'JadidTar'},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
             yaml.dump(newdct, fp)
 
 def link_to_children(child, dp_name):
