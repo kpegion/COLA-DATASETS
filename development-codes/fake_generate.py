@@ -30,7 +30,6 @@ def fake_generate_catalog(file_path):
 
     
     path_array = list(map(lambda x:x.lower(),path_array))
-    #print("path_array:  " + str(path_array))
     current = ""
     parent = ""
     ancestors = ""
@@ -39,22 +38,14 @@ def fake_generate_catalog(file_path):
         current = path_array[i]
         parent = path_array[i-1]
         ancestors = path_array[0:i-1]
-        #print(current)    
         catalog_parent_2(file_path, current, parent)    
         dp_name = "../"+ parent+".html"
         if not os.path.isfile(dp_name):
-            #print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-            #print("path_arr i-1 " + str(path_array[i-1]))#, path_array[i-2], path_array[0:i-2])
-            #print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-            #print("path_arr i-2 "+ str(path_array[i-2]))#, path_array[i-2], path_array[0:i-2])
-            #print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
-            #print("path_arr [0:i-2]   " + str(path_array[0:i-2]))
             if i > 1:
                 make_html(path_array[i-1], path_array[i-2], path_array[0:i-2])
             elif i ==1 :
                 
                 make_html(path_array[i-1])
-            #print(abspath(dp_name)+ " was NOT there")
         else:
             print(dp_name + ".html was already there")
         
