@@ -60,7 +60,7 @@ def make_html(current, parent ="", ancestors=[]):
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
     open_catalog = catalog_dir + current +".yaml"
     title = current
-    ancestors = ''.join(ancestors)
+    ancestors = '/'.join(ancestors)
     complete_ancestors = ancestors + parent + current
     cm =  []
     cm.extend([ancestors, parent])
