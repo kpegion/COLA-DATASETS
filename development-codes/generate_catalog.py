@@ -101,7 +101,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     link_to_children(dataset_sub_name, direct_parent)
 
-    catalog_parent(file_path_name, dataset_sub_name)
+    catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 

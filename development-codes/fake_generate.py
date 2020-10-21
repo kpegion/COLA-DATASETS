@@ -3,7 +3,7 @@ from os.path import abspath
 import glob
 import click
 from fake_framework import src_header
-from update import update_json, make_ancestors, catalog_parent, catalog_parent_2, link_to_children
+from update import update_json, make_ancestors, catalog_parent, link_to_children
 import os, re
 import subprocess as S
 import pdb
@@ -38,7 +38,7 @@ def fake_generate_catalog(file_path):
         current = path_array[i]
         parent = path_array[i-1]
         ancestors = path_array[0:i-1]
-        catalog_parent_2(file_path, current, parent)    
+        catalog_parent(file_path, current, parent)    
         dp_name = "../"+ parent+".html"
         if not os.path.isfile(dp_name):
             if i > 1:

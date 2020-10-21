@@ -57,35 +57,20 @@ def make_ancestors(ancestors):
 
     return res
 
-
-
-
-def catalog_parent( _path, _dataset_name):
-
-    print(_dataset_name) 
-    direct_parent = _path.split('/')[-2].lower()
-    dict_file = [
-    {'description': 'COLDA '+ direct_parent.upper() + ' Data Caalog'},
-    {'sources':{_dataset_name:[{'args':{'path':_path}},{'description':''},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
-    }}]
-    direct_parent = direct_parent + '.yaml'
-    with open(direct_parent, 'a') as fp:
-        yaml.dump(dict_file, fp)
-        print(direct_parent + " created")
-
-
-
-def catalog_parent_2( _path, _dataset_name, direct_parent):
+def catalog_parent( _path, _dataset_name, direct_parent):
 
     direct_parent = direct_parent + '.yaml'
     if not os.path.isfile(direct_parent):
-     
-        
-        dict_file = [
-        {'description': 'COLDA '+ direct_parent.upper() + ' Data Caalog'},
-        {'sources':{_dataset_name:[{'args':{'path':_path}},{'description':''},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
-        }}]
 
+
+        dict_file = {
+        'description': 'COLDA '+ direct_parent.replace('.yaml','').upper() + ' Data Caalog',
+        'sources': {
+        _dataset_name: {
+            'args': {'path':_path}, 
+            'description':'', 
+            'driver':'intake.catalog.local.YAMLFileCatalog', 
+            'metadata':{}}}}
     
         with open(direct_parent, 'w') as fp:
             yaml.dump(dict_file, fp)
@@ -97,7 +82,7 @@ def catalog_parent_2( _path, _dataset_name, direct_parent):
             newdct = yaml.load(fp, Loader=yaml.FullLoader)
 
         with open(direct_parent, 'w') as fp:
-            newdct[1]['sources'][_dataset_name+"tesdgdghdghtak"] =[{'args':{'path':_path}},{'description':'JadidTar'},{'driver':'intake.catalog.local.YAMLFileCatalog'},{'metadata':'{}'}]
+            newdct['sources'][_dataset_name] = { 'args': {'path':_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
             yaml.dump(newdct, fp)
 
 def link_to_children(child, dp_name):
