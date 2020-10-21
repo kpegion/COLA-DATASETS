@@ -1,7 +1,8 @@
-<!DOCTYPE html>
+def src_header(title, ancestors, open_catalog):
+    ret =  src_header = """<!DOCTYPE html>
 <html>
 <head>
-    <title>day</title>
+    <title>{0}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.css">
     <link rel="stylesheet" href="static/pangeo-style.css">
@@ -34,33 +35,27 @@
 
 
 <main role="main" class="container">
-    <h1>day</h1>
+    <h1>{1}</h1>
     <div>
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
              <li><a href="model">model</a></li>
 
-			<li><a href=cmip6>cmip6</a></li>
+			{2}
 
-<li><a href=historical>historical</a></li>
-
-<li><a href=atmos>atmos</a></li>
-
-
-
-            <li class="active">day</li>
+            <li class="active">{3}</li>
 
         </ol>
     </div>
     <div class="catalog">
 
-        <h2> sea surface temperature </h2>
+        <h2> </h2>
         
 
         <h3>Load in Python</h3>
         <pre><code class="language-python">from intake import open_catalog<br>
-cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/day.yaml")
+cat = open_catalog("{4}")
 list(cat)</code></pre>
 
 
@@ -69,17 +64,7 @@ list(cat)</code></pre>
         <h3>Datasets</h3>
         <div class="list-group">
         
-        <a href="va" class="list-group-item">
-                    <h4>va</h4>
-                    <p class="description"> </p>
-                </a> 
-
-<a href="ua" class="list-group-item">
-                    <h4>ua</h4>
-                    <p class="description"> </p>
-                </a> 
-
-<!--qazwsxxswzaq-->
+        <!--qazwsxxswzaq-->
 
 
 
@@ -98,3 +83,5 @@ list(cat)</code></pre>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
+""".format(title, title, ancestors, title, open_catalog)
+    return ret
