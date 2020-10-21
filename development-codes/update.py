@@ -61,12 +61,10 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
     direct_parent = direct_parent + '.yaml'
     if not os.path.isfile(direct_parent):
-     
-        direct_parent.replace('.yaml','')
 
 
         dict_file = {
-        'description': 'COLDA '+ direct_parent.upper() + ' Data Caalog',
+        'description': 'COLDA '+ direct_parent.replace('.yaml','').upper() + ' Data Caalog',
         'sources': {
         _dataset_name: {
             'args': {'path':_path}, 
