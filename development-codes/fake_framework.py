@@ -50,7 +50,7 @@ def src_header(title, ancestors, open_catalog):
     </div>
     <div class="catalog">
 
-        <h2> sea surface temperature </h2>
+        <h2> </h2>
         
 
         <h3>Load in Python</h3>
