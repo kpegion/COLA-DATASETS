@@ -21,15 +21,15 @@ theFile=${line[0]}
 
 
 intake_catalogs="/homes/nbehboud/COLA-DATASETS-CATALOG/intake-catalogs"
-html_files="/homes/nbehboud/COLA-DATASETS-CATALOG"
+#html_files="/homes/nbehboud/COLA-DATASETS-CATALOG"
 
 yaml_file=*.yaml
-html_file=*.html
+#html_file=*.html
 
 
 foo $theFile
-mv $yaml_file $intake_catalogs
-mv $html_file $html_files
+#mv $yaml_file $intake_catalogs
+#mv $html_file $html_files
 echo "---------------------------------------------------------------------------------------"
 #popd
 done < $filename

@@ -62,7 +62,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     dataset_sub_name.write(source.yaml())
     dataset_sub_name.close()
     print(str(dataset_sub_name.name) + " was cataloged")
-    
 
 
     dataset_sub_name = str(dataset_sub_name.name)[:-5]
@@ -78,7 +77,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     except:
         title = dataset_sub_name
-        #print(type(title))
 
     try:
         url = src.attrs['References']
@@ -97,11 +95,10 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     ancestors = make_ancestors(path)
     
     direct_parent = path.split('/')[-1].lower()
-    #print("parent is " + direct_parent)
 
     link_to_children(dataset_sub_name, direct_parent)
 
-    catalog_parent(file_path_name, dataset_sub_name, direct_parent)
+    #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
     _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
