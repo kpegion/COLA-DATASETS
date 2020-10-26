@@ -60,30 +60,32 @@ def make_ancestors(ancestors):
 def catalog_parent( _path, _dataset_name, direct_parent):
 
     direct_parent = direct_parent + '.yaml'
-    if not os.path.isfile(direct_parent):
-
+    rel_path_direct_parent = "../intake-catalogs/" + direct_parent
+    yaml_path = "{{CATALOG_DIR}}/"+ _dataset_name + ".yaml"
+    if not os.path.isfile(rel_path_direct_parent):
 
         dict_file = {
         'description': 'COLDA '+ direct_parent.replace('.yaml','').upper() + ' Data Caalog',
         'sources': {
         _dataset_name: {
-            'args': {'path':_path}, 
+            'args': {'path':yaml_path}, 
             'description':'', 
             'driver':'intake.catalog.local.YAMLFileCatalog', 
             'metadata':{}}}}
     
-        with open(direct_parent, 'w') as fp:
+        with open(rel_path_direct_parent, 'w') as fp:
             yaml.dump(dict_file, fp)
-            print(direct_parent + " created")
+            print(direct_parent + " now created")
         
     else:
         
-        with open(direct_parent) as fp:
+        with open(rel_path_direct_parent) as fp:
             newdct = yaml.load(fp, Loader=yaml.FullLoader)
 
-        with open(direct_parent, 'w') as fp:
-            newdct['sources'][_dataset_name] = { 'args': {'path':_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
+        with open(rel_path_direct_parent, 'w') as fp:
+            newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
             yaml.dump(newdct, fp)
+            print(direct_parent + " updated")
 
 def link_to_children(child, dp_name):
 

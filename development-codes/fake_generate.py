@@ -15,7 +15,11 @@ import pdb
 def fake_generate_catalog(file_path):
     
     path_array = file_path.split('/')
-    path_array.remove('')
+
+    try:
+        path_array.remove('')
+    except:
+        pass
 
     try:
         path_array.remove('shared')
@@ -34,7 +38,7 @@ def fake_generate_catalog(file_path):
     parent = ""
     ancestors = ""
     
-    for i in range(len(path_array)-1, -1 , -1):
+    for i in range(len(path_array)-1, 0 , -1):
         current = path_array[i]
         parent = path_array[i-1]
         ancestors = path_array[0:i-1]
@@ -66,9 +70,6 @@ def make_html(current, parent ="", ancestors=[]):
     cm.extend([ancestors, parent])
     #pdb.set_trace()
     ancestors = make_ancestors('/'.join(cm))
-    print("**********************************************************")
-    print(ancestors)
-    print("**********************************************************")
 
     _header = src_header(title, ancestors,  open_catalog)
 
