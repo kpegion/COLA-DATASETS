@@ -15,6 +15,11 @@ function foo() {
 
 filename='data_backup.txt'
 
+intake_catalogs="/homes/nbehboud/COLA-DATASETS-CATALOG/intake-catalogs"
+html_files="/homes/nbehboud/COLA-DATASETS-CATALOG"
+
+yaml_file=*.yaml
+html_file=*.html
 
 while IFS=$'\t' read -r -a line ; do
 theFile=${line[0]}
@@ -22,11 +27,6 @@ theDataset=${line[1]}
 theTags=${line[2]}
 
 
-intake_catalogs="/homes/nbehboud/COLA-DATASETS-CATALOG/intake-catalogs"
-html_files="/homes/nbehboud/COLA-DATASETS-CATALOG"
-
-yaml_file=*.yaml
-html_file=*.html
 
 #temp_dir=${line[1]}
 #mkdir ${temp_dir}_temporary
@@ -35,9 +35,15 @@ html_file=*.html
 
 
 foo $theFile $theDataset	$theTags
-mv $yaml_file $intake_catalogs
-mv $html_file $html_files
+#mv $yaml_file $intake_catalogs
+#mv $html_file $html_files
 echo "---------------------------------------------------------------------------------------"
 #popd
 done < $filename
 
+if ls *.yaml
+	then mv $yaml_file $intake_catalogs
+fi
+if ls *.html 
+then mv $html_file $html_files
+fi
