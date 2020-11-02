@@ -25,7 +25,62 @@ def update_json(tags, html_page, dataset_sub_name):
 
 def make_ancestors(ancestors):
     #<!-- 1qaz2wsx -->
+    
+    try:
+        ancestors = ancestors.replace("/day/day/","/day/")
+
+    except:
+        pass
     ancestors = ancestors.split('/')
+
+
+    
+    try:
+        ancestors = ancestors.replace("/mon/Amon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        ancestors = ancestors.replace("/mon/OImon/","/mon/")
+
+    except:
+        pass
+
+
+
+
+    try:
+        ancestors = ancestors.replace("/mon/Lmon/","/mon/")
+
+    except:
+        pass
+
+
+
+
+
+    try:
+        ancestors = ancestors.replace("/mon/LImon/","/mon/")
+
+    except:
+        pass
+
+
+
+
+
+    try:
+        ancestors = ancestors.replace("/mon/Omon/","/mon/")
+
+    except:
+        pass
+
+
+
+
 
     try:
         ancestors.remove('')
@@ -47,6 +102,7 @@ def make_ancestors(ancestors):
 
     #pdb.set_trace()
 
+    
     ancestors = list(map(lambda x:x.lower(),ancestors))
 
     res = ""
