@@ -106,7 +106,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.')
-    html_page = page_name +".html" 
+    html_page = page_name + "_.nc" + ".html" 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
     print( html_page + " was created\n")
