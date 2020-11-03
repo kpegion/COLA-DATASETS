@@ -147,7 +147,7 @@ def link_to_children(child, dp_name):
 
     
     searchee = "<!--qazwsxxswzaq-->"
-    res = """<a href="""+ "\""+ child+"\""+""" class="list-group-item">
+    res = """<a href="""+ "\""+ child+ "\""+""" class="list-group-item">
                     <h4>""" +child+ """</h4>
                     <p class="description"> </p>
                 </a> """
