@@ -31,7 +31,6 @@ def make_ancestors(ancestors):
 
     except:
         pass
-    ancestors = ancestors.split('/')
 
 
     
@@ -81,6 +80,7 @@ def make_ancestors(ancestors):
 
 
 
+    ancestors = ancestors.split('/')
 
     try:
         ancestors.remove('')

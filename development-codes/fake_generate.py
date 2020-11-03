@@ -14,6 +14,55 @@ import pdb
 
 def fake_generate_catalog(file_path):
     
+
+
+    
+    try:
+        file_path = file_path.replace("/day/day/","/day/")
+
+    except:
+        pass
+
+
+    
+    try:
+        file_path = file_path.replace("/mon/Amon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/OImon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/Lmon/","/mon/")
+
+    except:
+        pass
+
+
+    try:
+        file_path = file_path.replace("/mon/LImon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/Omon/","/mon/")
+
+    except:
+        pass
+
+
     path_array = file_path.split('/')
 
     try:
