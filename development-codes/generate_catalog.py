@@ -54,14 +54,13 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
-        print(file_path_name)
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
         src = xr.open_dataset(file_path_name, decode_times=False)
         source.discover()
     dataset_sub_name = open(dataset_sub_name.strip('""')+ '.yaml', 'w')
     dataset_sub_name.write(source.yaml())
     dataset_sub_name.close()
-    print(str(dataset_sub_name.name) + " was cataloged")
+    #todo print(str(dataset_sub_name.name) + " was cataloged")
 
 
     dataset_sub_name = str(dataset_sub_name.name)[:-5]
@@ -109,7 +108,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     html_page = page_name  + ".html" 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
-    print( html_page + " was created\n")
+    #todo print( html_page + " was created\n")
 
     update_json(tags, html_page, dataset_sub_name)
 

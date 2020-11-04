@@ -3,12 +3,12 @@
 
 function foo() {
   python3.6 /homes/nbehboud/COLA-DATASETS-CATALOG/development-codes/fake_generate.py $1
-  if [ $? -eq 0 ]
-	then
-	  echo "$1 Success"
-	else
-	  echo "$1 Failed !!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-	fi
+#todo  if [ $? -eq 0 ]
+#	then
+#	  echo "$1 Success"
+#	else
+#	  echo "$1 Failed !!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+#	fi
 }
 
 
@@ -30,7 +30,7 @@ yaml_file=*.yaml
 foo $theFile
 #mv $yaml_file $intake_catalogs
 #mv $html_file $html_files
-echo "---------------------------------------------------------------------------------------"
+#todo echo "---------------------------------------------------------------------------------------"
 #popd
 done < $filename
 
