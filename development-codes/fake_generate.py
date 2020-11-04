@@ -126,7 +126,7 @@ def make_html(current, parent ="", ancestors=[]):
 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(_header)
-        #todo print( html_page + " was created\n")
+        print( html_page + " was created\n")
 
     os.rename(html_page, "../"+html_page)
 
