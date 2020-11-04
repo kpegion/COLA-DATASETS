@@ -99,8 +99,8 @@ def fake_generate_catalog(file_path):
             elif i ==1 :
                 
                 make_html(path_array[i-1])
-        else:
-            print(dp_name + ".html was already there")
+        #todo else:
+            #todo print(dp_name + ".html was already there")
         
         if i > 0 and i != len(path_array)-1 :    
             link_to_children(current, parent)

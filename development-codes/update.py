@@ -131,7 +131,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
     
         with open(rel_path_direct_parent, 'w') as fp:
             yaml.dump(dict_file, fp)
-            print(direct_parent + " now created")
+            #todo print(direct_parent + " now created")
         
     else:
         
@@ -141,13 +141,13 @@ def catalog_parent( _path, _dataset_name, direct_parent):
         with open(rel_path_direct_parent, 'w') as fp:
             newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
             yaml.dump(newdct, fp)
-            print(direct_parent + " updated")
+            #todo print(direct_parent + " updated")
 
 def link_to_children(child, dp_name):
 
     try:
         child2 = child.replace("_.nc","")
-    else:
+    except:
         child2 = child 
     searchee = "<!--qazwsxxswzaq-->"
     res = """<a href="""+ "\""+ child+ "\""+""" class="list-group-item">
