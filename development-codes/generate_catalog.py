@@ -96,7 +96,10 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     
     direct_parent = path.split('/')[-1].lower()
 
-    link_to_children(dataset_sub_name, direct_parent)
+    print("#######################################")
+    print(dataset_sub_name)
+    print("#######################################")
+    link_to_children(dataset_sub_name+"_.nc", direct_parent)
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
@@ -106,7 +109,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.')
-    html_page = page_name + "_.nc" + ".html" 
+    html_page = page_name  + ".html" 
+    print(html_page)
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
     print( html_page + " was created\n")
