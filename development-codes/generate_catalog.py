@@ -54,64 +54,69 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
-        print(file_path_name)
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
         src = xr.open_dataset(file_path_name, decode_times=False)
         source.discover()
-    dataset_sub_name = open(dataset_sub_name.strip('""')+ '.yaml', 'w')
-    dataset_sub_name.write(source.yaml())
-    dataset_sub_name.close()
-    print(str(dataset_sub_name.name) + " was cataloged")
-
-
-    dataset_sub_name = str(dataset_sub_name.name)[:-5]
-
-    catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
-
-
-            
-    open_catalog = catalog_dir + temp +".yaml"
-
-    try:
-        title = src.attrs['title']
-
-    except:
-        title = dataset_sub_name
-
-    try:
-        url = src.attrs['References']
-    except:
-        url =""
-    # Here url roles as the location
-    url = path
-    html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
-
-    cmd = "ls -lrt --time-style=+%Y-%m-%d " + str(path) + " | tail -n 1"
-    ps = S.Popen(cmd,shell=True,stdout=S.PIPE,stderr=S.STDOUT, universal_newlines=True)
-    output = ps.communicate()[0]
-    res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
-    time_stamp = ''.join(res)    
-
-    ancestors = make_ancestors(path)
     
-    direct_parent = path.split('/')[-1].lower()
+    catalog_name = dataset_sub_name.strip('""')+ '.yaml'
+    #dataset_sub_name = open(dataset_sub_name.strip('""')+ '.yaml', 'w')
+    
+    if not os.path.isfile(catalog_name):
+        dataset_sub_name = open(catalog_name, 'w')
+    
+        dataset_sub_name.write(source.yaml())
+        dataset_sub_name.close()
+    #todo print(str(dataset_sub_name.name) + " was cataloged")
 
-    link_to_children(dataset_sub_name, direct_parent)
 
-    #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
+        dataset_sub_name = str(dataset_sub_name.name)[:-5]
 
-    _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
+        catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
 
-    tags =tags.split(',')
-    _footer = src_footer()
-    html_src = _header + html_repr + _footer
-    page_name = fileName.replace('*','').replace('..','.').replace('_.nc','')
-    html_page = page_name  + ".html" 
-    with open(html_page , "w", encoding='utf-8') as file:
-        file.write(html_src)
-    print( html_page + " was created\n")
 
-    update_json(tags, html_page, dataset_sub_name)
+                
+        open_catalog = catalog_dir + temp +".yaml"
+
+        try:
+            title = src.attrs['title']
+
+        except:
+            title = dataset_sub_name
+
+        try:
+            url = src.attrs['References']
+        except:
+            url =""
+        # Here url roles as the location
+        url = path
+        html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
+
+        cmd = "ls -lrt --time-style=+%Y-%m-%d " + str(path) + " | tail -n 1"
+        ps = S.Popen(cmd,shell=True,stdout=S.PIPE,stderr=S.STDOUT, universal_newlines=True)
+        output = ps.communicate()[0]
+        res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
+        time_stamp = ''.join(res)    
+
+        ancestors = make_ancestors(path)
+        
+        direct_parent = path.split('/')[-1].lower()
+
+        link_to_children(dataset_sub_name, direct_parent)
+
+        #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
+
+        _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
+
+        tags =tags.split(',')
+        _footer = src_footer()
+        html_src = _header + html_repr + _footer
+        page_name = fileName.replace('*','').replace('..','.').replace('_.nc','')
+        html_page = page_name  + ".html" 
+        with open(html_page , "w", encoding='utf-8') as file:
+            file.write(html_src)
+        #todo print( html_page + " was created\n")
+
+        update_json(tags, html_page, dataset_sub_name)
 
 if __name__ == "__main__":
     generate_catalog()
