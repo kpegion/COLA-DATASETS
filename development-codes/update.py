@@ -100,10 +100,20 @@ def make_ancestors(ancestors):
     except:
         pass
 
-    #pdb.set_trace()
 
-    
+    #pdb.set_trace()
     ancestors = list(map(lambda x:x.lower(),ancestors))
+    
+    ans = []
+    my_str = ""
+    for i in range(len(ancestors)):
+        if len(my_str)>0:
+            my_str = my_str + '_'
+        my_str = my_str + ancestors[i]
+        ans.append(my_str)
+    ancestors = ans
+    
+    
 
     res = ""
     for i in range(len(ancestors)):
@@ -118,6 +128,11 @@ def catalog_parent( _path, _dataset_name, direct_parent):
     direct_parent = direct_parent + '.yaml'
     rel_path_direct_parent = "../intake-catalogs/" + direct_parent
     yaml_path = "{{CATALOG_DIR}}/"+ _dataset_name + ".yaml"
+    try:
+        yaml_path = yaml_path.replace("_*.nc.yaml",".yaml")    
+    except:
+        pass
+
     if not os.path.isfile(rel_path_direct_parent):
 
         dict_file = {
@@ -128,7 +143,6 @@ def catalog_parent( _path, _dataset_name, direct_parent):
             'description':'', 
             'driver':'intake.catalog.local.YAMLFileCatalog', 
             'metadata':{}}}}
-    
         with open(rel_path_direct_parent, 'w') as fp:
             yaml.dump(dict_file, fp)
             #todo print(direct_parent + " now created")
@@ -142,6 +156,12 @@ def catalog_parent( _path, _dataset_name, direct_parent):
             newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
             yaml.dump(newdct, fp)
             #todo print(direct_parent + " updated")
+
+
+
+ 
+
+
 
 def link_to_children(child, dp_name):
 
@@ -167,3 +187,82 @@ def link_to_children(child, dp_name):
         fp.seek(0,0)
         fp.write(data)
     fp.close()
+
+def gen_direct_parent(file_path):
+
+    try:
+        file_path = file_path.replace("/day/day/","/day/")
+
+    except:
+        pass
+
+
+    
+    try:
+        file_path = file_path.replace("/mon/Amon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/OImon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/Lmon/","/mon/")
+
+    except:
+        pass
+
+
+    try:
+        file_path = file_path.replace("/mon/LImon/","/mon/")
+
+    except:
+        pass
+
+
+
+    try:
+        file_path = file_path.replace("/mon/Omon/","/mon/")
+
+    except:
+        pass
+
+    file_path = file_path.rstrip("\r")
+    path_array = file_path.split('/')
+
+    try:
+        path_array.remove('')
+    except:
+        pass
+
+    try:
+        path_array.remove('shared')
+    except:
+        pass
+
+    
+    try:
+        path_array.remove('data')
+    except:
+        pass
+
+    path_array = list(map(lambda x:x.lower(),path_array))
+    
+
+    ans = []
+    my_str = ""
+    for i in range(len(path_array)):
+        if len(my_str)>0:
+            my_str = my_str + '_'
+        my_str = my_str + path_array[i]
+        ans.append(my_str)
+
+    return ans

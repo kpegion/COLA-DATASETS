@@ -3,12 +3,12 @@
 
 function foo() {
   python3.6 /homes/nbehboud/COLA-DATASETS-CATALOG/development-codes/fake_generate.py $1
-#todo  if [ $? -eq 0 ]
-#	then
-#	  echo "$1 Success"
-#	else
-#	  echo "$1 Failed !!!!!!!!!!!!!!!!!!!!!!!!!!!!"
-#	fi
+  if [ $? -eq 0 ]
+	then
+	  echo "$1 Success"
+	else
+	  echo "$1 Failed !!!!!!!!!!!!!!!!!!!!!!!!!!!!"
+	fi
 }
 
 
