@@ -30,7 +30,7 @@ yaml_file=*.yaml
 foo $theFile
 #mv $yaml_file $intake_catalogs
 #mv $html_file $html_files
-echo "---------------------------------------------------------------------------------------"
+#todo echo "---------------------------------------------------------------------------------------"
 #popd
 done < $filename
 

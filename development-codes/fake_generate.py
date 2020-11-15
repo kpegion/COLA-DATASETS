@@ -15,7 +15,6 @@ import pdb
 def fake_generate_catalog(file_path):
     
 
-
     
     try:
         file_path = file_path.replace("/day/day/","/day/")
@@ -63,6 +62,7 @@ def fake_generate_catalog(file_path):
         pass
 
 
+    file_path = file_path.rstrip("\r")
     path_array = file_path.split('/')
 
     try:
@@ -81,11 +81,21 @@ def fake_generate_catalog(file_path):
     except:
         pass
 
-    
     path_array = list(map(lambda x:x.lower(),path_array))
     current = ""
     parent = ""
     ancestors = ""
+    
+
+    ans = []
+    my_str = ""
+    for i in range(len(path_array)-1):
+        if len(my_str)>0:
+            my_str = my_str + '_'
+        my_str = my_str + path_array[i]
+        ans.append(my_str)
+    ans.append(path_array[-1])
+    path_array = ans
     
     for i in range(len(path_array)-1, 0 , -1):
         current = path_array[i]
@@ -99,8 +109,8 @@ def fake_generate_catalog(file_path):
             elif i ==1 :
                 
                 make_html(path_array[i-1])
-        else:
-            print(dp_name + ".html was already there")
+        #todo else:
+            #todo print(dp_name + ".html was already there")
         
         if i > 0 and i != len(path_array)-1 :    
             link_to_children(current, parent)

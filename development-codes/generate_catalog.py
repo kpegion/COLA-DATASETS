@@ -5,7 +5,7 @@ import intake
 import click
 from framework import src_header
 from framework import src_footer
-from update import  update_json, make_ancestors, link_to_children, catalog_parent
+from update import  update_json, make_ancestors, link_to_children, catalog_parent, gen_direct_parent
 import os, re
 import subprocess as S
 @click.command()
@@ -54,7 +54,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested','decode_times':False})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
-        print(file_path_name)
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
         src = xr.open_dataset(file_path_name, decode_times=False)
         source.discover()
@@ -93,9 +92,13 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     time_stamp = ''.join(res)    
 
     ancestors = make_ancestors(path)
-    
-    direct_parent = path.split('/')[-1].lower()
 
+
+    ans = gen_direct_parent(path)
+
+
+    #direct_parent = path.split('/')[-1].lower()
+    direct_parent = ans[-1]
     link_to_children(dataset_sub_name, direct_parent)
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
@@ -105,13 +108,13 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     tags =tags.split(',')
     _footer = src_footer()
     html_src = _header + html_repr + _footer
-    page_name = fileName.replace('*','').replace('..','.')
-    html_page = page_name + "_.nc" + ".html" 
+    page_name = fileName.replace('*','').replace('..','.').replace('_.nc','')
+    html_page = page_name  + ".html" 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
     print( html_page + " was created\n")
 
-    update_json(tags, html_page, dataset_sub_name)
+    #update_json(tags, html_page, dataset_sub_name)
 
 if __name__ == "__main__":
     generate_catalog()
