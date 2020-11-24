@@ -91,7 +91,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
 
-    ancestors = make_ancestors(path)
+    ancestors = make_ancestors(path, 1)
 
 
     ans = gen_direct_parent(path)
@@ -114,7 +114,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         file.write(html_src)
     print( html_page + " was created\n")
 
-    #update_json(tags, html_page, dataset_sub_name)
+    update_json(tags, html_page, dataset_sub_name)
 
 if __name__ == "__main__":
     generate_catalog()

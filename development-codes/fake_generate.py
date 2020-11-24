@@ -128,8 +128,9 @@ def make_html(current, parent ="", ancestors=[]):
     cm =  []
     cm.extend([ancestors, parent])
     #pdb.set_trace()
-    ancestors = make_ancestors('/'.join(cm))
-
+    print(cm)
+    ancestors = make_ancestors('/'.join(cm), 0)
+    print("&&&&&&&&&&&&&&&&&")
     _header = src_header(title, ancestors,  open_catalog)
 
     html_page = current +".html"
