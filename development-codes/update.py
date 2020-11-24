@@ -23,7 +23,7 @@ def update_json(tags, html_page, dataset_sub_name):
 
 
 
-def make_ancestors(ancestors):
+def make_ancestors(ancestors, _type):
     #<!-- 1qaz2wsx -->
     
     try:
@@ -100,21 +100,21 @@ def make_ancestors(ancestors):
     except:
         pass
 
-
     #pdb.set_trace()
     ancestors = list(map(lambda x:x.lower(),ancestors))
     
     ans = []
     my_str = ""
-    for i in range(len(ancestors)):
-        if len(my_str)>0:
-            my_str = my_str + '_'
-        my_str = my_str + ancestors[i]
-        ans.append(my_str)
-    ancestors = ans
+    #print(ancestors)
+    if _type:
     
-    
-
+        for i in range(len(ancestors)):
+            if len(my_str)>0:
+                my_str = my_str + '_'
+            my_str = my_str + ancestors[i]
+            ans.append(my_str)
+        ancestors = ans
+        
     res = ""
     for i in range(len(ancestors)):
         if ancestors[i] != "":
@@ -155,7 +155,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
         with open(rel_path_direct_parent, 'w') as fp:
             newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
             yaml.dump(newdct, fp)
-            #todo print(direct_parent + " updated")
+            #todo print(direct_parenupdated")
 
 
 
