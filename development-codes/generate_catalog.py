@@ -109,7 +109,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     _footer = src_footer()
     html_src = _header + html_repr + _footer
     page_name = fileName.replace('*','').replace('..','.').replace('_.nc','')
-    page_name = re.sub(r"_\d{4,8}-\d{4,8}.nc", "", page_name)
     html_page = page_name  + ".html" 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
