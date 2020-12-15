@@ -115,7 +115,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         file.write(html_src)
     print( html_page + " was created\n")
 
-    update_json(tags, html_page, dataset_sub_name)
+    #update_json(tags, html_page, dataset_sub_name)
 
 if __name__ == "__main__":
     generate_catalog()
