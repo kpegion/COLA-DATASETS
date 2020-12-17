@@ -1,0 +1,229 @@
+description: 'COLA Precipitation Data Catalog'
+sources:
+
+  legates:
+    args:
+      concat_dim: time
+      urlpath: /shared/SWFluxCorr/LEGATES/LEGATES_*_climo.nc
+      xarray_kwargs:
+        combine: nested
+        decode_times: true
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata: {}
+
+
+  cpc-precip:
+    args:
+      concat_dim: time
+      urlpath: /shared/obs/gridded/CPC-PRECIP/precip.*.nc
+      xarray_kwargs:
+        combine: nested
+        decode_times: true
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata: {}
+  
+  cpc-precip-conus_daily:
+    args:
+      concat_dim: time
+      urlpath: /shared/obs/gridded/CPC-PRECIP-CONUS/daily/precip.V1.0.*.nc
+      xarray_kwargs:
+        combine: nested
+        decode_times: true
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata: {}
+
+
+  cpc-precip-conus_monthly:
+    args:
+      urlpath: /shared/obs/gridded/CPC-PRECIP-CONUS/monthly/precip.V1.0.mon.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Comments: Preciptation is accumulated from 12z of previous day to 12z of day
+        stored
+      Conventions: COARDS
+      References: http://www.psl.noaa.gov/data/gridded/data.unified.daily.conus.html
+      coords:
+      - lat
+      - lon
+      - time
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: CPC Unified Gauge-Based Analysis of Daily Precipitation over
+        CONUS
+      description: 'CPC Unified Gauge-Based Analysis of Daily Precipitation over CONUS
+        at PSD Gridded Monthly Values. Monthly Values after 2006 are from the real
+        time files (RT)'
+      dims:
+        lat: 120
+        lon: 300
+        time: 846
+      history: created 05/2012 by CAS from data obtained at NOAA NCEP/CPC
+      platform: Observations
+      title: 'CPC Unified Gauge-Based Analysis of Daily Precipitation over CONUS at PSD Monthly Values'
+
+
+  gpcc:
+    args:
+      urlpath: /shared/obs/gridded/GPCC/precip.mon.total.v2018.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF 1.0
+      Original_Source: "http://www.dwd.de/en/FundE/Klima/KLIS/int/GPCC/GPCC.htm\n\
+        \ is the webpage and the data is at ftp://ftp.dwd.de/pub/data/gpcc/download.html"
+      Reference: 'Users of the data sets are kindly requested to give feed back and
+        to refer to GPCC publications on this webpage: http://www.dwd.de/bvbw/appmanager/bvbw/dwdwwwDesktop/?_nfpb=true&_pageLabel=_dwdwww_klima_umwelt_datenzentren_wzn&T12404518261141645246564gsbDocumentPath=Content%2FOeffentlichkeit%2FKU%2FKU4%2FKU42%2Fteaser__product__access.html&_state=maximized&_windowLabel=T12404518261141645246564&lastPageLabel=_dwdwww_klima_umwelt_datenzentren_wzn'
+      References: https://www.psl.noaa.gov/data/gridded/data.gpcc.html
+      coords:
+      - lat
+      - lon
+      - time
+      data_modified: '2019-03-12'
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: Global Precipitation Climatology Centre (GPCC)
+      dims:
+        lat: 360
+        lon: 720
+        time: 1512
+      history: Created 09/2018  based on V2018 data obtained via ftp
+      original_source: ftp://ftp-anon.dwd.de/pub/data/gpcc/html/fulldata_download.html
+      title: GPCC Full Data Reanalysis Version 2018 0.5x0.5 Monthly Total
+    
+  gpcp:
+    args:
+      urlpath: /shared/obs/gridded/GPCP/precip.mon.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Acknowledgement: '
+        '
+      Conventions: CF-1.0
+      NCO: 4.6.9
+      References: http://www.psl.noaa.gov/data/gridded/data.gpcp.html
+      citation: "Adler, R.F., G.J. Huffman, A. Chang, R. Ferraro, P. Xie, J. Janowiak,\
+        \ B. \nRudolf, U. Schneider, S. Curtis, D. Bolvin, A. Gruber, J. Susskind,\
+        \ P. \nArkin, 2003: The Version 2 Global Precipitation Climatology Project\
+        \ \n(GPCP) Monthly Precipitation Analysis (1979 - Present). J. Hydrometeor.,\
+        \ \n4(6), 1147-1167."
+      contributor_name: "Robert Adler    University of Maryland \nGeorge Huffman \
+        \ NASA Goddard Space Flight Center \nDavid Bolvin    NASA Goddard Space Flight\
+        \ Center/SSAI \nEric Nelkin     NASA Goddard Space Flight Center/SSAI \nUdo\
+        \ Schneider   GPCC, Deutscher Wetterdienst \nAndreas Becker  GPCC, Deutscher\
+        \ Wetterdienst \nLong Chiu       George Mason University \nMathew Sapiano\
+        \  University of Maryland \nPingping Xie    Climate Prediction Center, NWS,\
+        \ NOAA \nRalph Ferraro   NESDIS, NOAA \nJian-Jian Wang  University of Maryland\
+        \ \nGuojun Gu       University of Maryland"
+      coords:
+      - lat
+      - lon
+      - time
+      curator: 'Dr. Jian-Jian Wang
+        ESSIC, University of Maryland College Park
+        College Park, MD  20742  USA
+        Phone: +1 301-405-4887'
+      data_comment: Interim data covers 2020/03 through latest.
+      data_vars:
+        lat_bnds:
+        - lat
+        lon_bnds:
+        - lon
+        precip:
+        - lat
+        - lon
+        - time
+        time_bnds:
+        - time
+      dataset_title: Global Precipitation Climatology Project (GPCP) Monthly Analysis
+        Product
+      description: https://data.nodc.noaa.gov/cgi-bin/iso?id=gov.noaa.ncdc:C00970
+      dims:
+        lat: 72
+        lon: 144
+        nv: 2
+        time: 496
+      documentation: http://www.esrl.noaa.gov/psd/data/gridded/data.gpcp.html
+      history: "Generated at NOAA/ESRL PSD Sep 9 2016 based on data from source \n\
+        and stored in single netCDF4 file"
+      platform: NOAA POES (Polar Orbiting Environmental Satellites)
+      source: https://www.ncei.noaa.gov/data/global-precipitation-climatology-project-gpcp-monthly/access/
+      source_documentation: https://www.ncdc.noaa.gov/cdr/atmospheric/precipitation-gpcp-monthly
+      source_obs: "CDR RSS SSMI/SSMIS Tbs over ocean \nCDR SSMI/SSMIS rainrates over\
+        \ land (Ferraro) \nGeo-IR (Xie) calibrated by SSMI/SSMIS rainrates for sampling\
+        \ \nTOVS/AIRS empirical precipitation estimates at higher latitudes \n(ocean\
+        \ and land) \nGPCC gauge analysis to bias correct satellite estimates over\
+        \ land and \nmerge with satellite based on sampling \nOLR Precipitation Index\
+        \ (OPI) (Xie) used for period before 1988"
+      title: GPCP Version 2.3 Combined Precipitation Dataset (Final)
+      version: V2.3
+  cmap_monthly:
+    args:
+      urlpath: /shared/obs/gridded/CMAP/monthly/precip.mon.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: COARDS
+      References: https://www.psl.noaa.gov/data/gridded/data.cmap.html
+      coords:
+      - lat
+      - lon
+      - time
+      data_modified: '2020-05-11'
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: CPC Merged Analysis of Precipitation
+      date_modified: 26 Feb 2019
+      dims:
+        lat: 72
+        lon: 144
+        time: 496
+      documentation: https://www.esrl.noaa.gov/psd/data/gridded/data.cmap.html
+      history: update 05/2020 V2005
+      platform: Analyses
+      source: ftp ftp.cpc.ncep.noaa.gov precip/cmap/monthly
+      title: CPC Merged Analysis of Precipitation (excludes NCEP Reanalysis)
+      version: V2005
+  cmap_pentad:
+    args:
+      urlpath: /shared/obs/gridded/CMAP/pentad/precip.pentad.mean.nc
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: COARDS
+      References: https://www.psl.noaa.gov/data/gridded/data.cmap.html
+      Version: V1701
+      coords:
+      - lat
+      - lon
+      - time
+      data_vars:
+        precip:
+        - lat
+        - lon
+        - time
+      dataset_title: CPC Merged Analysis of Precipitation
+      dims:
+        lat: 72
+        lon: 144
+        time: 2774
+      documentation: https://www.esrl.noaa.gov/psd/data/gridded/data.cmap.html
+      hisotry: Converted to chunked, deflated non-packed NetCDF4 Jul 2014
+      history: update 03/2017 V1701
+      platform: Analyses
+      source: ftp ftp.cpc.ncep.noaa.gov precip/cmap/pentad
+      title: CPC Merged Analysis of Precipitation Pentad data (excludes NCEP Reanalysis
+        I)
+      version: V1701
