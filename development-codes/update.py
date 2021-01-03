@@ -177,7 +177,8 @@ def link_to_children(child, dp_name):
     
     #pdb.set_trace() 
     file_name = dp_name + ".html"
-
+    print(file_name)
+    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     fp = open('../'+file_name, "r+")
     fin = fp.read()
 
@@ -197,6 +198,11 @@ def gen_direct_parent(file_path):
         pass
 
 
+    try:
+        file_path = file_path.replace("/fx/fx/","/fx/")
+
+    except:
+        pass
     
     try:
         file_path = file_path.replace("/mon/Amon/","/mon/")
