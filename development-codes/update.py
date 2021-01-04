@@ -177,8 +177,6 @@ def link_to_children(child, dp_name):
     
     #pdb.set_trace() 
     file_name = dp_name + ".html"
-    print(file_name)
-    print("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
     fp = open('../'+file_name, "r+")
     fin = fp.read()
 
