@@ -23,6 +23,11 @@ def fake_generate_catalog(file_path):
         pass
 
 
+    try:
+        file_path = file_path.replace("/fx/fx/","/fx/")
+
+    except:
+        pass
     
     try:
         file_path = file_path.replace("/mon/Amon/","/mon/")
