@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ACCESS1-0 model output prepared for CMIP5 RCP4.5</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.css">
+    <link rel="stylesheet" href="static/pangeo-style.css">
+
+</head>
+<body>
+
+<div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="img/cola.gif"></span>
+                COLA Catalog</a>
+            <span class="navbar-text navbar-version pull-left"><b></b></span>
+        </div>
+        <div class="collapse navbar-collapse nav-collapse">
+            <ul class="nav navbar-nav">
+              <!--  <li><a href="https://medium.com/pangeo">Blog</a></li>
+                <li><a href="https://discourse.pangeo.io">Forum</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<main role="main" class="container">
+    <h1>ACCESS1-0 model output prepared for CMIP5 RCP4.5</h1>
+    <div>
+        <ol class="breadcrumb">
+
+            <li><a href="main">main</a></li>
+            <li><a href="model">model</a></li>
+            
+            <li><a href=cmip5>cmip5</a></li>
+
+<li><a href=cmip5_rcp45>cmip5_rcp45</a></li>
+
+<li><a href=cmip5_rcp45_atmos>cmip5_rcp45_atmos</a></li>
+
+<li><a href=cmip5_rcp45_atmos_mon>cmip5_rcp45_atmos_mon</a></li>
+
+<li><a href=cmip5_rcp45_atmos_mon_tauu>cmip5_rcp45_atmos_mon_tauu</a></li>
+
+<li><a href=cmip5_rcp45_atmos_mon_tauu_csiro-bom.access1-0>cmip5_rcp45_atmos_mon_tauu_csiro-bom.access1-0</a></li>
+
+<li><a href=cmip5_rcp45_atmos_mon_tauu_csiro-bom.access1-0_r1i1p1>cmip5_rcp45_atmos_mon_tauu_csiro-bom.access1-0_r1i1p1</a></li>
+
+
+            <li class="active">ACCESS1-0 model output prepared for CMIP5 RCP4.5</li>
+
+        </ol>
+    </div>
+
+    <div class="info">
+         <!-- <h2></h2> -->
+
+        <h3>Load in Python</h3>
+        <pre><code class="language-python">from intake import open_catalog<br>
+cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/tauu_Amon_ACCESS1-0_rcp45_r1i1p1.yaml")
+ds=cat.netcdf.read()</code></pre>
+
+        <h3>Metadata</h3>
+        <table class="table table-condensed table-hover">
+            <tbody>
+
+            <tr>
+                <td>title</td>
+                <td>ACCESS1-0 model output prepared for CMIP5 RCP4.5</td>
+            </tr>
+
+            <tr>
+                <td>location</td>
+                <td>/shared/cmip5/data/rcp45/atmos/mon/Amon/tauu/CSIRO-BOM.ACCESS1-0/r1i1p1</td>
+            </tr>
+
+            <tr>
+                <td>tags</td>
+                <td>gridded,global,model,monthly</td>
+            </tr>
+
+            <tr>
+                <td>catalog_dir</td>
+                <td>https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/tauu_Amon_ACCESS1-0_rcp45_r1i1p1.yaml</td>
+            </tr>
+    
+
+            <tr>
+                <td>last updated </td>
+                <td>2013-05-27</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="xarray">
+        <h3>Dataset Contents</h3>
+
+      <div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt"></div><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt, dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:    (bnds: 2, lat: 145, lon: 192, time: 1140)
+Coordinates:
+  * time       (time) float64 7.323e+05 7.324e+05 ... 7.67e+05 7.67e+05
+  * lat        (lat) float64 -90.0 -88.75 -87.5 -86.25 ... 86.25 87.5 88.75 90.0
+  * lon        (lon) float64 0.9375 2.812 4.688 6.562 ... 355.3 357.2 359.1
+Dimensions without coordinates: bnds
+Data variables:
+    time_bnds  (time, bnds) float64 7.323e+05 7.323e+05 ... 7.67e+05 7.67e+05
+    lat_bnds   (lat, bnds) float64 -90.0 -89.38 -89.38 ... 89.38 89.38 90.0
+    lon_bnds   (lon, bnds) float64 0.0 1.875 1.875 3.75 ... 358.1 358.1 360.0
+    tauu       (time, lat, lon) float32 ...
+Attributes:
+    institution:            CSIRO (Commonwealth Scientific and Industrial Res...
+    institute_id:           CSIRO-BOM
+    experiment_id:          rcp45
+    source:                 ACCESS1-0 2011. Atmosphere: AGCM v1.0 (N96 grid-p...
+    model_id:               ACCESS1-0
+    forcing:                GHG, Oz, SA, Sl, Vl, BC, OC, (GHG = CO2, N2O, CH4...
+    parent_experiment_id:   historical
+    parent_experiment_rip:  r1i1p1
+    branch_time:            732311.0
+    contact:                The ACCESS wiki: http://wiki.csiro.au/confluence/...
+    history:                CMIP5 compliant file produced from raw ACCESS mod...
+    references:             See http://wiki.csiro.au/confluence/display/ACCES...
+    initialization_method:  1
+    physics_version:        1
+    tracking_id:            706c4595-097f-47e7-a004-ec16b7549170
+    version_number:         v20120115
+    product:                output
+    experiment:             RCP4.5
+    frequency:              mon
+    creation_date:          2012-01-25T09:21:55Z
+    Conventions:            CF-1.4
+    project_id:             CMIP5
+    table_id:               Table Amon (27 April 2011) 9c851218e3842df9a62ef3...
+    title:                  ACCESS1-0 model output prepared for CMIP5 RCP4.5
+    parent_experiment:      historical
+    modeling_realm:         atmos
+    realization:            1
+    cmor_version:           2.8.0</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-fe6983d9-6c86-4cc1-9d22-be64a4542ad7' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-fe6983d9-6c86-4cc1-9d22-be64a4542ad7' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>lat</span>: 145</li><li><span class='xr-has-index'>lon</span>: 192</li><li><span class='xr-has-index'>time</span>: 1140</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-146bc829-5d5b-4493-bdd8-49abb7e2ef7a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-146bc829-5d5b-4493-bdd8-49abb7e2ef7a' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>7.323e+05 7.324e+05 ... 7.67e+05</div><input id='attrs-a56c6271-c73e-449a-83fe-4de53e4b9539' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a56c6271-c73e-449a-83fe-4de53e4b9539' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2bf778af-a16d-4ed9-9c14-ad8504b49eb6' class='xr-var-data-in' type='checkbox'><label for='data-2bf778af-a16d-4ed9-9c14-ad8504b49eb6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>time_bnds</dd><dt><span>units :</span></dt><dd>days since 0001-01-01</dd><dt><span>calendar :</span></dt><dd>proleptic_gregorian</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([732326.5, 732356. , 732385.5, ..., 766932.5, 766963. , 766993.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-90.0 -88.75 -87.5 ... 88.75 90.0</div><input id='attrs-4da4c557-dd6d-42c3-a70c-e0cd43b4e17c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4da4c557-dd6d-42c3-a70c-e0cd43b4e17c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6664b8e8-d68b-4fa8-866f-d17e0c0b44b1' class='xr-var-data-in' type='checkbox'><label for='data-6664b8e8-d68b-4fa8-866f-d17e0c0b44b1' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lat_bnds</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>standard_name :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>array([-90.  , -88.75, -87.5 , -86.25, -85.  , -83.75, -82.5 , -81.25, -80.  ,
+       -78.75, -77.5 , -76.25, -75.  , -73.75, -72.5 , -71.25, -70.  , -68.75,
+       -67.5 , -66.25, -65.  , -63.75, -62.5 , -61.25, -60.  , -58.75, -57.5 ,
+       -56.25, -55.  , -53.75, -52.5 , -51.25, -50.  , -48.75, -47.5 , -46.25,
+       -45.  , -43.75, -42.5 , -41.25, -40.  , -38.75, -37.5 , -36.25, -35.  ,
+       -33.75, -32.5 , -31.25, -30.  , -28.75, -27.5 , -26.25, -25.  , -23.75,
+       -22.5 , -21.25, -20.  , -18.75, -17.5 , -16.25, -15.  , -13.75, -12.5 ,
+       -11.25, -10.  ,  -8.75,  -7.5 ,  -6.25,  -5.  ,  -3.75,  -2.5 ,  -1.25,
+         0.  ,   1.25,   2.5 ,   3.75,   5.  ,   6.25,   7.5 ,   8.75,  10.  ,
+        11.25,  12.5 ,  13.75,  15.  ,  16.25,  17.5 ,  18.75,  20.  ,  21.25,
+        22.5 ,  23.75,  25.  ,  26.25,  27.5 ,  28.75,  30.  ,  31.25,  32.5 ,
+        33.75,  35.  ,  36.25,  37.5 ,  38.75,  40.  ,  41.25,  42.5 ,  43.75,
+        45.  ,  46.25,  47.5 ,  48.75,  50.  ,  51.25,  52.5 ,  53.75,  55.  ,
+        56.25,  57.5 ,  58.75,  60.  ,  61.25,  62.5 ,  63.75,  65.  ,  66.25,
+        67.5 ,  68.75,  70.  ,  71.25,  72.5 ,  73.75,  75.  ,  76.25,  77.5 ,
+        78.75,  80.  ,  81.25,  82.5 ,  83.75,  85.  ,  86.25,  87.5 ,  88.75,
+        90.  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.9375 2.812 4.688 ... 357.2 359.1</div><input id='attrs-b9ffc77e-0c0b-473c-8b3a-9ddf7f23c29b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b9ffc77e-0c0b-473c-8b3a-9ddf7f23c29b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-151de1eb-0202-444d-b9f3-d3ae8fd26791' class='xr-var-data-in' type='checkbox'><label for='data-151de1eb-0202-444d-b9f3-d3ae8fd26791' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>lon_bnds</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>standard_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([  0.9375,   2.8125,   4.6875,   6.5625,   8.4375,  10.3125,  12.1875,
+        14.0625,  15.9375,  17.8125,  19.6875,  21.5625,  23.4375,  25.3125,
+        27.1875,  29.0625,  30.9375,  32.8125,  34.6875,  36.5625,  38.4375,
+        40.3125,  42.1875,  44.0625,  45.9375,  47.8125,  49.6875,  51.5625,
+        53.4375,  55.3125,  57.1875,  59.0625,  60.9375,  62.8125,  64.6875,
+        66.5625,  68.4375,  70.3125,  72.1875,  74.0625,  75.9375,  77.8125,
+        79.6875,  81.5625,  83.4375,  85.3125,  87.1875,  89.0625,  90.9375,
+        92.8125,  94.6875,  96.5625,  98.4375, 100.3125, 102.1875, 104.0625,
+       105.9375, 107.8125, 109.6875, 111.5625, 113.4375, 115.3125, 117.1875,
+       119.0625, 120.9375, 122.8125, 124.6875, 126.5625, 128.4375, 130.3125,
+       132.1875, 134.0625, 135.9375, 137.8125, 139.6875, 141.5625, 143.4375,
+       145.3125, 147.1875, 149.0625, 150.9375, 152.8125, 154.6875, 156.5625,
+       158.4375, 160.3125, 162.1875, 164.0625, 165.9375, 167.8125, 169.6875,
+       171.5625, 173.4375, 175.3125, 177.1875, 179.0625, 180.9375, 182.8125,
+       184.6875, 186.5625, 188.4375, 190.3125, 192.1875, 194.0625, 195.9375,
+       197.8125, 199.6875, 201.5625, 203.4375, 205.3125, 207.1875, 209.0625,
+       210.9375, 212.8125, 214.6875, 216.5625, 218.4375, 220.3125, 222.1875,
+       224.0625, 225.9375, 227.8125, 229.6875, 231.5625, 233.4375, 235.3125,
+       237.1875, 239.0625, 240.9375, 242.8125, 244.6875, 246.5625, 248.4375,
+       250.3125, 252.1875, 254.0625, 255.9375, 257.8125, 259.6875, 261.5625,
+       263.4375, 265.3125, 267.1875, 269.0625, 270.9375, 272.8125, 274.6875,
+       276.5625, 278.4375, 280.3125, 282.1875, 284.0625, 285.9375, 287.8125,
+       289.6875, 291.5625, 293.4375, 295.3125, 297.1875, 299.0625, 300.9375,
+       302.8125, 304.6875, 306.5625, 308.4375, 310.3125, 312.1875, 314.0625,
+       315.9375, 317.8125, 319.6875, 321.5625, 323.4375, 325.3125, 327.1875,
+       329.0625, 330.9375, 332.8125, 334.6875, 336.5625, 338.4375, 340.3125,
+       342.1875, 344.0625, 345.9375, 347.8125, 349.6875, 351.5625, 353.4375,
+       355.3125, 357.1875, 359.0625])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-11e2b44e-d42e-4cc7-a2b3-6a55916fc5e8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-11e2b44e-d42e-4cc7-a2b3-6a55916fc5e8' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-441faf92-7252-4ef7-8850-4563eb151c31' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-441faf92-7252-4ef7-8850-4563eb151c31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d386274b-28a7-4619-9623-9942ea7b6994' class='xr-var-data-in' type='checkbox'><label for='data-d386274b-28a7-4619-9623-9942ea7b6994' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[732311., 732342.],
+       [732342., 732370.],
+       [732370., 732401.],
+       ...,
+       [766917., 766948.],
+       [766948., 766978.],
+       [766978., 767009.]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(lat, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3f2bbdf6-af5f-4f07-97e2-4583193b9624' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3f2bbdf6-af5f-4f07-97e2-4583193b9624' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9903f3da-2746-410a-9626-d37797635822' class='xr-var-data-in' type='checkbox'><label for='data-9903f3da-2746-410a-9626-d37797635822' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[-90.   , -89.375],
+       [-89.375, -88.125],
+       [-88.125, -86.875],
+       ...,
+       [ 86.875,  88.125],
+       [ 88.125,  89.375],
+       [ 89.375,  90.   ]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(lon, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e0e5225e-0ce2-47d3-a0e3-414caa886ae1' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-e0e5225e-0ce2-47d3-a0e3-414caa886ae1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4371f493-cfe0-43ce-ab7b-e3ece5537a5b' class='xr-var-data-in' type='checkbox'><label for='data-4371f493-cfe0-43ce-ab7b-e3ece5537a5b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[  0.   ,   1.875],
+       [  1.875,   3.75 ],
+       [  3.75 ,   5.625],
+       ...,
+       [354.375, 356.25 ],
+       [356.25 , 358.125],
+       [358.125, 360.   ]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>tauu</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-93385db1-d5b2-4584-9479-5eda5108c10b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-93385db1-d5b2-4584-9479-5eda5108c10b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-dfcc1037-958e-48d8-9db4-939c4ec49ba4' class='xr-var-data-in' type='checkbox'><label for='data-dfcc1037-958e-48d8-9db4-939c4ec49ba4' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_downward_eastward_stress</dd><dt><span>long_name :</span></dt><dd>Surface Downward Eastward Wind Stress</dd><dt><span>units :</span></dt><dd>Pa</dd><dt><span>original_units :</span></dt><dd>N m-2</dd><dt><span>history :</span></dt><dd>2012-01-25T09:21:55Z altered by CMOR: Converted units from &#x27;N m-2&#x27; to &#x27;Pa&#x27;. 2012-01-25T09:21:55Z altered by CMOR: replaced missing value flag (-1.07374e+09) with standard missing value (1e+20).</dd><dt><span>cell_methods :</span></dt><dd>time: mean</dd><dt><span>associated_files :</span></dt><dd>baseURL: http://cmip-pcmdi.llnl.gov/CMIP5/dataLocation gridspecFile: gridspec_atmos_fx_ACCESS1-0_rcp45_r0i0p0.nc</dd></dl></div><div class='xr-var-data'><pre>[31737600 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9ec016ed-7d5c-49af-ab54-486907ae0e08' class='xr-section-summary-in' type='checkbox'  ><label for='section-9ec016ed-7d5c-49af-ab54-486907ae0e08' class='xr-section-summary' >Attributes: <span>(28)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>institution :</span></dt><dd>CSIRO (Commonwealth Scientific and Industrial Research Organisation, Australia), and BOM (Bureau of Meteorology, Australia)</dd><dt><span>institute_id :</span></dt><dd>CSIRO-BOM</dd><dt><span>experiment_id :</span></dt><dd>rcp45</dd><dt><span>source :</span></dt><dd>ACCESS1-0 2011. Atmosphere: AGCM v1.0 (N96 grid-point, 1.875 degrees EW x approx 1.25 degree NS, 38 levels); ocean: NOAA/GFDL MOM4p1 (nominal 1.0 degree EW x 1.0 degrees NS, tripolar north of 65N, equatorial refinement to 1/3 degree from 10S to 10 N, cosine dependent NS south of 25S, 50 levels); sea ice: CICE4.1 (nominal 1.0 degree EW x 1.0 degrees NS, tripolar north of 65N, equatorial refinement to 1/3 degree from 10S to 10 N, cosine dependent NS south of 25S); land: MOSES2 (1.875 degree EW x 1.25 degree NS, 4 levels</dd><dt><span>model_id :</span></dt><dd>ACCESS1-0</dd><dt><span>forcing :</span></dt><dd>GHG, Oz, SA, Sl, Vl, BC, OC, (GHG = CO2, N2O, CH4, CFC11, CFC12, CFC113, HCFC22, HFC125, HFC134a)</dd><dt><span>parent_experiment_id :</span></dt><dd>historical</dd><dt><span>parent_experiment_rip :</span></dt><dd>r1i1p1</dd><dt><span>branch_time :</span></dt><dd>732311.0</dd><dt><span>contact :</span></dt><dd>The ACCESS wiki: http://wiki.csiro.au/confluence/display/ACCESS/Home. Contact Tony.Hirst@csiro.au regarding the ACCESS coupled climate model. Contact Peter.Uhe@csiro.au regarding ACCESS coupled climate model CMIP5 datasets.</dd><dt><span>history :</span></dt><dd>CMIP5 compliant file produced from raw ACCESS model output using the ACCESS Post-Processor and CMOR2. 2012-01-25T09:21:55Z CMOR rewrote data to comply with CF standards and CMIP5 requirements.</dd><dt><span>references :</span></dt><dd>See http://wiki.csiro.au/confluence/display/ACCESS/ACCESS+Publications</dd><dt><span>initialization_method :</span></dt><dd>1</dd><dt><span>physics_version :</span></dt><dd>1</dd><dt><span>tracking_id :</span></dt><dd>706c4595-097f-47e7-a004-ec16b7549170</dd><dt><span>version_number :</span></dt><dd>v20120115</dd><dt><span>product :</span></dt><dd>output</dd><dt><span>experiment :</span></dt><dd>RCP4.5</dd><dt><span>frequency :</span></dt><dd>mon</dd><dt><span>creation_date :</span></dt><dd>2012-01-25T09:21:55Z</dd><dt><span>Conventions :</span></dt><dd>CF-1.4</dd><dt><span>project_id :</span></dt><dd>CMIP5</dd><dt><span>table_id :</span></dt><dd>Table Amon (27 April 2011) 9c851218e3842df9a62ef38b1e2575bb</dd><dt><span>title :</span></dt><dd>ACCESS1-0 model output prepared for CMIP5 RCP4.5</dd><dt><span>parent_experiment :</span></dt><dd>historical</dd><dt><span>modeling_realm :</span></dt><dd>atmos</dd><dt><span>realization :</span></dt><dd>1</dd><dt><span>cmor_version :</span></dt><dd>2.8.0</dd></dl></div></li></ul></div></div>
+    
+
+
+    </div>
+  </div>
+
+</main>
+
+
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
