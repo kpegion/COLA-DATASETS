@@ -33,6 +33,11 @@ def make_ancestors(ancestors, _type):
         pass
 
 
+    try:
+        file_path = file_path.replace("/fx/fx/","/fx/")
+
+    except:
+        pass
     
     try:
         ancestors = ancestors.replace("/mon/Amon/","/mon/")
