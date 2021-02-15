@@ -99,9 +99,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     #direct_parent = path.split('/')[-1].lower()
     direct_parent = ans[-1]
-    print("nousssssssssssssssssssssssssssssssshin\n")
     print(dataset_sub_name)
-    print("nousssssssssssssssssssssssssssssssshin\n")
     link_to_children(dataset_sub_name, direct_parent)
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
