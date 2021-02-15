@@ -170,6 +170,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
 def link_to_children(child, dp_name):
 
+    child = child + ".nc"
     print(child)
     print("child up dp down")
     print(dp_name)
