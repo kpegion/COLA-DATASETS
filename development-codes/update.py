@@ -170,6 +170,9 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
 def link_to_children(child, dp_name):
 
+    print(child)
+    print("child up dp down")
+    print(dp_name)
     try:
         child2 = child.replace("_.nc","")
     except:

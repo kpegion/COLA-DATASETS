@@ -124,7 +124,8 @@ def fake_generate_catalog(file_path):
 
 
 def make_html(current, parent ="", ancestors=[]):
-
+    print("current is *******************************")
+    print(current)
     catalog_dir = "https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/"
     open_catalog = catalog_dir + current +".yaml"
     title = current
