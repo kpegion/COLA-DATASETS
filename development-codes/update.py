@@ -170,6 +170,9 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
 def link_to_children(child, dp_name):
 
+    #todo
+    # this child = child + ".nc" was only added to solve the problem with fx. you can remove it later
+    child = child + ".nc"
     try:
         child2 = child.replace("_.nc","")
     except:
