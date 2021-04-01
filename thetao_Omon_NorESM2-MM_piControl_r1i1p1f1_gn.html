@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NorESM2-MM output prepared for CMIP6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.css">
+    <link rel="stylesheet" href="static/pangeo-style.css">
+
+</head>
+<body>
+
+<div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="img/cola.gif"></span>
+                COLA Catalog</a>
+            <span class="navbar-text navbar-version pull-left"><b></b></span>
+        </div>
+        <div class="collapse navbar-collapse nav-collapse">
+            <ul class="nav navbar-nav">
+              <!--  <li><a href="https://medium.com/pangeo">Blog</a></li>
+                <li><a href="https://discourse.pangeo.io">Forum</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<main role="main" class="container">
+    <h1>NorESM2-MM output prepared for CMIP6</h1>
+    <div>
+        <ol class="breadcrumb">
+
+            <li><a href="main">main</a></li>
+            <li><a href="model">model</a></li>
+            
+            <li><a href=cmip6>cmip6</a></li>
+
+<li><a href=cmip6_picontrol>cmip6_picontrol</a></li>
+
+<li><a href=cmip6_picontrol_ocean>cmip6_picontrol_ocean</a></li>
+
+<li><a href=cmip6_picontrol_ocean_mon>cmip6_picontrol_ocean_mon</a></li>
+
+<li><a href=cmip6_picontrol_ocean_mon_thetao>cmip6_picontrol_ocean_mon_thetao</a></li>
+
+<li><a href=cmip6_picontrol_ocean_mon_thetao_ncc.noresm2-mm>cmip6_picontrol_ocean_mon_thetao_ncc.noresm2-mm</a></li>
+
+<li><a href=cmip6_picontrol_ocean_mon_thetao_ncc.noresm2-mm_r1i1p1>cmip6_picontrol_ocean_mon_thetao_ncc.noresm2-mm_r1i1p1</a></li>
+
+
+            <li class="active">NorESM2-MM output prepared for CMIP6</li>
+
+        </ol>
+    </div>
+
+    <div class="info">
+         <!-- <h2></h2> -->
+
+        <h3>Load in Python</h3>
+        <pre><code class="language-python">from intake import open_catalog<br>
+cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/thetao_Omon_NorESM2-MM_piControl_r1i1p1f1_gn.yaml")
+ds=cat.netcdf.read()</code></pre>
+
+        <h3>Metadata</h3>
+        <table class="table table-condensed table-hover">
+            <tbody>
+
+            <tr>
+                <td>title</td>
+                <td>NorESM2-MM output prepared for CMIP6</td>
+            </tr>
+
+            <tr>
+                <td>location</td>
+                <td>/shared/cmip6/data/piControl/ocean/mon/Omon/thetao/NCC.NorESM2-MM/r1i1p1</td>
+            </tr>
+
+            <tr>
+                <td>tags</td>
+                <td>gridded,global,model,monthly</td>
+            </tr>
+
+            <tr>
+                <td>catalog_dir</td>
+                <td>https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/thetao_Omon_NorESM2-MM_piControl_r1i1p1f1_gn.yaml</td>
+            </tr>
+    
+
+            <tr>
+                <td>last updated </td>
+                <td>2020-10-23</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="xarray">
+        <h3>Dataset Contents</h3>
+
+      <div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt"></div><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt, dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:             (bnds: 2, i: 360, j: 385, rho: 53, time: 6000, vertices: 4)
+Coordinates:
+  * time                (time) float64 4.377e+05 4.377e+05 ... 6.201e+05
+  * rho                 (rho) float64 1.027e+03 1.028e+03 ... 1.038e+03
+  * j                   (j) int32 1 2 3 4 5 6 7 ... 379 380 381 382 383 384 385
+  * i                   (i) int32 1 2 3 4 5 6 7 ... 354 355 356 357 358 359 360
+    latitude            (j, i) float64 dask.array&lt;chunksize=(385, 360), meta=np.ndarray&gt;
+    longitude           (j, i) float64 dask.array&lt;chunksize=(385, 360), meta=np.ndarray&gt;
+Dimensions without coordinates: bnds, vertices
+Data variables:
+    time_bnds           (time, bnds) float64 dask.array&lt;chunksize=(120, 2), meta=np.ndarray&gt;
+    rho_bnds            (time, rho, bnds) float64 dask.array&lt;chunksize=(120, 53, 2), meta=np.ndarray&gt;
+    vertices_latitude   (time, j, i, vertices) float64 dask.array&lt;chunksize=(120, 385, 360, 4), meta=np.ndarray&gt;
+    vertices_longitude  (time, j, i, vertices) float64 dask.array&lt;chunksize=(120, 385, 360, 4), meta=np.ndarray&gt;
+    thetao              (time, rho, j, i) float32 dask.array&lt;chunksize=(120, 53, 385, 360), meta=np.ndarray&gt;
+Attributes:
+    Conventions:               CF-1.7 CMIP-6.2
+    activity_id:               CMIP
+    branch_method:             Hybrid-restart from year 1200-01-01 of piContr...
+    branch_time:               0.0
+    branch_time_in_child:      0.0
+    branch_time_in_parent:     438000.0
+    contact:                   Please send any requests or bug reports to nor...
+    creation_date:             2019-11-22T12:18:02Z
+    data_specs_version:        01.00.31
+    experiment:                pre-industrial control
+    experiment_id:             piControl
+    external_variables:        areacello volcello
+    forcing_index:             1
+    frequency:                 mon
+    further_info_url:          https://furtherinfo.es-doc.org/CMIP6.NCC.NorES...
+    grid:                      tripolar grid with 1deg nominal resolution, ve...
+    grid_label:                gn
+    history:                   2019-11-22T12:18:02Z ; CMOR rewrote data to be...
+    initialization_index:      1
+    institution:               NorESM Climate modeling Consortium consisting ...
+    institution_id:            NCC
+    mip_era:                   CMIP6
+    model_id:                  NorESM2-MM
+    nominal_resolution:        100 km
+    parent_activity_id:        CMIP
+    parent_experiment_id:      piControl-spinup
+    parent_mip_era:            CMIP6
+    parent_source_id:          NorESM2-MM
+    parent_sub_experiment_id:  none
+    parent_time_units:         days since 0001-01-01
+    parent_variant_label:      r1i1p1f1
+    physics_index:             1
+    product:                   model-output
+    realization_index:         1
+    realm:                     ocean
+    run_variant:               N/A
+    source:                    NorESM2-MM (2017): 
+aerosol: OsloAero
+atmos:...
+    source_id:                 NorESM2-MM
+    source_type:               AOGCM AER BGC
+    sub_experiment:            none
+    sub_experiment_id:         none
+    table_id:                  Omon
+    table_info:                Creation Date:(24 July 2019) MD5:0bb394a356ef9...
+    title:                     NorESM2-MM output prepared for CMIP6
+    variable_id:               thetao
+    variant_label:             r1i1p1f1
+    license:                   CMIP6 model data produced by NCC is licensed u...
+    cmor_version:              3.5.0
+    tracking_id:               hdl:21.14100/a60ce48a-42e0-4a22-8265-70c0c1108de7</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-d6a58185-08d0-4030-8923-649f30f61d27' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d6a58185-08d0-4030-8923-649f30f61d27' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>i</span>: 360</li><li><span class='xr-has-index'>j</span>: 385</li><li><span class='xr-has-index'>rho</span>: 53</li><li><span class='xr-has-index'>time</span>: 6000</li><li><span>vertices</span>: 4</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-d5b5540d-cd6d-4b56-b0ed-aef392067e70' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d5b5540d-cd6d-4b56-b0ed-aef392067e70' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>4.377e+05 4.377e+05 ... 6.201e+05</div><input id='attrs-8b94d6b6-be65-4aa7-a3ba-7da0ad00a7a0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8b94d6b6-be65-4aa7-a3ba-7da0ad00a7a0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-325c80fa-2ee6-43fd-ac89-631e1da3a2a3' class='xr-var-data-in' type='checkbox'><label for='data-325c80fa-2ee6-43fd-ac89-631e1da3a2a3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>time_bnds</dd><dt><span>units :</span></dt><dd>days since 0001-01-01 00:00</dd><dt><span>calendar :</span></dt><dd>noleap</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([437650.5, 437680. , 437709.5, ..., 620058.5, 620089. , 620119.5])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>rho</span></div><div class='xr-var-dims'>(rho)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.027e+03 1.028e+03 ... 1.038e+03</div><input id='attrs-b674022f-fd01-46ba-9056-5089370d45d5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b674022f-fd01-46ba-9056-5089370d45d5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6caf4325-e792-4180-b121-5b3b43fa1a74' class='xr-var-data-in' type='checkbox'><label for='data-6caf4325-e792-4180-b121-5b3b43fa1a74' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>rho_bnds</dd><dt><span>units :</span></dt><dd>kg m-3</dd><dt><span>axis :</span></dt><dd>Z</dd><dt><span>positive :</span></dt><dd>down</dd><dt><span>long_name :</span></dt><dd>potential density referenced to 2000 dbar</dd><dt><span>standard_name :</span></dt><dd>sea_water_potential_density</dd></dl></div><div class='xr-var-data'><pre>array([1027.22 , 1027.72 , 1028.202, 1028.681, 1029.158, 1029.632, 1030.102,
+       1030.567, 1031.026, 1031.477, 1031.92 , 1032.352, 1032.772, 1033.176,
+       1033.564, 1033.932, 1034.279, 1034.602, 1034.9  , 1035.172, 1035.417,
+       1035.637, 1035.832, 1036.003, 1036.153, 1036.284, 1036.398, 1036.497,
+       1036.584, 1036.66 , 1036.728, 1036.789, 1036.843, 1036.893, 1036.939,
+       1036.982, 1037.022, 1037.06 , 1037.096, 1037.131, 1037.166, 1037.199,
+       1037.231, 1037.264, 1037.295, 1037.327, 1037.358, 1037.388, 1037.419,
+       1037.45 , 1037.48 , 1037.58 , 1037.8  ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>j</span></div><div class='xr-var-dims'>(j)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 381 382 383 384 385</div><input id='attrs-23a8458e-8341-47f5-9729-1e61f7c0cc34' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-23a8458e-8341-47f5-9729-1e61f7c0cc34' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d51e6f38-4c69-4d4d-8c9a-c1c3eea005b5' class='xr-var-data-in' type='checkbox'><label for='data-d51e6f38-4c69-4d4d-8c9a-c1c3eea005b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>cell index along second dimension</dd></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3, ..., 383, 384, 385], dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>i</span></div><div class='xr-var-dims'>(i)</div><div class='xr-var-dtype'>int32</div><div class='xr-var-preview xr-preview'>1 2 3 4 5 6 ... 356 357 358 359 360</div><input id='attrs-b071a63d-edf0-46a4-98ff-c45d722d843f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b071a63d-edf0-46a4-98ff-c45d722d843f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-43219d32-65a6-4820-b595-ec2c60df6b95' class='xr-var-data-in' type='checkbox'><label for='data-43219d32-65a6-4820-b595-ec2c60df6b95' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>1</dd><dt><span>long_name :</span></dt><dd>cell index along first dimension</dd></dl></div><div class='xr-var-data'><pre>array([  1,   2,   3, ..., 358, 359, 360], dtype=int32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(j, i)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(385, 360), meta=np.ndarray&gt;</div><input id='attrs-011de31b-f6e1-42dc-a8a2-2287973ecc32' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-011de31b-f6e1-42dc-a8a2-2287973ecc32' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-55d50c74-331b-4966-8c27-748c05c690c6' class='xr-var-data-in' type='checkbox'><label for='data-55d50c74-331b-4966-8c27-748c05c690c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>bounds :</span></dt><dd>vertices_latitude</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 1.11 MB </td> <td> 1.11 MB </td></tr>
+    <tr><th> Shape </th><td> (385, 360) </td> <td> (385, 360) </td></tr>
+    <tr><th> Count </th><td> 245 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 112.207792,0.000000 112.207792,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="56.103896" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >360</text>
+  <text x="132.207792" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.207792,60.000000)">385</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(j, i)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(385, 360), meta=np.ndarray&gt;</div><input id='attrs-c85b7840-ecc5-4508-8ad3-d67b44c0f9b2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c85b7840-ecc5-4508-8ad3-d67b44c0f9b2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fdb950ed-7398-457b-8b8d-fd2787018d75' class='xr-var-data-in' type='checkbox'><label for='data-fdb950ed-7398-457b-8b8d-fd2787018d75' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>bounds :</span></dt><dd>vertices_longitude</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 1.11 MB </td> <td> 1.11 MB </td></tr>
+    <tr><th> Shape </th><td> (385, 360) </td> <td> (385, 360) </td></tr>
+    <tr><th> Count </th><td> 245 Tasks </td><td> 1 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="162" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="112" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="120" x2="112" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="112" y1="0" x2="112" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 112.207792,0.000000 112.207792,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="56.103896" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >360</text>
+  <text x="132.207792" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,132.207792,60.000000)">385</text>
+</svg>
+</td>
+</tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-73b65c0d-c231-4a20-9b5e-a63abbd3549a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-73b65c0d-c231-4a20-9b5e-a63abbd3549a' class='xr-section-summary' >Data variables: <span>(5)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(120, 2), meta=np.ndarray&gt;</div><input id='attrs-09d531a6-2ef7-4ff4-86f2-3838db41555d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-09d531a6-2ef7-4ff4-86f2-3838db41555d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1f3f916d-f9a3-4b75-92a6-de892ba8dda8' class='xr-var-data-in' type='checkbox'><label for='data-1f3f916d-f9a3-4b75-92a6-de892ba8dda8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 96.00 kB </td> <td> 1.92 kB </td></tr>
+    <tr><th> Shape </th><td> (6000, 2) </td> <td> (120, 2) </td></tr>
+    <tr><th> Count </th><td> 150 Tasks </td><td> 50 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="2" x2="25" y2="2" />
+  <line x1="0" y1="4" x2="25" y2="4" />
+  <line x1="0" y1="7" x2="25" y2="7" />
+  <line x1="0" y1="9" x2="25" y2="9" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="14" x2="25" y2="14" />
+  <line x1="0" y1="16" x2="25" y2="16" />
+  <line x1="0" y1="19" x2="25" y2="19" />
+  <line x1="0" y1="21" x2="25" y2="21" />
+  <line x1="0" y1="24" x2="25" y2="24" />
+  <line x1="0" y1="26" x2="25" y2="26" />
+  <line x1="0" y1="28" x2="25" y2="28" />
+  <line x1="0" y1="31" x2="25" y2="31" />
+  <line x1="0" y1="33" x2="25" y2="33" />
+  <line x1="0" y1="36" x2="25" y2="36" />
+  <line x1="0" y1="38" x2="25" y2="38" />
+  <line x1="0" y1="40" x2="25" y2="40" />
+  <line x1="0" y1="43" x2="25" y2="43" />
+  <line x1="0" y1="45" x2="25" y2="45" />
+  <line x1="0" y1="48" x2="25" y2="48" />
+  <line x1="0" y1="50" x2="25" y2="50" />
+  <line x1="0" y1="52" x2="25" y2="52" />
+  <line x1="0" y1="55" x2="25" y2="55" />
+  <line x1="0" y1="57" x2="25" y2="57" />
+  <line x1="0" y1="60" x2="25" y2="60" />
+  <line x1="0" y1="62" x2="25" y2="62" />
+  <line x1="0" y1="64" x2="25" y2="64" />
+  <line x1="0" y1="67" x2="25" y2="67" />
+  <line x1="0" y1="69" x2="25" y2="69" />
+  <line x1="0" y1="72" x2="25" y2="72" />
+  <line x1="0" y1="74" x2="25" y2="74" />
+  <line x1="0" y1="76" x2="25" y2="76" />
+  <line x1="0" y1="79" x2="25" y2="79" />
+  <line x1="0" y1="81" x2="25" y2="81" />
+  <line x1="0" y1="84" x2="25" y2="84" />
+  <line x1="0" y1="86" x2="25" y2="86" />
+  <line x1="0" y1="88" x2="25" y2="88" />
+  <line x1="0" y1="91" x2="25" y2="91" />
+  <line x1="0" y1="93" x2="25" y2="93" />
+  <line x1="0" y1="96" x2="25" y2="96" />
+  <line x1="0" y1="98" x2="25" y2="98" />
+  <line x1="0" y1="100" x2="25" y2="100" />
+  <line x1="0" y1="103" x2="25" y2="103" />
+  <line x1="0" y1="105" x2="25" y2="105" />
+  <line x1="0" y1="108" x2="25" y2="108" />
+  <line x1="0" y1="110" x2="25" y2="110" />
+  <line x1="0" y1="112" x2="25" y2="112" />
+  <line x1="0" y1="115" x2="25" y2="115" />
+  <line x1="0" y1="117" x2="25" y2="117" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 25.412617,0.000000 25.412617,120.000000 0.000000,120.000000" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">6000</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>rho_bnds</span></div><div class='xr-var-dims'>(time, rho, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(120, 53, 2), meta=np.ndarray&gt;</div><input id='attrs-b6dd0557-dba1-4030-ad86-8a23e3bef678' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-b6dd0557-dba1-4030-ad86-8a23e3bef678' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-32950b2c-6603-450f-be1f-cf24c46ea993' class='xr-var-data-in' type='checkbox'><label for='data-32950b2c-6603-450f-be1f-cf24c46ea993' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 5.09 MB </td> <td> 101.76 kB </td></tr>
+    <tr><th> Shape </th><td> (6000, 53, 2) </td> <td> (120, 53, 2) </td></tr>
+    <tr><th> Count </th><td> 200 Tasks </td><td> 50 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="156" height="146" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="10" y1="25" x2="80" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="25" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="26" />
+  <line x1="12" y1="2" x2="12" y2="28" />
+  <line x1="14" y1="4" x2="14" y2="29" />
+  <line x1="15" y1="5" x2="15" y2="31" />
+  <line x1="17" y1="7" x2="17" y2="32" />
+  <line x1="18" y1="8" x2="18" y2="33" />
+  <line x1="19" y1="9" x2="19" y2="35" />
+  <line x1="21" y1="11" x2="21" y2="36" />
+  <line x1="22" y1="12" x2="22" y2="38" />
+  <line x1="24" y1="14" x2="24" y2="39" />
+  <line x1="25" y1="15" x2="25" y2="40" />
+  <line x1="26" y1="16" x2="26" y2="42" />
+  <line x1="28" y1="18" x2="28" y2="43" />
+  <line x1="29" y1="19" x2="29" y2="45" />
+  <line x1="31" y1="21" x2="31" y2="46" />
+  <line x1="32" y1="22" x2="32" y2="48" />
+  <line x1="34" y1="24" x2="34" y2="49" />
+  <line x1="35" y1="25" x2="35" y2="50" />
+  <line x1="36" y1="26" x2="36" y2="52" />
+  <line x1="38" y1="28" x2="38" y2="53" />
+  <line x1="39" y1="29" x2="39" y2="55" />
+  <line x1="41" y1="31" x2="41" y2="56" />
+  <line x1="42" y1="32" x2="42" y2="57" />
+  <line x1="43" y1="33" x2="43" y2="59" />
+  <line x1="45" y1="35" x2="45" y2="60" />
+  <line x1="46" y1="36" x2="46" y2="62" />
+  <line x1="48" y1="38" x2="48" y2="63" />
+  <line x1="49" y1="39" x2="49" y2="64" />
+  <line x1="50" y1="40" x2="50" y2="66" />
+  <line x1="52" y1="42" x2="52" y2="67" />
+  <line x1="53" y1="43" x2="53" y2="69" />
+  <line x1="55" y1="45" x2="55" y2="70" />
+  <line x1="56" y1="46" x2="56" y2="72" />
+  <line x1="58" y1="48" x2="58" y2="73" />
+  <line x1="59" y1="49" x2="59" y2="74" />
+  <line x1="60" y1="50" x2="60" y2="76" />
+  <line x1="62" y1="52" x2="62" y2="77" />
+  <line x1="63" y1="53" x2="63" y2="79" />
+  <line x1="65" y1="55" x2="65" y2="80" />
+  <line x1="66" y1="56" x2="66" y2="81" />
+  <line x1="67" y1="57" x2="67" y2="83" />
+  <line x1="69" y1="59" x2="69" y2="84" />
+  <line x1="70" y1="60" x2="70" y2="86" />
+  <line x1="72" y1="62" x2="72" y2="87" />
+  <line x1="73" y1="63" x2="73" y2="88" />
+  <line x1="74" y1="64" x2="74" y2="90" />
+  <line x1="76" y1="66" x2="76" y2="91" />
+  <line x1="77" y1="67" x2="77" y2="93" />
+  <line x1="79" y1="69" x2="79" y2="94" />
+  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 80.588235,70.588235 80.588235,96.000852 10.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="36" y2="1" />
+  <line x1="12" y1="2" x2="38" y2="2" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="15" y1="5" x2="41" y2="5" />
+  <line x1="17" y1="7" x2="42" y2="7" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="19" y1="9" x2="45" y2="9" />
+  <line x1="21" y1="11" x2="46" y2="11" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="24" y1="14" x2="49" y2="14" />
+  <line x1="25" y1="15" x2="50" y2="15" />
+  <line x1="26" y1="16" x2="52" y2="16" />
+  <line x1="28" y1="18" x2="53" y2="18" />
+  <line x1="29" y1="19" x2="55" y2="19" />
+  <line x1="31" y1="21" x2="56" y2="21" />
+  <line x1="32" y1="22" x2="58" y2="22" />
+  <line x1="34" y1="24" x2="59" y2="24" />
+  <line x1="35" y1="25" x2="60" y2="25" />
+  <line x1="36" y1="26" x2="62" y2="26" />
+  <line x1="38" y1="28" x2="63" y2="28" />
+  <line x1="39" y1="29" x2="65" y2="29" />
+  <line x1="41" y1="31" x2="66" y2="31" />
+  <line x1="42" y1="32" x2="67" y2="32" />
+  <line x1="43" y1="33" x2="69" y2="33" />
+  <line x1="45" y1="35" x2="70" y2="35" />
+  <line x1="46" y1="36" x2="72" y2="36" />
+  <line x1="48" y1="38" x2="73" y2="38" />
+  <line x1="49" y1="39" x2="74" y2="39" />
+  <line x1="50" y1="40" x2="76" y2="40" />
+  <line x1="52" y1="42" x2="77" y2="42" />
+  <line x1="53" y1="43" x2="79" y2="43" />
+  <line x1="55" y1="45" x2="80" y2="45" />
+  <line x1="56" y1="46" x2="82" y2="46" />
+  <line x1="58" y1="48" x2="83" y2="48" />
+  <line x1="59" y1="49" x2="84" y2="49" />
+  <line x1="60" y1="50" x2="86" y2="50" />
+  <line x1="62" y1="52" x2="87" y2="52" />
+  <line x1="63" y1="53" x2="89" y2="53" />
+  <line x1="65" y1="55" x2="90" y2="55" />
+  <line x1="66" y1="56" x2="91" y2="56" />
+  <line x1="67" y1="57" x2="93" y2="57" />
+  <line x1="69" y1="59" x2="94" y2="59" />
+  <line x1="70" y1="60" x2="96" y2="60" />
+  <line x1="72" y1="62" x2="97" y2="62" />
+  <line x1="73" y1="63" x2="98" y2="63" />
+  <line x1="74" y1="64" x2="100" y2="64" />
+  <line x1="76" y1="66" x2="101" y2="66" />
+  <line x1="77" y1="67" x2="103" y2="67" />
+  <line x1="79" y1="69" x2="104" y2="69" />
+  <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="80" y2="70" style="stroke-width:2" />
+  <line x1="35" y1="0" x2="106" y2="70" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.000000,0.000000 35.412617,0.000000 106.000852,70.588235 80.588235,70.588235" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="80" y1="70" x2="106" y2="70" style="stroke-width:2" />
+  <line x1="80" y1="96" x2="106" y2="96" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="80" y1="70" x2="80" y2="96" style="stroke-width:2" />
+  <line x1="106" y1="70" x2="106" y2="96" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="80.588235,70.588235 106.000852,70.588235 106.000852,96.000852 80.588235,96.000852" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="93.294544" y="116.000852" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="126.000852" y="83.294544" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,126.000852,83.294544)">53</text>
+  <text x="35.294118" y="80.706734" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,35.294118,80.706734)">6000</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vertices_latitude</span></div><div class='xr-var-dims'>(time, j, i, vertices)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(120, 385, 360, 4), meta=np.ndarray&gt;</div><input id='attrs-cec412a3-cec2-4229-a540-b9c78d2bf938' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cec412a3-cec2-4229-a540-b9c78d2bf938' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a0c5c719-e39b-4388-8483-684a3f480b10' class='xr-var-data-in' type='checkbox'><label for='data-a0c5c719-e39b-4388-8483-684a3f480b10' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 26.61 GB </td> <td> 532.22 MB </td></tr>
+    <tr><th> Shape </th><td> (6000, 385, 360, 4) </td> <td> (120, 385, 360, 4) </td></tr>
+    <tr><th> Count </th><td> 200 Tasks </td><td> 50 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="476" height="106" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
+  <line x1="76" y1="0" x2="76" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >6000</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="211" y2="21" style="stroke-width:2" />
+  <line x1="190" y1="35" x2="211" y2="56" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="190" y2="35" style="stroke-width:2" />
+  <line x1="211" y1="21" x2="211" y2="56" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 211.187184,21.187184 211.187184,56.799804 190.000000,35.612620" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="215" y2="0" style="stroke-width:2" />
+  <line x1="211" y1="21" x2="236" y2="21" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="211" y2="21" style="stroke-width:2" />
+  <line x1="215" y1="0" x2="236" y2="21" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 215.412617,0.000000 236.599801,21.187184 211.187184,21.187184" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="211" y1="21" x2="236" y2="21" style="stroke-width:2" />
+  <line x1="211" y1="56" x2="236" y2="56" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="211" y1="21" x2="211" y2="56" style="stroke-width:2" />
+  <line x1="236" y1="21" x2="236" y2="56" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="211.187184,21.187184 236.599801,21.187184 236.599801,56.799804 211.187184,56.799804" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="223.893493" y="76.799804" font-size="1.0rem" font-weight="100" text-anchor="middle" >4</text>
+  <text x="256.599801" y="38.993494" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,256.599801,38.993494)">360</text>
+  <text x="190.593592" y="66.206212" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,190.593592,66.206212)">385</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vertices_longitude</span></div><div class='xr-var-dims'>(time, j, i, vertices)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(120, 385, 360, 4), meta=np.ndarray&gt;</div><input id='attrs-a75c3ea2-b972-42b4-9cc7-1300201a74b6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a75c3ea2-b972-42b4-9cc7-1300201a74b6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3ef3675e-27b8-469e-99b9-e598e6a03273' class='xr-var-data-in' type='checkbox'><label for='data-3ef3675e-27b8-469e-99b9-e598e6a03273' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 26.61 GB </td> <td> 532.22 MB </td></tr>
+    <tr><th> Shape </th><td> (6000, 385, 360, 4) </td> <td> (120, 385, 360, 4) </td></tr>
+    <tr><th> Count </th><td> 200 Tasks </td><td> 50 Chunks </td></tr>
+    <tr><th> Type </th><td> float64 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="476" height="106" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
+  <line x1="76" y1="0" x2="76" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >6000</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="211" y2="21" style="stroke-width:2" />
+  <line x1="190" y1="35" x2="211" y2="56" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="190" y2="35" style="stroke-width:2" />
+  <line x1="211" y1="21" x2="211" y2="56" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 211.187184,21.187184 211.187184,56.799804 190.000000,35.612620" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="215" y2="0" style="stroke-width:2" />
+  <line x1="211" y1="21" x2="236" y2="21" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="211" y2="21" style="stroke-width:2" />
+  <line x1="215" y1="0" x2="236" y2="21" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 215.412617,0.000000 236.599801,21.187184 211.187184,21.187184" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="211" y1="21" x2="236" y2="21" style="stroke-width:2" />
+  <line x1="211" y1="56" x2="236" y2="56" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="211" y1="21" x2="211" y2="56" style="stroke-width:2" />
+  <line x1="236" y1="21" x2="236" y2="56" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="211.187184,21.187184 236.599801,21.187184 236.599801,56.799804 211.187184,56.799804" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="223.893493" y="76.799804" font-size="1.0rem" font-weight="100" text-anchor="middle" >4</text>
+  <text x="256.599801" y="38.993494" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,256.599801,38.993494)">360</text>
+  <text x="190.593592" y="66.206212" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,190.593592,66.206212)">385</text>
+</svg>
+</td>
+</tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>thetao</span></div><div class='xr-var-dims'>(time, rho, j, i)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(120, 53, 385, 360), meta=np.ndarray&gt;</div><input id='attrs-300d3b84-9dd3-4bd7-84ef-a1f7d1b349ef' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-300d3b84-9dd3-4bd7-84ef-a1f7d1b349ef' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-85aee581-aa0e-4be6-86d5-c748f70e2f9a' class='xr-var-data-in' type='checkbox'><label for='data-85aee581-aa0e-4be6-86d5-c748f70e2f9a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>sea_water_potential_temperature</dd><dt><span>long_name :</span></dt><dd>Sea Water Potential Temperature</dd><dt><span>comment :</span></dt><dd>Please note that the layer depth information is stored separately in &quot;zfull&quot; and &quot;zhalf&quot; while approximate layer density values are stored together with &quot;msftmrhoz&quot;., CMIP_table_comment: Diagnostic should be contributed even for models using conservative temperature as prognostic field.</dd><dt><span>units :</span></dt><dd>degC</dd><dt><span>original_name :</span></dt><dd>temp</dd><dt><span>cell_methods :</span></dt><dd>area: mean where sea time: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacello volume: volcello</dd><dt><span>history :</span></dt><dd>2019-11-22T12:18:02Z altered by CMOR: Converted type from &#x27;d&#x27; to &#x27;f&#x27;.</dd></dl></div><div class='xr-var-data'><table>
+<tr>
+<td>
+<table>
+  <thead>
+    <tr><td> </td><th> Array </th><th> Chunk </th></tr>
+  </thead>
+  <tbody>
+    <tr><th> Bytes </th><td> 176.30 GB </td> <td> 3.53 GB </td></tr>
+    <tr><th> Shape </th><td> (6000, 53, 385, 360) </td> <td> (120, 53, 385, 360) </td></tr>
+    <tr><th> Count </th><td> 150 Tasks </td><td> 50 Chunks </td></tr>
+    <tr><th> Type </th><td> float32 </td><td> numpy.ndarray </td></tr>
+  </tbody>
+</table>
+</td>
+<td>
+<svg width="480" height="100" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="2" y1="0" x2="2" y2="25" />
+  <line x1="4" y1="0" x2="4" y2="25" />
+  <line x1="7" y1="0" x2="7" y2="25" />
+  <line x1="9" y1="0" x2="9" y2="25" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="14" y1="0" x2="14" y2="25" />
+  <line x1="16" y1="0" x2="16" y2="25" />
+  <line x1="19" y1="0" x2="19" y2="25" />
+  <line x1="21" y1="0" x2="21" y2="25" />
+  <line x1="24" y1="0" x2="24" y2="25" />
+  <line x1="26" y1="0" x2="26" y2="25" />
+  <line x1="28" y1="0" x2="28" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="33" y1="0" x2="33" y2="25" />
+  <line x1="36" y1="0" x2="36" y2="25" />
+  <line x1="38" y1="0" x2="38" y2="25" />
+  <line x1="40" y1="0" x2="40" y2="25" />
+  <line x1="43" y1="0" x2="43" y2="25" />
+  <line x1="45" y1="0" x2="45" y2="25" />
+  <line x1="48" y1="0" x2="48" y2="25" />
+  <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="52" y1="0" x2="52" y2="25" />
+  <line x1="55" y1="0" x2="55" y2="25" />
+  <line x1="57" y1="0" x2="57" y2="25" />
+  <line x1="60" y1="0" x2="60" y2="25" />
+  <line x1="62" y1="0" x2="62" y2="25" />
+  <line x1="64" y1="0" x2="64" y2="25" />
+  <line x1="67" y1="0" x2="67" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="72" y1="0" x2="72" y2="25" />
+  <line x1="74" y1="0" x2="74" y2="25" />
+  <line x1="76" y1="0" x2="76" y2="25" />
+  <line x1="79" y1="0" x2="79" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="84" y1="0" x2="84" y2="25" />
+  <line x1="86" y1="0" x2="86" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="91" y1="0" x2="91" y2="25" />
+  <line x1="93" y1="0" x2="93" y2="25" />
+  <line x1="96" y1="0" x2="96" y2="25" />
+  <line x1="98" y1="0" x2="98" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
+  <line x1="103" y1="0" x2="103" y2="25" />
+  <line x1="105" y1="0" x2="105" y2="25" />
+  <line x1="108" y1="0" x2="108" y2="25" />
+  <line x1="110" y1="0" x2="110" y2="25" />
+  <line x1="112" y1="0" x2="112" y2="25" />
+  <line x1="115" y1="0" x2="115" y2="25" />
+  <line x1="117" y1="0" x2="117" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.000000,0.000000 120.000000,0.000000 120.000000,25.412617 0.000000,25.412617" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >6000</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="204" y2="14" style="stroke-width:2" />
+  <line x1="190" y1="36" x2="204" y2="50" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="190" y2="36" style="stroke-width:2" />
+  <line x1="204" y1="14" x2="204" y2="50" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 204.948598,14.948598 204.948598,50.966811 190.000000,36.018213" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="190" y1="0" x2="225" y2="0" style="stroke-width:2" />
+  <line x1="204" y1="14" x2="240" y2="14" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="190" y1="0" x2="204" y2="14" style="stroke-width:2" />
+  <line x1="225" y1="0" x2="240" y2="14" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="190.000000,0.000000 225.612620,0.000000 240.561218,14.948598 204.948598,14.948598" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="204" y1="14" x2="240" y2="14" style="stroke-width:2" />
+  <line x1="204" y1="50" x2="240" y2="50" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="204" y1="14" x2="204" y2="50" style="stroke-width:2" />
+  <line x1="240" y1="14" x2="240" y2="50" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="204.948598,14.948598 240.561218,14.948598 240.561218,50.966811 204.948598,50.966811" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="222.754908" y="70.966811" font-size="1.0rem" font-weight="100" text-anchor="middle" >360</text>
+  <text x="260.561218" y="32.957705" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,260.561218,32.957705)">385</text>
+  <text x="187.474299" y="63.492512" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,187.474299,63.492512)">53</text>
+</svg>
+</td>
+</tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-7e1156c8-54e6-44ae-bf19-b9474bcbb85d' class='xr-section-summary-in' type='checkbox'  ><label for='section-7e1156c8-54e6-44ae-bf19-b9474bcbb85d' class='xr-section-summary' >Attributes: <span>(49)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7 CMIP-6.2</dd><dt><span>activity_id :</span></dt><dd>CMIP</dd><dt><span>branch_method :</span></dt><dd>Hybrid-restart from year 1200-01-01 of piControl-spinup</dd><dt><span>branch_time :</span></dt><dd>0.0</dd><dt><span>branch_time_in_child :</span></dt><dd>0.0</dd><dt><span>branch_time_in_parent :</span></dt><dd>438000.0</dd><dt><span>contact :</span></dt><dd>Please send any requests or bug reports to noresm-ncc@met.no.</dd><dt><span>creation_date :</span></dt><dd>2019-11-22T12:18:02Z</dd><dt><span>data_specs_version :</span></dt><dd>01.00.31</dd><dt><span>experiment :</span></dt><dd>pre-industrial control</dd><dt><span>experiment_id :</span></dt><dd>piControl</dd><dt><span>external_variables :</span></dt><dd>areacello volcello</dd><dt><span>forcing_index :</span></dt><dd>1</dd><dt><span>frequency :</span></dt><dd>mon</dd><dt><span>further_info_url :</span></dt><dd>https://furtherinfo.es-doc.org/CMIP6.NCC.NorESM2-MM.piControl.none.r1i1p1f1</dd><dt><span>grid :</span></dt><dd>tripolar grid with 1deg nominal resolution, vertical density coordinate</dd><dt><span>grid_label :</span></dt><dd>gn</dd><dt><span>history :</span></dt><dd>2019-11-22T12:18:02Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.</dd><dt><span>initialization_index :</span></dt><dd>1</dd><dt><span>institution :</span></dt><dd>NorESM Climate modeling Consortium consisting of CICERO (Center for International Climate and Environmental Research, Oslo 0349), MET-Norway (Norwegian Meteorological Institute, Oslo 0313), NERSC (Nansen Environmental and Remote Sensing Center, Bergen 5006), NILU (Norwegian Institute for Air Research, Kjeller 2027), UiB (University of Bergen, Bergen 5007), UiO (University of Oslo, Oslo 0313) and UNI (Uni Research, Bergen 5008), Norway. Mailing address: NCC, c/o MET-Norway, Henrik Mohns plass 1, Oslo 0313, Norway</dd><dt><span>institution_id :</span></dt><dd>NCC</dd><dt><span>mip_era :</span></dt><dd>CMIP6</dd><dt><span>model_id :</span></dt><dd>NorESM2-MM</dd><dt><span>nominal_resolution :</span></dt><dd>100 km</dd><dt><span>parent_activity_id :</span></dt><dd>CMIP</dd><dt><span>parent_experiment_id :</span></dt><dd>piControl-spinup</dd><dt><span>parent_mip_era :</span></dt><dd>CMIP6</dd><dt><span>parent_source_id :</span></dt><dd>NorESM2-MM</dd><dt><span>parent_sub_experiment_id :</span></dt><dd>none</dd><dt><span>parent_time_units :</span></dt><dd>days since 0001-01-01</dd><dt><span>parent_variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>physics_index :</span></dt><dd>1</dd><dt><span>product :</span></dt><dd>model-output</dd><dt><span>realization_index :</span></dt><dd>1</dd><dt><span>realm :</span></dt><dd>ocean</dd><dt><span>run_variant :</span></dt><dd>N/A</dd><dt><span>source :</span></dt><dd>NorESM2-MM (2017): 
+aerosol: OsloAero
+atmos: CAM-OSLO (1 degree resolution; 288 x 192; 32 levels; top level 3 mb)
+atmosChem: OsloChemSimp
+land: CLM
+landIce: CISM
+ocean: MICOM (1 degree resolution; 360 x 384; 70 levels; top grid cell minimum 0-2.5 m [native model uses hybrid density and generic upper-layer coordinate interpolated to z-level for contributed data])
+ocnBgchem: HAMOCC
+seaIce: CICE</dd><dt><span>source_id :</span></dt><dd>NorESM2-MM</dd><dt><span>source_type :</span></dt><dd>AOGCM AER BGC</dd><dt><span>sub_experiment :</span></dt><dd>none</dd><dt><span>sub_experiment_id :</span></dt><dd>none</dd><dt><span>table_id :</span></dt><dd>Omon</dd><dt><span>table_info :</span></dt><dd>Creation Date:(24 July 2019) MD5:0bb394a356ef9d214d027f1aca45853e</dd><dt><span>title :</span></dt><dd>NorESM2-MM output prepared for CMIP6</dd><dt><span>variable_id :</span></dt><dd>thetao</dd><dt><span>variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>license :</span></dt><dd>CMIP6 model data produced by NCC is licensed under a Creative Commons Attribution ShareAlike 4.0 International License (https://creativecommons.org/licenses). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file) and at https:///pcmdi.llnl.gov/. The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</dd><dt><span>cmor_version :</span></dt><dd>3.5.0</dd><dt><span>tracking_id :</span></dt><dd>hdl:21.14100/a60ce48a-42e0-4a22-8265-70c0c1108de7</dd></dl></div></li></ul></div></div>
+    
+
+
+    </div>
+  </div>
+
+</main>
+
+
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
