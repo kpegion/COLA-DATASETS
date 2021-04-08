@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MRI-ESM2-0 output prepared for CMIP6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.css">
+    <link rel="stylesheet" href="static/pangeo-style.css">
+
+</head>
+<body>
+
+<div id="navbar" class="navbar navbar-inverse navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+                <span><img src="img/cola.gif"></span>
+                COLA Catalog</a>
+            <span class="navbar-text navbar-version pull-left"><b></b></span>
+        </div>
+        <div class="collapse navbar-collapse nav-collapse">
+            <ul class="nav navbar-nav">
+              <!--  <li><a href="https://medium.com/pangeo">Blog</a></li>
+                <li><a href="https://discourse.pangeo.io">Forum</a></li> -->
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<main role="main" class="container">
+    <h1>MRI-ESM2-0 output prepared for CMIP6</h1>
+    <div>
+        <ol class="breadcrumb">
+
+            <li><a href="main">main</a></li>
+            <li><a href="model">model</a></li>
+            
+            <li><a href=cmip6>cmip6</a></li>
+
+<li><a href=cmip6_picontrol>cmip6_picontrol</a></li>
+
+<li><a href=cmip6_picontrol_seaice>cmip6_picontrol_seaice</a></li>
+
+<li><a href=cmip6_picontrol_seaice_mon>cmip6_picontrol_seaice_mon</a></li>
+
+<li><a href=cmip6_picontrol_seaice_mon_siconc>cmip6_picontrol_seaice_mon_siconc</a></li>
+
+<li><a href=cmip6_picontrol_seaice_mon_siconc_mri-esm2-0>cmip6_picontrol_seaice_mon_siconc_mri-esm2-0</a></li>
+
+<li><a href=cmip6_picontrol_seaice_mon_siconc_mri-esm2-0_r1i1p1>cmip6_picontrol_seaice_mon_siconc_mri-esm2-0_r1i1p1</a></li>
+
+
+            <li class="active">MRI-ESM2-0 output prepared for CMIP6</li>
+
+        </ol>
+    </div>
+
+    <div class="info">
+         <!-- <h2></h2> -->
+
+        <h3>Load in Python</h3>
+        <pre><code class="language-python">from intake import open_catalog<br>
+cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/siconc_SImon_MRI-ESM2-0_piControl_r1i1p1f1_gn.yaml")
+ds=cat.netcdf.read()</code></pre>
+
+        <h3>Metadata</h3>
+        <table class="table table-condensed table-hover">
+            <tbody>
+
+            <tr>
+                <td>title</td>
+                <td>MRI-ESM2-0 output prepared for CMIP6</td>
+            </tr>
+
+            <tr>
+                <td>location</td>
+                <td>/shared/cmip6/data/piControl/seaIce/mon/OImon/siconc/MRI-ESM2-0/r1i1p1</td>
+            </tr>
+
+            <tr>
+                <td>tags</td>
+                <td>gridded,global,model,monthly</td>
+            </tr>
+
+            <tr>
+                <td>catalog_dir</td>
+                <td>https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/siconc_SImon_MRI-ESM2-0_piControl_r1i1p1f1_gn.yaml</td>
+            </tr>
+    
+
+            <tr>
+                <td>last updated </td>
+                <td>2020-10-22</td>
+            </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+    <div class="xarray">
+        <h3>Dataset Contents</h3>
+
+      <div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area">
+
+    <div class="prompt output_prompt"></div><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt, dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2 {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:             (bnds: 2, time: 8412, vertices: 4, x: 360, y: 363)
+Coordinates:
+  * time                (time) float64 15.5 45.0 74.5 ... 2.56e+05 2.56e+05
+  * y                   (y) float64 -78.0 -77.5 -77.0 ... 149.7 151.8 154.0
+  * x                   (x) float64 0.0 1.0 2.0 3.0 ... 356.0 357.0 358.0 359.0
+    latitude            (y, x) float64 ...
+    longitude           (y, x) float64 ...
+    type                |S7 b&#x27;sea_ice&#x27;
+Dimensions without coordinates: bnds, vertices
+Data variables:
+    time_bnds           (time, bnds) float64 0.0 31.0 31.0 ... 2.56e+05 2.56e+05
+    y_bnds              (y, bnds) float64 -78.25 -77.75 -77.75 ... 152.9 155.1
+    x_bnds              (x, bnds) float64 -0.5 0.5 0.5 1.5 ... 358.5 358.5 359.5
+    vertices_latitude   (y, x, vertices) float64 ...
+    vertices_longitude  (y, x, vertices) float64 ...
+    siconc              (time, y, x) float32 ...
+Attributes:
+    Conventions:            CF-1.7 CMIP-6.2
+    activity_id:            CMIP
+    branch_method:          standard
+    branch_time_in_child:   0.0
+    branch_time_in_parent:  365243.0
+    creation_date:          2019-09-03T08:52:28Z
+    data_specs_version:     01.00.31
+    experiment:             pre-industrial control
+    experiment_id:          piControl
+    external_variables:     areacello
+    forcing_index:          1
+    frequency:              mon
+    further_info_url:       https://furtherinfo.es-doc.org/CMIP6.MRI.MRI-ESM2...
+    grid:                   native ocean tri-polar grid with 360x363 ocean cells
+    grid_label:             gn
+    history:                2019-09-03T08:52:28Z ; CMOR rewrote data to be co...
+    initialization_index:   1
+    institution:            Meteorological Research Institute, Tsukuba, Ibara...
+    institution_id:         MRI
+    mip_era:                CMIP6
+    nominal_resolution:     100 km
+    parent_activity_id:     CMIP
+    parent_experiment_id:   piControl-spinup
+    parent_mip_era:         CMIP6
+    parent_source_id:       MRI-ESM2-0
+    parent_time_units:      days since 1850-01-01
+    parent_variant_label:   r1i1p1f1
+    physics_index:          1
+    product:                model-output
+    realization_index:      1
+    realm:                  seaIce
+    source:                 MRI-ESM2.0 (2017): 
+aerosol: MASINGAR mk2r4 (TL9...
+    source_id:              MRI-ESM2-0
+    source_type:            AOGCM AER CHEM
+    sub_experiment:         none
+    sub_experiment_id:      none
+    table_id:               SImon
+    table_info:             Creation Date:(24 July 2019) MD5:1d2f5276ed1d6eae...
+    title:                  MRI-ESM2-0 output prepared for CMIP6
+    tracking_id:            hdl:21.14100/1168aa42-60ef-4873-bbe2-04aa1861883e
+    variable_id:            siconc
+    variant_label:          r1i1p1f1
+    license:                CMIP6 model data produced by MRI is licensed unde...
+    cmor_version:           3.5.0</pre><div class='xr-wrap' hidden><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-b427f5b8-eda6-416a-b64f-b23e638814cd' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-b427f5b8-eda6-416a-b64f-b23e638814cd' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>time</span>: 8412</li><li><span>vertices</span>: 4</li><li><span class='xr-has-index'>x</span>: 360</li><li><span class='xr-has-index'>y</span>: 363</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-5670697f-5b19-4f7c-b962-2892b0aa427e' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5670697f-5b19-4f7c-b962-2892b0aa427e' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>15.5 45.0 ... 2.56e+05 2.56e+05</div><input id='attrs-a56bfbcf-6f2a-4171-9a8b-af7c71903263' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a56bfbcf-6f2a-4171-9a8b-af7c71903263' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-290a2b7d-7a00-4808-b787-170fea52f58b' class='xr-var-data-in' type='checkbox'><label for='data-290a2b7d-7a00-4808-b787-170fea52f58b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>time_bnds</dd><dt><span>units :</span></dt><dd>days since 1850-01-01</dd><dt><span>calendar :</span></dt><dd>proleptic_gregorian</dd><dt><span>axis :</span></dt><dd>T</dd><dt><span>long_name :</span></dt><dd>time</dd><dt><span>standard_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([1.550000e+01, 4.500000e+01, 7.450000e+01, ..., 2.559585e+05,
+       2.559890e+05, 2.560195e+05])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>y</span></div><div class='xr-var-dims'>(y)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-78.0 -77.5 -77.0 ... 151.8 154.0</div><input id='attrs-7ec68712-3639-42e7-8cde-1dd92c0b82e3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7ec68712-3639-42e7-8cde-1dd92c0b82e3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8a2840a1-6bc5-4e8e-880d-710ffae1b8c6' class='xr-var-data-in' type='checkbox'><label for='data-8a2840a1-6bc5-4e8e-880d-710ffae1b8c6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>y_bnds</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>long_name :</span></dt><dd>y coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_y_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([-78.      , -77.5     , -77.      , ..., 149.670841, 151.834689,
+       154.      ])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>x</span></div><div class='xr-var-dims'>(x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 1.0 2.0 ... 357.0 358.0 359.0</div><input id='attrs-952026c5-9981-4b8c-acc0-e0ee8463859d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-952026c5-9981-4b8c-acc0-e0ee8463859d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7ff0627e-73b6-4134-bb56-59282df7ff18' class='xr-var-data-in' type='checkbox'><label for='data-7ff0627e-73b6-4134-bb56-59282df7ff18' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>bounds :</span></dt><dd>x_bnds</dd><dt><span>units :</span></dt><dd>degrees</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>long_name :</span></dt><dd>x coordinate of projection</dd><dt><span>standard_name :</span></dt><dd>projection_x_coordinate</dd></dl></div><div class='xr-var-data'><pre>array([  0.,   1.,   2., ..., 357., 358., 359.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-734a945e-d5b7-4e94-a344-0973139c1463' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-734a945e-d5b7-4e94-a344-0973139c1463' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-03cdb812-2456-40a3-91f9-4bf7baecb1eb' class='xr-var-data-in' type='checkbox'><label for='data-03cdb812-2456-40a3-91f9-4bf7baecb1eb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>bounds :</span></dt><dd>vertices_latitude</dd></dl></div><div class='xr-var-data'><pre>[130680 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(y, x)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-69901c74-f4e5-4066-8d32-9a01ef3b2dec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-69901c74-f4e5-4066-8d32-9a01ef3b2dec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1a0d8795-2574-4c7a-81f2-bc0490888b86' class='xr-var-data-in' type='checkbox'><label for='data-1a0d8795-2574-4c7a-81f2-bc0490888b86' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>bounds :</span></dt><dd>vertices_longitude</dd></dl></div><div class='xr-var-data'><pre>[130680 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>type</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>|S7</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-61534c21-bde3-4147-8c93-68f9e0c8bcdd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-61534c21-bde3-4147-8c93-68f9e0c8bcdd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7d9d23b4-6b9e-4ba8-87cf-5cd0a5c62d04' class='xr-var-data-in' type='checkbox'><label for='data-7d9d23b4-6b9e-4ba8-87cf-5cd0a5c62d04' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Sea Ice area type</dd><dt><span>standard_name :</span></dt><dd>area_type</dd></dl></div><div class='xr-var-data'><pre>array(b&#x27;sea_ice&#x27;, dtype=&#x27;|S7&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1c266c90-948f-4c87-8ebb-5fbfce7952a3' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1c266c90-948f-4c87-8ebb-5fbfce7952a3' class='xr-section-summary' >Data variables: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-2946c7ce-254e-4fdb-b6d7-2fa458e6167d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-2946c7ce-254e-4fdb-b6d7-2fa458e6167d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d6fc3e2a-81b7-4750-982f-42ab867d8742' class='xr-var-data-in' type='checkbox'><label for='data-d6fc3e2a-81b7-4750-982f-42ab867d8742' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[0.00000e+00, 3.10000e+01],
+       [3.10000e+01, 5.90000e+01],
+       [5.90000e+01, 9.00000e+01],
+       ...,
+       [2.55943e+05, 2.55974e+05],
+       [2.55974e+05, 2.56004e+05],
+       [2.56004e+05, 2.56035e+05]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>y_bnds</span></div><div class='xr-var-dims'>(y, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4bcc45be-8c19-4d71-8181-c7c9f89effa4' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-4bcc45be-8c19-4d71-8181-c7c9f89effa4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ac9fa9fa-f3e7-4b14-b0a8-3cb9a9bdaf87' class='xr-var-data-in' type='checkbox'><label for='data-ac9fa9fa-f3e7-4b14-b0a8-3cb9a9bdaf87' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[-78.25    , -77.75    ],
+       [-77.75    , -77.25    ],
+       [-77.25    , -76.75    ],
+       ...,
+       [148.589465, 150.752217],
+       [150.752217, 152.917162],
+       [152.917162, 155.082838]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>x_bnds</span></div><div class='xr-var-dims'>(x, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-8f092f0f-c5e5-4401-9a34-dbd333dfb58a' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-8f092f0f-c5e5-4401-9a34-dbd333dfb58a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4b8c239d-eac9-4889-91fd-7e204d8285e7' class='xr-var-data-in' type='checkbox'><label for='data-4b8c239d-eac9-4889-91fd-7e204d8285e7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([[ -0.5,   0.5],
+       [  0.5,   1.5],
+       [  1.5,   2.5],
+       ...,
+       [356.5, 357.5],
+       [357.5, 358.5],
+       [358.5, 359.5]])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vertices_latitude</span></div><div class='xr-var-dims'>(y, x, vertices)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-fb461d38-796b-4e59-adb9-25ea13163b27' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fb461d38-796b-4e59-adb9-25ea13163b27' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9941d3ae-9e58-46f7-9804-5d72ce4815af' class='xr-var-data-in' type='checkbox'><label for='data-9941d3ae-9e58-46f7-9804-5d72ce4815af' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd></dl></div><div class='xr-var-data'><pre>[522720 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>vertices_longitude</span></div><div class='xr-var-dims'>(y, x, vertices)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cdd7368b-e5b2-4502-a115-dade4114d9c8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cdd7368b-e5b2-4502-a115-dade4114d9c8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7ba8666-7ab2-4940-a70e-23908e9dc4a8' class='xr-var-data-in' type='checkbox'><label for='data-e7ba8666-7ab2-4940-a70e-23908e9dc4a8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd></dl></div><div class='xr-var-data'><pre>[522720 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>siconc</span></div><div class='xr-var-dims'>(time, y, x)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a6477d9e-983a-4826-b32a-d8441fe9170c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a6477d9e-983a-4826-b32a-d8441fe9170c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d22120f5-fd4d-4696-8ceb-4ba4b35ca223' class='xr-var-data-in' type='checkbox'><label for='data-d22120f5-fd4d-4696-8ceb-4ba4b35ca223' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>sea_ice_area_fraction</dd><dt><span>long_name :</span></dt><dd>Sea-Ice Area Percentage (Ocean Grid)</dd><dt><span>comment :</span></dt><dd>Percentage of grid cell covered by sea ice</dd><dt><span>units :</span></dt><dd>%</dd><dt><span>cell_methods :</span></dt><dd>area: mean where sea time: mean</dd><dt><span>cell_measures :</span></dt><dd>area: areacello</dd><dt><span>history :</span></dt><dd>2019-09-03T08:42:50Z altered by CMOR: Treated scalar dimension: &#x27;type&#x27;. 2019-09-03T08:42:50Z altered by CMOR: replaced missing value flag (-9.99e+33) and corresponding data with standard missing value (1e+20).</dd></dl></div><div class='xr-var-data'><pre>[1099280160 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d19050f6-901b-4372-985d-9664cc0d26a8' class='xr-section-summary-in' type='checkbox'  ><label for='section-d19050f6-901b-4372-985d-9664cc0d26a8' class='xr-section-summary' >Attributes: <span>(44)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>Conventions :</span></dt><dd>CF-1.7 CMIP-6.2</dd><dt><span>activity_id :</span></dt><dd>CMIP</dd><dt><span>branch_method :</span></dt><dd>standard</dd><dt><span>branch_time_in_child :</span></dt><dd>0.0</dd><dt><span>branch_time_in_parent :</span></dt><dd>365243.0</dd><dt><span>creation_date :</span></dt><dd>2019-09-03T08:52:28Z</dd><dt><span>data_specs_version :</span></dt><dd>01.00.31</dd><dt><span>experiment :</span></dt><dd>pre-industrial control</dd><dt><span>experiment_id :</span></dt><dd>piControl</dd><dt><span>external_variables :</span></dt><dd>areacello</dd><dt><span>forcing_index :</span></dt><dd>1</dd><dt><span>frequency :</span></dt><dd>mon</dd><dt><span>further_info_url :</span></dt><dd>https://furtherinfo.es-doc.org/CMIP6.MRI.MRI-ESM2-0.piControl.none.r1i1p1f1</dd><dt><span>grid :</span></dt><dd>native ocean tri-polar grid with 360x363 ocean cells</dd><dt><span>grid_label :</span></dt><dd>gn</dd><dt><span>history :</span></dt><dd>2019-09-03T08:52:28Z ; CMOR rewrote data to be consistent with CMIP6, CF-1.7 CMIP-6.2 and CF standards.</dd><dt><span>initialization_index :</span></dt><dd>1</dd><dt><span>institution :</span></dt><dd>Meteorological Research Institute, Tsukuba, Ibaraki 305-0052, Japan</dd><dt><span>institution_id :</span></dt><dd>MRI</dd><dt><span>mip_era :</span></dt><dd>CMIP6</dd><dt><span>nominal_resolution :</span></dt><dd>100 km</dd><dt><span>parent_activity_id :</span></dt><dd>CMIP</dd><dt><span>parent_experiment_id :</span></dt><dd>piControl-spinup</dd><dt><span>parent_mip_era :</span></dt><dd>CMIP6</dd><dt><span>parent_source_id :</span></dt><dd>MRI-ESM2-0</dd><dt><span>parent_time_units :</span></dt><dd>days since 1850-01-01</dd><dt><span>parent_variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>physics_index :</span></dt><dd>1</dd><dt><span>product :</span></dt><dd>model-output</dd><dt><span>realization_index :</span></dt><dd>1</dd><dt><span>realm :</span></dt><dd>seaIce</dd><dt><span>source :</span></dt><dd>MRI-ESM2.0 (2017): 
+aerosol: MASINGAR mk2r4 (TL95; 192 x 96 longitude/latitude; 80 levels; top level 0.01 hPa)
+atmos: MRI-AGCM3.5 (TL159; 320 x 160 longitude/latitude; 80 levels; top level 0.01 hPa)
+atmosChem: MRI-CCM2.1 (T42; 128 x 64 longitude/latitude; 80 levels; top level 0.01 hPa)
+land: HAL 1.0
+landIce: none
+ocean: MRI.COM4.4 (tripolar primarily 0.5 deg latitude/1 deg longitude with meridional refinement down to 0.3 deg within 10 degrees north and south of the equator; 360 x 364 longitude/latitude; 61 levels; top grid cell 0-2 m)
+ocnBgchem: MRI.COM4.4
+seaIce: MRI.COM4.4</dd><dt><span>source_id :</span></dt><dd>MRI-ESM2-0</dd><dt><span>source_type :</span></dt><dd>AOGCM AER CHEM</dd><dt><span>sub_experiment :</span></dt><dd>none</dd><dt><span>sub_experiment_id :</span></dt><dd>none</dd><dt><span>table_id :</span></dt><dd>SImon</dd><dt><span>table_info :</span></dt><dd>Creation Date:(24 July 2019) MD5:1d2f5276ed1d6eae9a552d62527b9fb7</dd><dt><span>title :</span></dt><dd>MRI-ESM2-0 output prepared for CMIP6</dd><dt><span>tracking_id :</span></dt><dd>hdl:21.14100/1168aa42-60ef-4873-bbe2-04aa1861883e</dd><dt><span>variable_id :</span></dt><dd>siconc</dd><dt><span>variant_label :</span></dt><dd>r1i1p1f1</dd><dt><span>license :</span></dt><dd>CMIP6 model data produced by MRI is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (https://creativecommons.org/licenses/). Consult https://pcmdi.llnl.gov/CMIP6/TermsOfUse for terms of use governing CMIP6 output, including citation requirements and proper acknowledgment. Further information about this data, including some limitations, can be found via the further_info_url (recorded as a global attribute in this file). The data producers and data providers make no warranty, either express or implied, including, but not limited to, warranties of merchantability and fitness for a particular purpose. All liabilities arising from the supply of the information (including any liability arising in negligence) are excluded to the fullest extent permitted by law.</dd><dt><span>cmor_version :</span></dt><dd>3.5.0</dd></dl></div></li></ul></div></div>
+    
+
+
+    </div>
+  </div>
+
+</main>
+
+
+    
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
