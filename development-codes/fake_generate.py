@@ -69,7 +69,6 @@ def fake_generate_catalog(file_path):
 
     file_path = file_path.rstrip("\r")
     path_array = file_path.split('/')
-
     try:
         path_array.remove('')
     except:
@@ -91,7 +90,6 @@ def fake_generate_catalog(file_path):
     parent = ""
     ancestors = ""
     
-
     ans = []
     my_str = ""
     for i in range(len(path_array)-1):
