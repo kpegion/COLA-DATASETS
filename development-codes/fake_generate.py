@@ -67,6 +67,11 @@ def fake_generate_catalog(file_path):
         pass
 
 
+    try:
+        file_path = file_path.replace("/Ishii/Ishii/","/Ishii/")
+
+    except:
+        pass
     file_path = file_path.rstrip("\r")
     path_array = file_path.split('/')
     try:
@@ -82,6 +87,10 @@ def fake_generate_catalog(file_path):
     
     try:
         path_array.remove('data')
+    except:
+        pass
+    try:
+        path_array.remove('DATA')
     except:
         pass
 

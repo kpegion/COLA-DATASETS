@@ -82,6 +82,11 @@ def make_ancestors(ancestors, _type):
     except:
         pass
 
+    try:
+        ancestors = ancestors.replace("/Ishii/Ishii/","/Ishii/")
+
+    except:
+        pass
 
 
 
@@ -105,6 +110,11 @@ def make_ancestors(ancestors, _type):
     except:
         pass
 
+    try:
+        ancestors.remove('DATA')
+
+    except:
+        pass
     #pdb.set_trace()
     ancestors = list(map(lambda x:x.lower(),ancestors))
     
