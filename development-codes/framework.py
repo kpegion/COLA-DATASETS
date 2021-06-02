@@ -40,6 +40,7 @@ def src_header(title, ancestors, open_catalog, url, tags, catalog_dir, time_stam
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
+            <li><a href="model">model</a></li>
             
             {2}
             <li class="active">{3}</li>
