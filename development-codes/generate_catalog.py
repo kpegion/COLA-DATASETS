@@ -99,7 +99,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     #direct_parent = path.split('/')[-1].lower()
     direct_parent = ans[-1]
-    link_to_children(dataset_sub_name, direct_parent)
+    # I did this for subx
+    #link_to_children(dataset_sub_name, direct_parent)
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
@@ -113,9 +114,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     #page_name = fileName.replace('*','').replace('..','.').replace('.nc','')
     page_name = re.sub(r"_\d{4,8}-\d{4,8}.nc", "", page_name)
     page_name = re.sub(r"\.\d{4,8}-\d{4,8}.nc", "", page_name)
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
-    print(page_name)
-    print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$")
+    link_to_children(page_name, direct_parent)
     html_page = page_name  + ".html" 
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
