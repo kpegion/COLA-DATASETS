@@ -180,10 +180,11 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
 def link_to_children(child, dp_name):
 
-    try:
-        child2 = child.replace("_.nc","")
-    except:
-        child2 = child 
+    #try:
+    #    child2 = child.replace("_.nc","")
+    #except:
+    #    child2 = child
+    child2 = child 
     searchee = "<!--qazwsxxswzaq-->"
     res = """<a href="""+ "\""+ child+ "\""+""" class="list-group-item">
                     <h4>""" +child2+ """</h4>
