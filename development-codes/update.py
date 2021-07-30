@@ -168,9 +168,12 @@ def catalog_parent( _path, _dataset_name, direct_parent):
             newdct = yaml.load(fp, Loader=yaml.FullLoader)
 
         with open(rel_path_direct_parent, 'w') as fp:
-            newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
-            yaml.dump(newdct, fp)
+            try:
+                newdct['sources'][_dataset_name] = { 'args': {'path':yaml_path}, 'description':'', 'driver':'intake.catalog.local.YAMLFileCatalog', 'metadata':{}}
+                yaml.dump(newdct, fp)
             #todo print(direct_parenupdated")
+            except TypeError as e:
+                print(e)
 
 
 
