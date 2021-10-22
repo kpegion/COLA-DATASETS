@@ -1,0 +1,47 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/subx/verif/rluttoa/daily/orig/olr.NOAA-UNINTERP.day.mean.nc
+      xarray_kwargs:
+        decode_times: false
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: COARDS
+      References: http://www.esrl.noaa.gov/psd/data/gridded/data.uninterp_OLR.html
+      cdf_source_code: '/data/map/OLR/rltime/append_nc
+
+        create_olr.f'
+      cdl_source_file: '/data/map/OLR/rltime/append_nc.f
+
+        olr.cdl'
+      coords: !!python/tuple
+      - time
+      - lat
+      - lon
+      data_vars:
+        olr:
+        - time
+        - lat
+        - lon
+      dataset_title: NOAA Daily Outgoing Longwave Radiation (OLR)
+      delta_time: once daily
+      description: "Data is from NCEP\n It consists of OLR uninterpolated from 2x/day"
+      dims:
+        lat: 73
+        lon: 144
+        time: 6671
+      history: 'Mon Oct 10 12:03:39 2005: ncks -d time,0,1375 olr.day.mean.nc RePairIngOlr.day.mean.nc
+
+        Wed Mar 30 14:01:37 2005: ncatted -a actual_range,time,o,d,17540448. , 17568624.
+        skel.nc
+
+        /home/hoop/crdc/oldCRDC2COARDSv3/oldCRDC2COARDS Sat Dec  9 01:36:34 1995 from
+        olr.7494.nc
+
+        created 08/28/2003 by aro (netCDF2.3)'
+      platform: Observation
+      source_data_file: 'NCEP
+
+        J1974 to A1994'
+      title: Once daily OLR (J74-A94)
