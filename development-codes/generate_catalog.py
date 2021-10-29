@@ -114,8 +114,10 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     #page_name = fileName.replace('*','').replace('..','.').replace('.nc','')
     page_name = re.sub(r"_\d{4,8}-\d{4,8}.nc", "", page_name)
     page_name = re.sub(r"\.\d{4,8}-\d{4,8}.nc", "", page_name)
+    print(page_name)
+    print(direct_parent)
     link_to_children(page_name, direct_parent)
-    html_page = page_name  + ".html" 
+    html_page = page_name  + ".html"
     with open(html_page , "w", encoding='utf-8') as file:
         file.write(html_src)
     print( html_page + " was created\n")
