@@ -90,7 +90,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     output = ps.communicate()[0]
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
-
+    print(path)
+    print("-----------------------------------------")
     ancestors = make_ancestors(path, 1)
 
 
