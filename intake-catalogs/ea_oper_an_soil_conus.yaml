@@ -1,0 +1,31 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/land/ERA5/fixed/ea_oper_an_soil_conus.nc4
+      xarray_kwargs:
+        decode_times: false
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF-1.6
+      NCO: netCDF Operators version 4.7.8 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)
+      coords: !!python/tuple
+      - latitude
+      - longitude
+      - time
+      data_vars:
+        slt:
+        - latitude
+        - longitude
+        - time
+      dims:
+        latitude: 93
+        longitude: 210
+        time: 1
+      history: 'Tue May 26 19:00:40 2020: ncks -4 -L 1 /scratch/rd/napd/conus/ea_oper_an_soil.nc
+        /scratch/rd/napd/conus/ea_oper_an_soil.nc4
+
+        2020-05-26 19:00:40 GMT by grib_to_netcdf-2.14.0: grib_to_netcdf -D NC_FLOAT
+        -u time -o /scratch/rd/napd/conus/ea_oper_an_soil.nc /scratch/rd/napd/conus/ea_oper_an_soil.grb'
+      soil_types: 0 = Water; 1 = Coarse; 2 = Medium; 3 = Medium fine; 4 = Fine; 5
+        = Very fine; 6 = Organic; 7 = Tropical organic
