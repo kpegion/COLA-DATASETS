@@ -1,0 +1,43 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/land/ERA5/fixed/ea_oper_an_veg.nc4
+      xarray_kwargs:
+        decode_times: false
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF-1.6
+      NCO: netCDF Operators version 4.9.7 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)
+      coords: !!python/tuple
+      - latitude
+      - longitude
+      - time
+      data_vars:
+        tvh:
+        - latitude
+        - longitude
+        - time
+        tvl:
+        - latitude
+        - longitude
+        - time
+      dims:
+        latitude: 640
+        longitude: 1280
+        time: 1
+      high_vegetation_types: 3 = Evergreen needleleaf trees; 4 = Deciduous needleleaf
+        trees; 5 = Deciduous broadleaf trees; 6 = Evergreen broadleaf trees; 18 =
+        Mixed forest/woodland; 19 = Interrupted forest
+      history: 'Thu May 27 19:25:49 2021: ncks -4 -L 1 /scratch/rd/napd/global/ea_oper_an_veg.nc
+        /scratch/rd/napd/global/ea_oper_an_veg.nc4
+
+        2021-05-27 18:25:49 GMT by grib_to_netcdf-2.21.0: grib_to_netcdf -D NC_FLOAT
+        -u time -o /scratch/rd/napd/global/ea_oper_an_veg.nc /scratch/rd/napd/global/ea_oper_an_veg.grb'
+      low_vegetation_types: 1 = Crops, Mixed farming; 2 = Grass; 7 = Tall grass; 9
+        = Tundra; 10 = Irrigated crops; 11 = Semidesert; 13 = Bogs and marshes; 16
+        = Evergreen shrubs; 17 = Deciduous shrubs; 20 = Water and land mixtures (unused?)
+      other_types: 8 = Desert (is 0 for both 'tvl' and 'tvh' - must use land mask
+        to discern from ocean); 12 = Ice caps and Glaciers (is 0 for both 'tvl' and
+        'tvh' - must use land mask to discern from ocean); 14 = Inland water (unused?);
+        15 = Ocean (unused)
