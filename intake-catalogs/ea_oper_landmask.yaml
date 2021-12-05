@@ -1,0 +1,28 @@
+sources:
+  netcdf:
+    args:
+      urlpath: /shared/land/ERA5/daily/europe/ea_oper_landmask.nc4
+      xarray_kwargs:
+        decode_times: false
+    description: ''
+    driver: intake_xarray.netcdf.NetCDFSource
+    metadata:
+      Conventions: CF-1.6
+      NCO: 4.6.7
+      coords: !!python/tuple
+      - latitude
+      - longitude
+      - time
+      data_vars:
+        lsm:
+        - latitude
+        - longitude
+        - time
+      dims:
+        latitude: 130
+        longitude: 187
+        time: 1
+      history: 'Fri Aug 31 16:04:34 2018: ncks -4 -L 1 ea_oper_landmask.nc ea_oper_landmask.nc4
+
+        2018-08-31 15:04:13 GMT by grib_to_netcdf-2.7.3: grib_to_netcdf -D NC_FLOAT
+        -u time -o ea_oper_landmask.nc ea_oper_landmask.grb'
