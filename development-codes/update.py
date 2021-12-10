@@ -105,6 +105,12 @@ def make_ancestors(ancestors, _type):
         pass
     """
 
+    # This is only made for CCI
+    try:
+        file_path = file_path.replace("/shared/land/CCI/","obs/gridded/land/soil_moisture/cci/")
+
+    except:
+        pass
     #try:
     #    ancestors.remove('shared')
     #except:
@@ -264,6 +270,12 @@ def gen_direct_parent(file_path):
     except:
         pass
     """
+    # This is only made for CCI
+    try:
+        file_path = file_path.replace("/shared/land/CCI/","obs/gridded/land/soil_moisture/cci/")
+
+    except:
+        pass
     try:
         file_path = file_path.replace("/mon/Omon/","/mon/")
 
@@ -283,6 +295,12 @@ def gen_direct_parent(file_path):
     #except:
     #    pass
 
+    # This is only made for CCI
+    try:
+        file_path = file_path.replace("/shared/land/CCI/","obs/gridded/land/soil_moisture/cci/")
+
+    except:
+        pass
     
     try:
         path_array.remove('data')
