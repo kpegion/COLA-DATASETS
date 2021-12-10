@@ -15,13 +15,13 @@ import pdb
 
 def fake_generate_catalog(file_path):
     
-
+    """
     try:
         file_path = file_path.replace("/shared/","/reanalysis/")
 
     except:
         pass
-    
+    """ 
     try:
         file_path = file_path.replace("/day/day/","/day/")
 

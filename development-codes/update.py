@@ -97,12 +97,13 @@ def make_ancestors(ancestors, _type):
     except:
         pass
 
-    
+    """
     try:
         ancestors = ancestors.replace("/shared/","/reanalysis/")
 
     except:
         pass
+    """
 
     #try:
     #    ancestors.remove('shared')
@@ -199,7 +200,7 @@ def link_to_children(child, dp_name):
                     <p class="description"> </p>
                 </a> """
     #for MERRA-2 I have replaced shared with reanalysis    
-    dp_name = dp_name.replace('shared','reanalysis') 
+    #dp_name = dp_name.replace('shared','reanalysis') 
     #pdb.set_trace() 
     file_name = dp_name + ".html"
     fp = open('../'+file_name, "r+")
@@ -256,13 +257,13 @@ def gen_direct_parent(file_path):
     except:
         pass
 
-
+    """
     try:
         ancestors = ancestors.replace("/shared/","/reanalysis/")
 
     except:
         pass
-
+    """
     try:
         file_path = file_path.replace("/mon/Omon/","/mon/")
 
