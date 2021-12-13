@@ -22,7 +22,7 @@ def fake_generate_catalog(file_path):
     except:
         pass
     """
-
+    """
 
     # This is only made for CCI
     try:
@@ -30,7 +30,7 @@ def fake_generate_catalog(file_path):
 
     except:
         pass
-
+    """
  
     try:
         file_path = file_path.replace("/day/day/","/day/")
