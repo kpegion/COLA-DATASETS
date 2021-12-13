@@ -22,15 +22,14 @@ def fake_generate_catalog(file_path):
     except:
         pass
     """
-    """
 
     # This is only made for CCI
     try:
-        file_path = file_path.replace("/shared/land/CCI/","obs/gridded/land/soil_moisture/cci/")
+        file_path = file_path.replace("/shared/land/CCI/","/cci/")
 
     except:
         pass
-    """
+
  
     try:
         file_path = file_path.replace("/day/day/","/day/")
