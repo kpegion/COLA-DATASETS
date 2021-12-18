@@ -40,6 +40,10 @@ def src_header(title, ancestors, open_catalog):
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
+	    <li><a href="obs">obs</a></li>
+	    <li><a href="gridded">gridded</a></li>
+	    <li><a href="land">land</a></li>
+	    <li><a href="soil_moisture">soil_misture</a></li>
 
 			{2}
 
