@@ -158,6 +158,12 @@ def make_ancestors(ancestors, _type):
 
 def catalog_parent( _path, _dataset_name, direct_parent):
 
+
+
+    # This is only made for CCI
+    direct_parent = direct_parent.replace("/shared/land/CCI/","/cci/")
+
+
     direct_parent = direct_parent + '.yaml'
     rel_path_direct_parent = "../intake-catalogs/" + direct_parent
     yaml_path = "{{CATALOG_DIR}}/"+ _dataset_name + ".yaml"
