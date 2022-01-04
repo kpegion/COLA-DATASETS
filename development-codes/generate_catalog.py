@@ -91,10 +91,10 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     output = ps.communicate()[0]
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
-    print(path)
-    print("-----------------------------------------")
     ancestors = make_ancestors(real_path, 1)
 
+    # This is only made for CCI
+    cci_ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
 
     ans = gen_direct_parent(real_path)
 
@@ -106,7 +106,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
-    _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
+    _header = src_header(title, cci_ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')
     _footer = src_footer()
@@ -116,8 +116,6 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     #page_name = fileName.replace('*','').replace('..','.').replace('.nc','')
     page_name = re.sub(r"_\d{4,8}-\d{4,8}.nc", "", page_name)
     page_name = re.sub(r"\.\d{4,8}-\d{4,8}.nc", "", page_name)
-    print(f'page name is {page_name}')
-    print(f'direct parent is  {direct_parent}')
     
     link_to_children(page_name, direct_parent)
     html_page = page_name  + ".html"

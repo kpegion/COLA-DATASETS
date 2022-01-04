@@ -25,7 +25,6 @@ def update_json(tags, html_page, dataset_sub_name):
 
 def make_ancestors(ancestors, _type):
     #<!-- 1qaz2wsx -->
-    
     try:
         ancestors = ancestors.replace("/day/day/","/day/")
 
@@ -45,6 +44,8 @@ def make_ancestors(ancestors, _type):
     except:
         pass
 
+
+    ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
 
 
     try:
@@ -128,9 +129,11 @@ def make_ancestors(ancestors, _type):
     except:
         pass
 
+
+
+
     try:
         ancestors.remove('DATA')
-
     except:
         pass
     #pdb.set_trace()
@@ -138,7 +141,6 @@ def make_ancestors(ancestors, _type):
     
     ans = []
     my_str = ""
-    #print(ancestors)
     if _type:
     
         for i in range(len(ancestors)):
@@ -225,7 +227,6 @@ def link_to_children(child, dp_name):
     dp_name = dp_name.replace("/shared/land/CCI/","/cci/")
 
     file_name = dp_name + ".html"
-    print(file_name)
     fp = open('../'+file_name, "r+")
     fin = fp.read()
 
@@ -300,6 +301,8 @@ def gen_direct_parent(file_path):
 
     except:
         pass
+
+
     try:
         file_path = file_path.replace("/mon/Omon/","/mon/")
 
