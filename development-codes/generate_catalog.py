@@ -28,8 +28,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     """
     #print("Hi There")
     file_path_name = file_path_name.strip('""')
-    real_path, fileName = os.path.split(file_path_name)
-    path = (os.path.join(os.path.dirname('/shared/land/CCI'), os.readlink(real_path)))
+    path, fileName = os.path.split(file_path_name)
     #print("1 :"+ file_path_name)
     #print("2 :"+ dataset_sub_name)
     #print("3: "+ tags)
@@ -83,7 +82,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     except:
         url =""
     # Here url roles as the location
-    url = real_path
+    url = path
     html_repr =xr.core.formatting_html.dataset_repr(src).replace('\\n', '\n')
 
     cmd = "ls -lrt --time-style=+%Y-%m-%d " + str(path) + " | tail -n 1"
@@ -91,12 +90,12 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     output = ps.communicate()[0]
     res = re.findall(r'\d{4}-\d{2}-\d{2}', output)
     time_stamp = ''.join(res)    
-    ancestors = make_ancestors(real_path, 1)
+    print(path)
+    print("-----------------------------------------")
+    ancestors = make_ancestors(path, 1)
 
-    # This is only made for CCI
-    cci_ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
 
-    ans = gen_direct_parent(real_path)
+    ans = gen_direct_parent(path)
 
 
     #direct_parent = path.split('/')[-1].lower()
@@ -106,7 +105,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
     #catalog_parent(file_path_name, dataset_sub_name, direct_parent)
 
-    _header = src_header(title, cci_ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
+    _header = src_header(title, ancestors,  open_catalog, url, tags, open_catalog, time_stamp)
 
     tags =tags.split(',')
     _footer = src_footer()
@@ -116,7 +115,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
     #page_name = fileName.replace('*','').replace('..','.').replace('.nc','')
     page_name = re.sub(r"_\d{4,8}-\d{4,8}.nc", "", page_name)
     page_name = re.sub(r"\.\d{4,8}-\d{4,8}.nc", "", page_name)
-    
+    print(page_name)
+    print(direct_parent)
     link_to_children(page_name, direct_parent)
     html_page = page_name  + ".html"
     with open(html_page , "w", encoding='utf-8') as file:
