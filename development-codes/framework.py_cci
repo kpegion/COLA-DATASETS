@@ -1,4 +1,4 @@
-## for MERRA-2
+## for CCI
 def src_header(title, ancestors, open_catalog, url, tags, catalog_dir, time_stamp):
     ret =  src_header = """<!DOCTYPE html>
 <html>
@@ -41,6 +41,13 @@ def src_header(title, ancestors, open_catalog, url, tags, catalog_dir, time_stam
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
+
+	    <li><a href="obs">obs</a></li>
+	    <li><a href="gridded">gridded</a></li>
+	    <li><a href="land">land</a></li>
+	    <li><a href="soil_moisture">soil_misture</a></li>
+
+
             
             {2}
             <li class="active">{3}</li>
