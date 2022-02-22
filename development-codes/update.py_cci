@@ -46,7 +46,6 @@ def make_ancestors(ancestors, _type):
 
 
     ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
-    ancestors = ancestors.replace("/shared/land/TopoIndex/","/topoindex/")
 
 
     try:
@@ -107,9 +106,9 @@ def make_ancestors(ancestors, _type):
         pass
     """
 
-    # This is only made for topoindex
+    # This is only made for CCI
     try:
-        file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
+        file_path = file_path.replace("/shared/land/CCI/","/cci/")
 
     except:
         pass
@@ -163,8 +162,8 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
 
 
-    direct_parent = direct_parent.replace("/shared/land/TopoIndex/","/topoindex/")
-
+    # This is only made for CCI
+    direct_parent = direct_parent.replace("/shared/land/CCI/","/cci/")
 
 
     direct_parent = direct_parent + '.yaml'
@@ -225,7 +224,7 @@ def link_to_children(child, dp_name):
     #pdb.set_trace() 
 
 
-    dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
+    dp_name = dp_name.replace("/shared/land/CCI/","/cci/")
 
     file_name = dp_name + ".html"
     fp = open('../'+file_name, "r+")
@@ -303,12 +302,6 @@ def gen_direct_parent(file_path):
     except:
         pass
 
-    # This is only made for topoindex
-    try:
-        file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
-
-    except:
-        pass
 
     try:
         file_path = file_path.replace("/mon/Omon/","/mon/")
@@ -340,12 +333,6 @@ def gen_direct_parent(file_path):
     # This is only made for CCI
     try:
         file_path = file_path.replace("/shared/land/CCI/","/cci/")
-
-    except:
-        pass
-    # This is only made for topoindex
-    try:
-        file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
 
     except:
         pass
