@@ -227,7 +227,7 @@ def link_to_children(child, dp_name):
     #pdb.set_trace() 
 
 
-    dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
+    #dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
     dp_name = dp_name.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
     file_name = dp_name + ".html"
