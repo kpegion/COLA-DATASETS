@@ -47,7 +47,7 @@ def make_ancestors(ancestors, _type):
 
     ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
     ancestors = ancestors.replace("/shared/land/TopoIndex/","/topoindex/")
-
+    ancestors = ancestors.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
     try:
         ancestors = ancestors.replace("/mon/OImon/","/mon/")
@@ -111,6 +111,7 @@ def make_ancestors(ancestors, _type):
     try:
         file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
 
+        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
     except:
         pass
     # This is only made for CCI
@@ -165,6 +166,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
     direct_parent = direct_parent.replace("/shared/land/TopoIndex/","/topoindex/")
 
+    direct_parent = direct_parent.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
 
     direct_parent = direct_parent + '.yaml'
@@ -178,7 +180,7 @@ def catalog_parent( _path, _dataset_name, direct_parent):
     if not os.path.isfile(rel_path_direct_parent):
 
         dict_file = {
-        'description': 'COLDA '+ direct_parent.replace('.yaml','').upper() + ' Data Caalog',
+        'description': 'COLA '+ direct_parent.replace('.yaml','').upper() + ' Data Catalog',
         'sources': {
         _dataset_name: {
             'args': {'path':yaml_path}, 
@@ -225,7 +227,8 @@ def link_to_children(child, dp_name):
     #pdb.set_trace() 
 
 
-    dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
+    #dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
+    dp_name = dp_name.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
     file_name = dp_name + ".html"
     fp = open('../'+file_name, "r+")
@@ -311,6 +314,11 @@ def gen_direct_parent(file_path):
         pass
 
     try:
+        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
+
+    except:
+        pass
+    try:
         file_path = file_path.replace("/mon/Omon/","/mon/")
 
     except:
@@ -343,9 +351,8 @@ def gen_direct_parent(file_path):
 
     except:
         pass
-    # This is only made for topoindex
     try:
-        file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
+        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
     except:
         pass
