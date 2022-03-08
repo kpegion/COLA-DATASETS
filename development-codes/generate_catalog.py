@@ -51,7 +51,8 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         src = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time',decode_times=False)
         #src = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='interval',group='Geophysical_Data')
         # Use intake with xarray kwargs
-        source = intake.open_netcdf(file_path_name,concat_dim='interval',xarray_kwargs={'combine':'nested','group':'Geophysical_Data'})
+        ####source = intake.open_netcdf(file_path_name,concat_dim='interval',xarray_kwargs={'combine':'nested','group':'Geophysical_Data'})
+        source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
     else:
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
