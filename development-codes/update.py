@@ -47,8 +47,7 @@ def make_ancestors(ancestors, _type):
 
     ancestors = ancestors.replace("/shared/land/CCI/","/cci/")
     ancestors = ancestors.replace("/shared/land/TopoIndex/","/topoindex/")
-    ancestors = ancestors.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
-
+    ancestors = ancestors.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
     try:
         ancestors = ancestors.replace("/mon/OImon/","/mon/")
 
@@ -111,7 +110,9 @@ def make_ancestors(ancestors, _type):
     try:
         file_path = file_path.replace("/shared/land/TopoIndex/","/topoindex/")
 
-        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
+
+
+        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
     except:
         pass
     # This is only made for CCI
@@ -166,8 +167,8 @@ def catalog_parent( _path, _dataset_name, direct_parent):
 
     direct_parent = direct_parent.replace("/shared/land/TopoIndex/","/topoindex/")
 
-    direct_parent = direct_parent.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
+    direct_parent = direct_parent.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
 
     direct_parent = direct_parent + '.yaml'
     rel_path_direct_parent = "../intake-catalogs/" + direct_parent
@@ -228,8 +229,8 @@ def link_to_children(child, dp_name):
 
 
     #dp_name = dp_name.replace("/shared/land/TopoIndex/","/topoindex/")
-    dp_name = dp_name.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
+    dp_name = dp_name.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
     file_name = dp_name + ".html"
     fp = open('../'+file_name, "r+")
     fin = fp.read()
@@ -242,7 +243,13 @@ def link_to_children(child, dp_name):
     fp.close()
 
 def gen_direct_parent(file_path):
+    
+    #assert '/shared/land/SMAP/SPL4SMGP.005/daily' in file_path,Exception('RIDI')
+ 
+    print('/shared/land/SMAP/SPL4SMGP.005/daily' in file_path)
 
+    file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
+    print(f'file name is {file_path}')
     try:
         file_path = file_path.replace("/day/day/","/day/")
 
@@ -314,8 +321,8 @@ def gen_direct_parent(file_path):
         pass
 
     try:
-        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
-
+        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
+        print(f'file name is {file_path}')
     except:
         pass
     try:
@@ -348,11 +355,6 @@ def gen_direct_parent(file_path):
     # This is only made for CCI
     try:
         file_path = file_path.replace("/shared/land/CCI/","/cci/")
-
-    except:
-        pass
-    try:
-        file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily/","/smap_l4/")
 
     except:
         pass
