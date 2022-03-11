@@ -246,10 +246,9 @@ def gen_direct_parent(file_path):
     
     #assert '/shared/land/SMAP/SPL4SMGP.005/daily' in file_path,Exception('RIDI')
  
-    print('/shared/land/SMAP/SPL4SMGP.005/daily' in file_path)
+    #print('/shared/land/SMAP/SPL4SMGP.005/daily' in file_path)
 
     file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
-    print(f'file name is {file_path}')
     try:
         file_path = file_path.replace("/day/day/","/day/")
 
@@ -322,7 +321,6 @@ def gen_direct_parent(file_path):
 
     try:
         file_path = file_path.replace("/shared/land/SMAP/SPL4SMGP.005/daily","/smap_l4/smap_l4_daily")
-        print(f'file name is {file_path}')
     except:
         pass
     try:
