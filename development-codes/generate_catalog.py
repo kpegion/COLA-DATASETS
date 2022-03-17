@@ -47,6 +47,7 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
 
 
     if int(is_combine) == True:
+        '''
         # Read with xarray
         src = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time')
         ####src = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='time',decode_times=False)
@@ -55,6 +56,12 @@ def generate_catalog(file_path_name, dataset_sub_name, tags):
         ####source = intake.open_netcdf(file_path_name,concat_dim='interval',xarray_kwargs={'combine':'nested','group':'Geophysical_Data'})
         source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
         #source = intake.open_netcdf(file_path_name,concat_dim='time',xarray_kwargs={'combine':'nested'})
+        '''
+
+        # 3-hourly
+        src = xr.open_mfdataset(file_path_name,combine='nested',concat_dim='interval',group='Geophysical_Data')
+        source = intake.open_netcdf(file_path_name,concat_dim='interval',xarray_kwargs={'combine':'nested','group':'Geophysical_Data'})
+
     else:
         source = intake.open_netcdf(file_path_name, xarray_kwargs={'decode_times':False})
         src = xr.open_dataset(file_path_name, decode_times=False)
