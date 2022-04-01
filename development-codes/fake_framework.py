@@ -1,8 +1,8 @@
-
-<!DOCTYPE html>
+def src_header(title, ancestors, open_catalog):
+    ret =  src_header = """<!DOCTYPE html>
 <html>
 <head>
-    <title>Soil Moisture</title>
+    <title>{0}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.css">
     <link rel="stylesheet" href="static/pangeo-style.css">
@@ -35,27 +35,30 @@
 
 
 <main role="main" class="container">
-    <h1>SOIL MOISTURE</h1>
+    <h1>{1}</h1>
     <div>
         <ol class="breadcrumb">
 
             <li><a href="main">main</a></li>
-			<li><a href="obs">obs</a></li>
-			<li><a href="gridded">gridded</a></li>
-			<li><a href="land">land</a></li>
+	    <li><a href="obs">obs</a></li>
+	    <li><a href="gridded">gridded</a></li>
+	    <li><a href="land">land</a></li>
+	    <li><a href="soil_moisture">soil_moisture</a></li>
 
-            <li class="active">soil moisture</li>
+			{2}
+
+            <li class="active">{3}</li>
 
         </ol>
     </div>
     <div class="catalog">
 
-        <h2> Soil Moisture</h2>
+        <h2> </h2>
         
 
         <h3>Load in Python</h3>
         <pre><code class="language-python">from intake import open_catalog<br>
-cat = open_catalog("https://raw.githubusercontent.com/kpegion/COLA-DATASETS-CATALOG/gh-pages/intake-catalogs/soil_moisture.yaml")
+cat = open_catalog("{4}")
 list(cat)</code></pre>
 
 
@@ -63,25 +66,9 @@ list(cat)</code></pre>
 
         <h3>Datasets</h3>
         <div class="list-group">
-
-
-              <a href="cci" class="list-group-item"> 
-                <h4>cci</h4>
-                <p class="description"></p>
-            </a>
         
-              <a href="smap_l3" class="list-group-item"> 
-                <h4>smap_l3</h4>
-                <p class="description"></p>
-            </a>
+        <!--qazwsxxswzaq-->
 
-            <a href="smap_l4" class="list-group-item"> 
-                <h4>smap_l4</h4>
-                <p class="description"></p>
-            </a>
-
-
-     
 
 
 
@@ -99,3 +86,5 @@ list(cat)</code></pre>
 <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
 </html>
+""".format(title, title, ancestors, title, open_catalog)
+    return ret
